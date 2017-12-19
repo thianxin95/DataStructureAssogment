@@ -14,10 +14,12 @@ public class Staff {
      String staffAddress;
      int staffAge;
      String staffStatus;
+
+     int staffPassword;
      
      public Staff(){}
      
-     public Staff(int staffID, String staffName, int staffPhone, String address,int staffAge, String staffStatus)
+     public Staff(int staffID, String staffName, int staffPhone, String address,int staffAge, String staffStatus, int staffPassword)
      {
          this.staffID=staffID;
          this.staffName=staffName;
@@ -25,6 +27,7 @@ public class Staff {
          this.staffAddress=address;
          this.staffAge= staffAge;
          this.staffStatus=staffStatus;
+         this.staffPassword = staffPassword;
      }
      
     
@@ -66,6 +69,15 @@ public class Staff {
         return staffStatus;
     }
     
+     public int getStaffPassword(){
+   return staffPassword;
+}
+    public void setStaffPassword( int staffPassword){
+   this.staffPassword=staffPassword;
+}
+
+     
+     
     public String toString() {
         return String.format("Staff ID : %5d / Name : %-20s / Phone : %10d / Address : %-20s / Age : %2d   Status : %-20s\n",staffID,staffName,staffPhone,staffAddress,staffAge,staffStatus);
   }   
