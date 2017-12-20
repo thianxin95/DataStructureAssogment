@@ -12,7 +12,7 @@ package ADT;
 import JavaInterfaces.*;
 import entity.Customer;
 
-public class CustomerAccADT<T> implements CustomerAccInterface<T>{
+public class CustomerAccADT<T> implements CustomerAccInterface{
 
     @Override
     public ArrayListADT<Customer> RegisterCustomer(Customer newCustomer, ArrayListADT<Customer> customerlist) {

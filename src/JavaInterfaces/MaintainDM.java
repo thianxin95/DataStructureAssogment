@@ -4,14 +4,17 @@
  * and open the template in the editor.
  */
 package JavaInterfaces;
+import ADT.*;
+import entity.*;
 
 /**
  *
  * @author acer
  */
 public interface MaintainDM {
-    void CreateRecord();
-    void CheckDMInfo();
-    void UpdatDM();
+    
+    public void CreateRecord(ArrayListADT<Staff> stafflist);
+    public void CheckDMInfo(int checkstaffid, ArrayListADT<Staff> stafflist);
+    public void UpdatDM(int staffid,ArrayListADT<Staff> stafflist );
     
 }
