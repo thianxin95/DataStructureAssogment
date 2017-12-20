@@ -11,76 +11,109 @@ package entity;
  * @author Daniel
  */
 public class DeliveryMan {
+    private int staffID;
+    private String password;
+    private String staffName;
+    private String staffPhone;
+    private String staffAddress;
+    private int staffAge;
+    private  String staffStatus;
+    private String checkIn;
+    private String checkOut;
     
     
-    private int deliveryManID = 5000;
-    private String deliveryManName = "";
-    private String deliveryManAddress = "";
-    private String deliveryManShift = "";
-    private int deliveryCount;
-   //private Calendar startTime;
-  //  private Calendar arriveTime;
-    private int deliveryManPhoneNumber;
-    private int deliveryManAge;
-  
     
     public DeliveryMan(){
         
     }
-      public DeliveryMan(int deliveryManID, String deliveryManName, String deliveryManAddress, String deliveryManShift, int deliveryCount, int deliveryManPhoneNumber, int deliveryManAge ){
-        this.deliveryManName = deliveryManName;
-        this.deliveryManAddress = deliveryManAddress;
-        this.deliveryManShift = deliveryManShift;
-        this.deliveryCount = deliveryCount;
-        this.deliveryManPhoneNumber = deliveryManPhoneNumber;
-        this.deliveryManAge = deliveryManAge;
-       
-       
+
+    public DeliveryMan(int staffID, String password, String staffName, String staffPhone, String staffAddress, int staffAge, String staffStatus, String checkIn, String checkOut) {
+        this.staffID = staffID;
+        this.password = password;
+        this.staffName = staffName;
+        this.staffPhone = staffPhone;
+        this.staffAddress = staffAddress;
+        this.staffAge = staffAge;
+        this.staffStatus = staffStatus;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
     }
-       public int getDeliveryManID() {
-        return deliveryManID;
-       }
-    public String getDeliveryManName() {
-        return deliveryManName;
+
+    public String getCheckIn() {
+        return checkIn;
     }
-    public String getDeliveryManAddress() {
-        return deliveryManAddress;
+
+    public void setCheckIn(String checkIn) {
+        this.checkIn = checkIn;
     }
-    public String getDeliveryManShift() {
-        return deliveryManShift;
+
+    public String getCheckOut() {
+        return checkOut;
     }
-    public int getDeliveryCount() {
-        return deliveryCount;
+
+    public void setCheckOut(String checkOut) {
+        this.checkOut = checkOut;
     }
-    //public Calendar getStartTime() {
-      //  return startTime;
-   // }
-   // public void setStartTime(Calendar startTime) {
-       // this.startTime = startTime;
-    //}
-    //public Calendar getArriveTime() {
-      //  return arriveTime;
-   // }
-  //  public void setArriveTime(Calendar arriveTime) {
-     //   this.arriveTime = arriveTime;
-   // }
-    public int getDeliveryManPhoneNumber() {
-        return deliveryManPhoneNumber;
+
+    public String getPassword() {
+        return password;
     }
-    public int getDeliveryManAge() {
-        return deliveryManAge;
-    }   
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getStaffID() {
+        return staffID;
+    }
+
+    public void setStaffID(int staffID) {
+        this.staffID = staffID;
+    }
+
+    public String getStaffName() {
+        return staffName;
+    }
+
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
+    }
+
+    public String getStaffPhone() {
+        return staffPhone;
+    }
+
+    public void setStaffPhone(String staffPhone) {
+        this.staffPhone = staffPhone;
+    }
+
+    public String getStaffAddress() {
+        return staffAddress;
+    }
+
+    public void setStaffAddress(String staffAddress) {
+        this.staffAddress = staffAddress;
+    }
+
+    public int getStaffAge() {
+        return staffAge;
+    }
+
+    public void setStaffAge(int staffAge) {
+        this.staffAge = staffAge;
+    }
+
+    public String getStaffStatus() {
+        return staffStatus;
+    }
+
+    public void setStaffStatus(String staffStatus) {
+        this.staffStatus = staffStatus;
+    }
     
-  
-    // public static String getTime(Calendar time) {
-   // return String.format("%02d:%02d:%02d", time.get(Calendar.HOUR_OF_DAY),
-      //      time.get(Calendar.MINUTE), time.get(Calendar.SECOND));
-//  }
- // public int getWaitingTime() {
-  //  return (int) ((startTime.getTimeInMillis() - arriveTime.getTimeInMillis()) / 1000);
- // }
- // public String toString() {
-   // return String.format("%-12d", deliveryManName);
- // }
+    public String toString(){
+        String output = String.format("%-20s %-23s", this.getStaffName(), this.getStaffID());
+        return output;
+    }
     
 }

@@ -72,6 +72,27 @@ public class MainMenu {
                             System.out.println("Please REMEMBER that your ID is " + customer.get(customer.getNumberOfEntries() - 1).getCustomerID() + "\n\n\n");
                             break;
                         }
+                    case 3:
+                        DeliveryManUi dUI = new DeliveryManUi();
+                        switch(dUI.MenuDisplay()){
+                            case 1:
+                                DeliveryManMenu dMenu = new DeliveryManMenu();
+                                switch(dMenu.DeliveryManFunctionMenu()){
+                                    case 1:
+                                        break;
+                                    default:
+                                        MainMenuFunctions();
+                                }
+                                loop = 2;
+                                break;
+                            default:
+                                MainMenuFunctions();
+                                
+                        }
+                        
+                        
+                                
+                        break;
  
                         
                /*     case 2:
