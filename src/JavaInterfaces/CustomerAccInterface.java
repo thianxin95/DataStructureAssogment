@@ -13,8 +13,7 @@ import entity.*;
  * @author leang
  */
 public interface CustomerAccInterface<T> {
-    ArrayListADT<Customer> RegisterCustomer(T Customer , ArrayListADT<Customer> customerlist);
-    T LoginCustomer(T Customer, ArrayListADT<Customer> customerlist);
-    ArrayListADT<Customer> getCustomerList();
-    void DeactivateAccount(T Customer);
+    ArrayListADT<Customer> RegisterCustomer(Customer newCustomer, ArrayListADT<Customer> customerlist);
+    Customer LoginCustomer(Customer logincustomer, ArrayListADT<Customer> customerlist);
+    boolean DeactivateAccount(Customer accdeactivate, ArrayListADT<Customer> customerlist);
 }
