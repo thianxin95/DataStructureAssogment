@@ -13,8 +13,9 @@ import entity.*;
 public class DMADT implements MaintainDM {
 
     @Override
-    public void CreateRecord(ArrayListADT<Staff> stafflist) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayListADT<Staff> CreateRecord(ArrayListADT<Staff> stafflist) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return stafflist;
     }
 
     @Override

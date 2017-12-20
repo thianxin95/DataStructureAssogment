@@ -13,7 +13,7 @@ import entity.*;
  */
 public interface MaintainDM {
     
-    public void CreateRecord(ArrayListADT<Staff> stafflist);
+    public ArrayListADT<Staff> CreateRecord(ArrayListADT<Staff> stafflist);
     public void CheckDMInfo(int checkstaffid, ArrayListADT<Staff> stafflist);
     public void UpdatDM(int staffid,ArrayListADT<Staff> stafflist );
     
