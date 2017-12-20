@@ -14,7 +14,7 @@ import entity.*;
 public interface MaintainDM {
     
     public ArrayListADT<Staff> CreateRecord(ArrayListADT<Staff> stafflist);
-    public void CheckDMInfo(int checkstaffid, ArrayListADT<Staff> stafflist);
-    public void UpdatDM(int staffid,ArrayListADT<Staff> stafflist );
+    public ArrayListADT<Staff> CheckDMInfo( ArrayListADT<Staff> stafflist);
+    public ArrayListADT<Staff> UpdateDM(ArrayListADT<Staff> stafflist );
     
 }
