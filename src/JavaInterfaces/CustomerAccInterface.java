@@ -12,6 +12,7 @@ import entity.*;
  *
  * @author leang
  */
+
 public interface CustomerAccInterface<T> {
     ArrayListADT<Customer> RegisterCustomer(Customer newCustomer, ArrayListADT<Customer> customerlist);
     Customer LoginCustomer(Customer logincustomer, ArrayListADT<Customer> customerlist);
