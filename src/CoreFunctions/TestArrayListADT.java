@@ -17,10 +17,10 @@ public class TestArrayListADT {
     
     public static void main(String args[]){
         ArrayListADT<Customer> customer = new ArrayListADT<Customer>();
-        Customer customerob = new Customer(5001,"Chin", "PJ" , "0102872306");
-        Customer customerob2 = new Customer(5002,"Chin", "PJ" , "0102872306");
-        customer.add(customerob);
-        customer.add(customerob2);
+     //   Customer customerob = new Customer(5001,"Chin", "PJ" , "0102872306");
+     //   Customer customerob2 = new Customer(5002,"Chin", "PJ" , "0102872306");
+     //   customer.add(customerob);
+     //   customer.add(customerob2);
         System.out.print(customer.get(0).getCustomerID());
     }
     

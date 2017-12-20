@@ -15,6 +15,6 @@ import entity.*;
 
 public interface CustomerAccInterface {
     ArrayListADT<Customer> RegisterCustomer(Customer newCustomer, ArrayListADT<Customer> customerlist);
-    Customer LoginCustomer(Customer logincustomer, ArrayListADT<Customer> customerlist);
+    Customer LoginCustomer(String ID, String Password, ArrayListADT<Customer> customerlist);
     boolean DeactivateAccount(Customer accdeactivate, ArrayListADT<Customer> customerlist);
 }

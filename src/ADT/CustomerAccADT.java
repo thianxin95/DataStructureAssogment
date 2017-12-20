@@ -17,21 +17,24 @@ public class CustomerAccADT<T> implements CustomerAccInterface{
     @Override
     public ArrayListADT<Customer> RegisterCustomer(Customer newCustomer, ArrayListADT<Customer> customerlist) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        newCustomer.setCustomerID(customerlist.getNumberOfEntries() + 5001); // setting customer ID
         customerlist.add(newCustomer);
         return customerlist;
     
     }
 
     @Override
-    public Customer LoginCustomer(Customer logincustomer, ArrayListADT<Customer> customerlist) {
+    public Customer LoginCustomer(String ID, String Password, ArrayListADT<Customer> customerlist) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        if(customerlist.contains(logincustomer)){
-            return logincustomer;
+        for(int i = 0 ; i < customerlist.getNumberOfEntries(); i ++){
+            if(customerlist.get(i).getCustomerID() == Integer.parseInt(ID) & customerlist.get(i).getPassword().equals(Password)){
+                return customerlist.get(i);
+            }
         }
-        else{
-            logincustomer = new Customer(); // setting everything to null
+       
+            Customer logincustomer = new Customer(); // setting everything to null
             return logincustomer;
-        }
+        
     }
 
 

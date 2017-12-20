@@ -43,14 +43,34 @@ public class MainMenu {
                 switch(answer){
                     case 1:
                         Login login = new Login();
-                        CustomerLoggedIn = login.MainLogin(/*Here should put in the ArrayList Customer to refer*/); // This method should allow logged in customer to create an object. 
-                        // parse it to Customer choose restaurant.
-                        CustomerMenu cmenu = new CustomerMenu();
-                        //System.out.print("Test Restaurant return : " + restaurantList.get(0).getOwnerName()); 
-                        Restaurant restaurant  = new Restaurant("Restaurant1" , "Petaling Jaya", "Chin", "0102872306");
-                        restaurantList.add(restaurant);
-                        cmenu.CustomerMenu(CustomerLoggedIn, restaurantList); // RestaurantList does not goes to the method, printing nothing atm.
-                        break;
+                        System.out.println("Customer Area");
+                        System.out.println("====================");
+                        System.out.println("1.Login To Customer Area");
+                        System.out.println("2.Register a New Account");
+                        System.out.print("Please Enter your Option : ");
+                        int loginChoice = scan.nextInt();
+                        if(loginChoice == 1){
+                            CustomerLoggedIn = login.MainLogin(customer); // Initiate the method of LOGIN, if no success, it suppose to give empty object of CUSTOMER. Please Refer to ADT.
+                             if(CustomerLoggedIn.getCustomerName() != ""){ // Check for Login Succesfull
+                                    // parse it to Customer choose restaurant.
+                                    CustomerMenu cmenu = new CustomerMenu();
+                                    //System.out.print("Test Restaurant return : " + restaurantList.get(0).getOwnerName()); 
+                                    Restaurant restaurant  = new Restaurant("Restaurant1" , "Petaling Jaya", "Chin", "0102872306");
+                                    restaurantList.add(restaurant);
+                                    cmenu.CustomerMenu(CustomerLoggedIn, restaurantList); // RestaurantList does not goes to the method, printing nothing atm.
+                                    break;
+                            }else{
+                                 System.out.println("Login Unsuccesful\n\n\n");
+                                 break;
+                             }
+                        }if(loginChoice == 2){
+                            customer=login.RegisterAccount(customer);
+                            System.out.println("Registration Sucessful");
+                            System.out.println("Please REMEMBER that your ID is " + customer.get(customer.getNumberOfEntries() - 1).getCustomerID() + "\n\n\n");
+                            break;
+                        }
+ 
+                        
                /*     case 2:
                         System.out.println("Login to Restaurant Owner Area");
                         //incomplete login function....bypass to RestaurantRegister

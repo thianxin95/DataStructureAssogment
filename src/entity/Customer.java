@@ -14,15 +14,16 @@ public class Customer {
     private String CustomerName = "";
     private String CustomerAddress = "";
     private String CustomerPhone = "";
-    
+    private String Password = "";
     public Customer(){
         
     }
-    public Customer(int CustomerID, String CustomerName, String CustomerAddress, String CustomerPhone){
+    public Customer(int CustomerID, String Password, String CustomerName, String CustomerAddress, String CustomerPhone){
         this.CustomerID = CustomerID;
         this.CustomerName = CustomerName;
         this.CustomerAddress = CustomerAddress;
         this.CustomerPhone = CustomerPhone;
+        this.Password = Password;
     }
     public int getCustomerID(){
         return CustomerID;
@@ -35,6 +36,12 @@ public class Customer {
     }
     public String getCustomerPhone(){
         return CustomerPhone;
+    }
+    public String getPassword(){
+        return Password;
+    }
+    public void setCustomerID(int ID ){
+        this.CustomerID = ID;
     }
     
 }
