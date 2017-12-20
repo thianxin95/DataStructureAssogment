@@ -10,45 +10,14 @@ import java.util.*;
 import entity.*;
 
 public class MaintainDM {
-    private ArrayListADT<Staff> staffList = new ArrayListADT<>();
-    public static int empNum = 1000;
-    public static int empPass = 12345;
+   int empPass;
+    int empNum;
     
-    public void checkStaffInfomation(){
-      
-       Scanner scanner = new Scanner(System.in); 
-       
-        System.out.println("Please key in the staff ID:");
-            int id= scanner.nextInt();
-           
-             
-        for(int i=0;i<staffList.getNumberOfEntries();i++)
-        {
-           
-            if( staffList.get(i).getStaffID() == id)
-            {
-            
-                Staff staff = staffList.get(i);
-                System.out.println("ID:"+staff.getStaffID()); 
-                System.out.println("Name:"+staff.getStaffName()); 
-                System.out.println("Phone:"+staff.getStaffPhone());
-                System.out.println("Address:"+staff.getStaffAddress());
-                System.out.println("Age:"+staff.getStaffAge());
-                System.out.println("Status:"+staff.getStaffStatus());
-               
-                 
-            }
-            else
-            {
-              System.out.println("no found");
-
-            }        
-                
-        }   
+    
+     public ArrayListADT<Staff> createStaffRecord(ArrayListADT<Staff> staffList){
+     empPass=123456;
+     empNum=1000;
         
-        
-    }
-     public void createStaffRecord(){
          String answer = "y";
        
         while(answer.equals("y") || answer.equals("Y") ){
@@ -57,37 +26,36 @@ public class MaintainDM {
             Scanner scanner = new Scanner(System.in);
 
 
-            System.out.println("ID:");
+            System.out.print("ID:");
             staff.setStaffID(getUniqueEmpId());
 
 
-           System.out.println("Delivery Man Name:");
+           System.out.print("Delivery Man Name:");
            String name= scanner.nextLine();
            staff.setStaffName(name);
 
-           System.out.println("Deliver Man Address:");
+           System.out.print("Deliver Man Address:");
            String address= scanner.nextLine();
            staff.setStaffAddress(address);
 
-           System.out.println("Delivery Man Phone Number:");
+           System.out.print("Delivery Man Phone Number:");
            int phoneNum= scanner.nextInt();
            staff.setStaffPhone(phoneNum);
 
 
-           System.out.println("Deliver Man Age:");
+           System.out.print("Deliver Man Age:");
            int age= scanner.nextInt();
            staff.setStaffAge(age);
            
             System.out.println("Deliver Man Status:Active");
             staff.setStaffStatus("Active");
             
-            System.out.println("Deliver Man Password:");
+            System.out.print("Deliver Man Password:");
             staff.setStaffPassword(getUniqueEmpPass());
             
+             DMADT dmadt = new DMADT();
+             dmadt.CreateRecord(staff, staffList);
 
-            
-            
-           staffList.add(staff);
            System.out.println("ID:"+staff.getStaffID());
            System.out.println("Name:"+staff.getStaffName());
            System.out.println("Phone:"+staff.getStaffPhone());
@@ -100,44 +68,34 @@ public class MaintainDM {
            answer= scanner.next();
 
      }
-    }
-     public static int getUniqueEmpId() {
-        System.out.println( +empNum);
-        return empNum++;
-    }
-     public static int getUniqueEmpPass() {
-        System.out.println( +empPass);
-        return empPass++;
-    }
+      return staffList ;
+     }
      
-     
-  
-    
-    public void updateInformation(){
-       
-       Scanner scanner = new Scanner(System.in); 
-             System.out.println("Please key in the staff ID you wish to update:");
-             int id= scanner.nextInt();
+     public Staff UpdateStaffInfo(int staffid,ArrayListADT<Staff> staffList)
+     {
+          Scanner scanner = new Scanner(System.in); 
+         System.out.println("Please key in the staff ID you wish to update:");
+         staffid= scanner.nextInt();
             
-        for(int i=0;i<staffList.getNumberOfEntries();i++)
-        {
-            if(staffList.get(i).getStaffID() == id)
+         DMADT dmadt = new DMADT();
+         dmadt.UpdateDM(staffid, staffList);
+         Staff staff = new Staff();
+       
                 
-            {
                 
-                Staff staff = staffList.get(i);
                 System.out.println("Name:"+staff.getStaffName()); 
                 System.out.println("Phone:"+staff.getStaffPhone());
                 System.out.println("Address:"+staff.getStaffAddress());
                 System.out.println("Age:"+staff.getStaffAge());
                 System.out.println("Status:"+staff.getStaffStatus());
                
-                    System.out.println("Key in the number you wish to update");
-                    System.out.println("1. Name");
-                    System.out.println("2. Phone Number");
-                    System.out.println("3. Address");
-                    System.out.println("4. Age");
-                   System.out.println("5. Status");
+                System.out.println("Key in the number you wish to update");
+                System.out.println("1. Name");
+                System.out.println("2. Phone Number");
+                System.out.println("3. Address");
+                System.out.println("4. Age");
+                System.out.println("5. Status");
+                System.out.print("Your Selection is:");
                 int id2= scanner.nextInt();
                
                 switch(id2)
@@ -145,7 +103,7 @@ public class MaintainDM {
                     case 1:
                     {
                     System.out.println("Name:"+staff.getStaffName());
-                    System.out.println("Enter a new name:");
+                    System.out.print("Enter a new name:");
                     String name= scanner.next();
                     staff.setStaffName(name);
                     System.out.println("Name:"+staff.getStaffName()); 
@@ -159,7 +117,7 @@ public class MaintainDM {
                     case 2:
                     {
                     System.out.println("Phone:"+staff.getStaffPhone());
-                    System.out.println("Enter a new phone:");
+                    System.out.print("Enter a new phone:");
                     int phone= scanner.nextInt();
                     staff.setStaffPhone(phone);
                     System.out.println("Name:"+staff.getStaffName()); 
@@ -173,7 +131,7 @@ public class MaintainDM {
                     case 3:
                     {
                     System.out.println("Address:"+staff.getStaffAddress());
-                    System.out.println("Enter a new Address:");
+                    System.out.print("Enter a new Address:");
                     String address= scanner.next();
                     staff.setStaffAddress(address);
                     System.out.println("Name:"+staff.getStaffName()); 
@@ -187,7 +145,7 @@ public class MaintainDM {
                     case 4:
                     {
                     System.out.println("Age:"+staff.getStaffAge());
-                    System.out.println("Enter a new age:");
+                    System.out.print("Enter a new age:");
                     int age= scanner.nextInt();
                     staff.setStaffAge(age);
                     System.out.println("Name:"+staff.getStaffName()); 
@@ -202,7 +160,7 @@ public class MaintainDM {
                     case 5:
                     {
                     System.out.println("Status:"+staff.getStaffStatus());
-                    System.out.println("Enter a new status:");
+                    System.out.print("Enter a new status:");
                     String status= scanner.next();
                     staff.setStaffStatus(status);
                     System.out.println("Name:"+staff.getStaffName()); 
@@ -214,16 +172,36 @@ public class MaintainDM {
                    break;
    
             }
-            }
+            
         
-        }
-   
+        
+        return staff;
+     }
+     
+     
+     
+     
+     
+     public  int getUniqueEmpId() {
+        System.out.println( +empNum);
+        return empNum++;
     }
+     public  int getUniqueEmpPass() {
+        System.out.println( +empPass);
+        return empPass++;
+    }
+     
+     
+  
+    
+ 
        public static void main(String args[]){
          MaintainDM DM = new MaintainDM();
-         DM.createStaffRecord();
-         DM.updateInformation();
-         DM.checkStaffInfomation();
+         ArrayListADT<Staff> testlist = new ArrayListADT<Staff>();
+         DM.createStaffRecord(testlist);
+         DM.UpdateStaffInfo(0, testlist);
+         
+         
      }
     
 }
