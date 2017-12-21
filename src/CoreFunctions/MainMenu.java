@@ -24,6 +24,7 @@ public class MainMenu {
     Scanner scan = new Scanner(System.in);
     private String LoggedInID = "";
     private ArrayListADT<Restaurant> restaurantList = new ArrayListADT<Restaurant>();
+    private ArrayListADT<Menu> menuList = new ArrayListADT<>();
     private ArrayListADT<Customer> customer = new ArrayListADT<Customer>();
     private Customer CustomerLoggedIn = new Customer();
     public void MainMenuFunctions(){
@@ -72,6 +73,32 @@ public class MainMenu {
                             System.out.println("Please REMEMBER that your ID is " + customer.get(customer.getNumberOfEntries() - 1).getCustomerID() + "\n\n\n");
                             break;
                         }
+                    case 2://Restaurant Area
+                        System.out.println("Login to Restaurant Owner Area");
+                        //incomplete login function....bypass to RestaurantRegister
+                        System.out.println("1. Register Restaurant");
+                        System.out.println("2. Add Menu");
+                        System.out.println("3. Display Menu");
+                        System.out.println("4. Update Menu");
+                        System.out.println("5. Delete Menu");
+                        System.out.printf("Choice : ");
+                        int choice = scan.nextInt();
+                        MaintainMenu MM = new MaintainMenu();
+                        if(choice == 1){
+                            RestaurantRegister RR = new RestaurantRegister();
+                            restaurantList = RR.RestaurantRegistration(restaurantList);
+                        }else if(choice == 2){
+                            menuList = MM.RegisterMenu(menuList);
+                        }else if(choice == 3){
+                            TestDisplay test = new TestDisplay();
+                            test.DisplayTesting(menuList);
+                        }else if(choice == 4){
+                            menuList = MM.UpdateDetails(menuList);
+                        }else if(choice == 5){
+                            menuList = MM.DeleteDetails(menuList);
+                        }
+                        //probably bugged. Wont return List
+                        break;
                     case 3:
                         DeliveryManUi dUI = new DeliveryManUi();
                         switch(dUI.MenuDisplay()){
@@ -95,12 +122,7 @@ public class MainMenu {
                         break;
  
                         
-               /*     case 2:
-                        System.out.println("Login to Restaurant Owner Area");
-                        //incomplete login function....bypass to RestaurantRegister
-                        RestaurantRegister RR = new RestaurantRegister();
-                        restaurantList = RR.mainRegister(); //probably bugged. Wont return List
-                        break;
+               /*     
                     case 3:
                         System.out.println("Staff Area");
                         System.out.println("======================");
