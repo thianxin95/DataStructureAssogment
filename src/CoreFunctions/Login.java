@@ -18,7 +18,7 @@ import java.util.Scanner;
 import ADT.*;
 public class Login {
         
-    public Customer MainLogin(ArrayListADT<Customer> CustomerList){
+    public Customer MainLogin(CircularList<Customer> CustomerList){
         //return String AccountID that valids
         //int CustomerID, String CustomerName, String CustomerAddress, String CustomerPhone
         CustomerAccADT caccadt = new CustomerAccADT();
@@ -43,9 +43,9 @@ public class Login {
         // fake empty method
         
     }
-    public ArrayListADT<Customer> RegisterAccount(ArrayListADT<Customer> oldCustomerList){
+    public CircularList<Customer> RegisterAccount(CircularList<Customer> oldCustomerList){
         //int CustomerID, String Password, String CustomerName, String CustomerAddress, String CustomerPhone
-        ArrayListADT<Customer> newCustomerList = new ArrayListADT<Customer>();
+        CircularList<Customer> newCustomerList = new CircularList<Customer>();
         Scanner scan = new Scanner(System.in);
         System.out.println("Register to Customer Area");
         System.out.println("==============================");

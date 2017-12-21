@@ -15,7 +15,7 @@ import entity.Customer;
 public class CustomerAccADT<T> implements CustomerAccInterface{
 
     @Override
-    public ArrayListADT<Customer> RegisterCustomer(Customer newCustomer, ArrayListADT<Customer> customerlist) {
+    public CircularList<Customer> RegisterCustomer(Customer newCustomer, CircularList<Customer> customerlist) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         newCustomer.setCustomerID(customerlist.getNumberOfEntries() + 5001); // setting customer ID
         customerlist.add(newCustomer);
@@ -24,23 +24,22 @@ public class CustomerAccADT<T> implements CustomerAccInterface{
     }
 
     @Override
-    public Customer LoginCustomer(String ID, String Password, ArrayListADT<Customer> customerlist) {
+    public Customer LoginCustomer(String ID, String Password, CircularList<Customer> customerlist) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        for(int i = 0 ; i < customerlist.getNumberOfEntries(); i ++){
-            if(customerlist.get(i).getCustomerID() == Integer.parseInt(ID) & customerlist.get(i).getPassword().equals(Password)){
+            int i = Integer.parseInt(ID) - 5000;
+            if(customerlist.get(i).getPassword().equals(Password) & customerlist.get(i).getCustomerID() == Integer.parseInt(ID)){
                 return customerlist.get(i);
+            }else{
+                Customer logincustomer = new Customer(); // setting everything to null
+                return logincustomer;
             }
-        }
-       
-            Customer logincustomer = new Customer(); // setting everything to null
-            return logincustomer;
-        
+    
     }
 
 
 
-    @Override
-    public boolean DeactivateAccount(Customer accdeactivate, ArrayListADT<Customer> customerlist) {
+ /*   @Override
+    public boolean DeactivateAccount(Customer accdeactivate, CircularList<Customer> customerlist) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
        if(customerlist.contains(accdeactivate)){
           for(int i = 0; i<customerlist.getNumberOfEntries(); i++){
@@ -53,7 +52,7 @@ public class CustomerAccADT<T> implements CustomerAccInterface{
            return false;
        }
        return false;
-    }
+    }*/
 
  
 

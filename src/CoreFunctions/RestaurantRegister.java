@@ -11,7 +11,7 @@ import ADT.*;
 
 public class RestaurantRegister{
     
-    public ArrayListADT<Restaurant> RestaurantRegistration(ArrayListADT<Restaurant> oldRestaurantList){
+    public CircularList<Restaurant> RestaurantRegistration(CircularList<Restaurant> oldRestaurantList){
         
         Scanner scan = new Scanner(System.in);
         String answer;

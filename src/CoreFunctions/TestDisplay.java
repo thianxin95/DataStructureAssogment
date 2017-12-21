@@ -14,7 +14,7 @@ import ADT.*;
 import entity.*;
 
 public class TestDisplay {
-    public void DisplayTesting(ArrayListADT<Menu> restaurantList) {
+    public void DisplayTesting(CircularList<Menu> restaurantList) {
        System.out.println(restaurantList);
     }
 }

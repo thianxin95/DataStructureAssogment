@@ -9,11 +9,10 @@ package JavaInterfaces;
  *
  * @author leang
  */
-public interface ArrayListInterface<T> {
+public interface CircularListInterface<T> {
     void add(T newentry);
-    T remove(int position);
-    T getEntry(int position);
+    void removehead();
     T get(int index);
-    boolean contains(T anENtry);
-
+    T getEntry(int index);
+    int getNumberOfEntries();
 }

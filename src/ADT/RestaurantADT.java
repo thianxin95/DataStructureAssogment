@@ -14,7 +14,7 @@ import entity.*;
 public class RestaurantADT<T> implements RestaurantInterface{
 
     @Override
-    public ArrayListADT<Restaurant> RegisterRestaurant(Restaurant newRestaurant,ArrayListADT<Restaurant> restaurantList) {
+    public CircularList<Restaurant> RegisterRestaurant(Restaurant newRestaurant,CircularList<Restaurant> restaurantList) {
         restaurantList.add(newRestaurant);
         return restaurantList;
     }

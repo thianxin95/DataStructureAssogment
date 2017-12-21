@@ -23,9 +23,9 @@ public class MainMenu {
     
     Scanner scan = new Scanner(System.in);
     private String LoggedInID = "";
-    private ArrayListADT<Restaurant> restaurantList = new ArrayListADT<Restaurant>();
-    private ArrayListADT<Menu> menuList = new ArrayListADT<>();
-    private ArrayListADT<Customer> customer = new ArrayListADT<Customer>();
+    private CircularList<Restaurant> restaurantList = new CircularList<Restaurant>();
+    private CircularList<Menu> menuList = new CircularList<>();
+    private CircularList<Customer> customer = new CircularList<Customer>();
     private Customer CustomerLoggedIn = new Customer();
     public void MainMenuFunctions(){
         ///Defining Entity Objects
@@ -70,7 +70,9 @@ public class MainMenu {
                         }if(loginChoice == 2){
                             customer=login.RegisterAccount(customer);
                             System.out.println("Registration Sucessful");
-                            System.out.println("Please REMEMBER that your ID is " + customer.get(customer.getNumberOfEntries() - 1).getCustomerID() + "\n\n\n");
+                            System.out.println(customer.getNumberOfEntries());
+                            int i = customer.getNumberOfEntries() + 5000;
+                            System.out.println("Please REMEMBER that your ID is " + i + "\n\n\n");
                             break;
                         }
                     case 2://Restaurant Area
@@ -133,7 +135,7 @@ public class MainMenu {
                         if(answer3 == 1){
                               Orders order = new Orders(8001, 5001 , "Fodd" , "aedasd" , 5 , "Paid"); // Fake Object TEST ONLY
                               Orders order2 = new Orders(8002, 5001 , "Fodd" , "aedasd" , 5 , "Paid"); // Fake Object TEST ONLY
-                              ArrayListADT<Orders> orderlist = new ArrayListADT<Orders>(); // Fake Object TEST ONLY
+                              CircularList<Orders> orderlist = new CircularList<Orders>(); // Fake Object TEST ONLY
                               orderlist.add(order); // Fake Object TEST ONLY
                               orderlist.add(order2); // Fake Object TEST ONLY
                               DeliveryMan logged_DeliveryMan = new DeliveryMan(5001,"Lee", "PUCHONG" , "NIGHT", 3, 0143333333, 24); // Fake Object TEST ONLY

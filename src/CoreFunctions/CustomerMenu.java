@@ -21,8 +21,8 @@ public class CustomerMenu {
 
     
     Scanner scan = new Scanner(System.in);
-    ArrayListADT<Items> itemlist = new ArrayListADT<Items>(); 
-    public void CustomerMenu(Customer customer, ArrayListADT<Restaurant> restaurantList){
+    CircularList<Items> itemlist = new CircularList<Items>(); 
+    public void CustomerMenu(Customer customer, CircularList<Restaurant> restaurantList){
         String details = "";
         System.out.println();
         System.out.println();

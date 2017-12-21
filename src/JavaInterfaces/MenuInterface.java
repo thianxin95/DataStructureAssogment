@@ -12,7 +12,7 @@ import entity.*;
  * @author Tarc
  */
 public interface MenuInterface {
-    ArrayListADT<Menu> AddMenu(Menu newMenu , ArrayListADT<Menu> oldMenu);
-    ArrayListADT<Menu> RemoveMenu(int index , ArrayListADT<Menu> oldMenu);
-    ArrayListADT<Menu> UpdateMenu(int index , Menu updatedetails , ArrayListADT<Menu> oldMenu);
+    CircularList<Menu> AddMenu(Menu newMenu , CircularList<Menu> oldMenu);
+    CircularList<Menu> RemoveMenu(int index , CircularList<Menu> oldMenu);
+    CircularList<Menu> UpdateMenu(int index , Menu updatedetails , CircularList<Menu> oldMenu);
 }

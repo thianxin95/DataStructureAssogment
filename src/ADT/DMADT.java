@@ -18,14 +18,14 @@ public class DMADT implements MaintainDM {
     int empNum;
 
     @Override
-    public ArrayListADT<Staff> CreateRecord(Staff staff,ArrayListADT<Staff> staffList) {
+    public CircularList<Staff> CreateRecord(Staff staff,CircularList<Staff> staffList) {
        staffList.add(staff);
        return staffList;
     }
 
     @Override
     
-    public ArrayListADT<Staff> CheckDMInfo( ArrayListADT<Staff> staffList) {
+    public CircularList<Staff> CheckDMInfo( CircularList<Staff> staffList) {
          
        Scanner scanner = new Scanner(System.in); 
        System.out.println("Please key in the staff ID:");
@@ -56,7 +56,7 @@ public class DMADT implements MaintainDM {
     }
 
     @Override
-    public ArrayListADT<Staff> UpdateDM( int staffid,ArrayListADT<Staff> staffList) {
+    public CircularList<Staff> UpdateDM( int staffid,CircularList<Staff> staffList) {
          
         for(int i=0;i<staffList.getNumberOfEntries();i++)
         {
@@ -78,7 +78,7 @@ public class DMADT implements MaintainDM {
 //            /int staffID, String staffName, int staffPhone, String address,int staffAge, String staffStatus, int staffPassword
             Staff teststaff1 = new Staff(1000, "Test1" , 01036065 , "ABCD" , 12 , "Active", 123456);
             Staff teststaff2 = new Staff(1001, "Test2" , 1234 , "ABCD" , 12 , "Active", 123456);
-            ArrayListADT<Staff> testlist = new ArrayListADT<Staff>();
+            CircularList<Staff> testlist = new CircularList<Staff>();
            testlist.add(teststaff1);
            testlist.add(teststaff2);
         //  testlist = lol.CreateRecord(testlist);

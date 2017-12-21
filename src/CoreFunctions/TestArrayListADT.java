@@ -16,7 +16,7 @@ public class TestArrayListADT {
     
     
     public static void main(String args[]){
-        ArrayListADT<Customer> customer = new ArrayListADT<Customer>();
+        CircularList<Customer> customer = new CircularList<Customer>();
      //   Customer customerob = new Customer(5001,"Chin", "PJ" , "0102872306");
      //   Customer customerob2 = new Customer(5002,"Chin", "PJ" , "0102872306");
      //   customer.add(customerob);

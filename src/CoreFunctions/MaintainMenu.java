@@ -14,7 +14,7 @@ public class MaintainMenu{
     
     private Menu getmenu;
     
-    public ArrayListADT<Menu> RegisterMenu(ArrayListADT<Menu> oldMenuList){
+    public CircularList<Menu> RegisterMenu(CircularList<Menu> oldMenuList){
         
         Scanner scan = new Scanner(System.in);
         Scanner scandouble = new Scanner(System.in);
@@ -51,7 +51,7 @@ public class MaintainMenu{
         return oldMenuList;
     }
     
-   public ArrayListADT<Menu> UpdateDetails(ArrayListADT<Menu> oldMenuList){
+   public CircularList<Menu> UpdateDetails(CircularList<Menu> oldMenuList){
        
         Scanner scanInt = new Scanner(System.in);
         Scanner scanString = new Scanner(System.in);
@@ -83,7 +83,7 @@ public class MaintainMenu{
         return oldMenuList;
     }
     
-    public ArrayListADT<Menu> DeleteDetails(ArrayListADT<Menu> oldMenuList){
+    public CircularList<Menu> DeleteDetails(CircularList<Menu> oldMenuList){
         
         Scanner scanInt = new Scanner(System.in);
         
@@ -104,7 +104,7 @@ public class MaintainMenu{
         return oldMenuList;
     }
     
-    public void DisplayMenu(ArrayListADT<Menu> oldMenuList){
+    public void DisplayMenu(CircularList<Menu> oldMenuList){
         
         Menu displaymenu = new Menu();
         

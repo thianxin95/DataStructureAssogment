@@ -16,8 +16,10 @@ public class DeliveryManLogin {
     public DeliveryMan DeliveryManLogin(){
        Scanner scan = new Scanner(System.in);
         int authorization = 0;
-        DeliveryMan logged_DeliveryMan = new DeliveryMan(5001,"Lee Thian Xin", "PUCHONG" , "NIGHT", 3, 0143333333, 24, "thianxin95", "1123456");
-        // Code for Verifying Account
+        //int staffID, String password, String staffName, String staffPhone, String staffAddress, int staffAge, String staffStatus, String checkIn, String checkOut
+   //     DeliveryMan logged_DeliveryMan = new DeliveryMan(5001,"1123456","Lee Thian Xin", "PUCHONG" , "NIGHT", 3, 0143333333, 24, "thianxin95");
+        DeliveryMan logged_DeliveryMan = new DeliveryMan();
+            // Code for Verifying Account
         //Code for Verifying Accoutn ends here.
         
         /*System.out.println("Login To DeliveryMan Area");
@@ -35,7 +37,7 @@ public class DeliveryManLogin {
             System.out.println("Please key in your password: ");
             String pass = scan.nextLine();
         
-            if(authorization < 2){
+         /*   if(authorization < 2){
                 if(user.equals(logged_DeliveryMan.getUserName()) && pass.equals(logged_DeliveryMan.getUserPassword())){
                     System.out.println("Logged In"); 
                     succeslogin = 1;
@@ -49,7 +51,7 @@ public class DeliveryManLogin {
                 System.out.println("Your account has been suspended.\n");
                 MainMenu menu = new MainMenu();
                 menu.MainMenuFunctions();
-            }
+            }*/
         }
         // fake empty method
         return logged_DeliveryMan;

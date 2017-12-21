@@ -13,20 +13,20 @@ import JavaInterfaces.*;
 public class MenuADT<T> implements MenuInterface{
 
     @Override
-    public ArrayListADT<Menu> AddMenu(Menu newMenu, ArrayListADT<Menu> oldMenu) {
+    public CircularList<Menu> AddMenu(Menu newMenu, CircularList<Menu> oldMenu) {
         oldMenu.add(newMenu);
         return oldMenu;
     }
 
     @Override
-    public ArrayListADT<Menu> RemoveMenu(int index, ArrayListADT<Menu> oldMenu) {
+    public CircularList<Menu> RemoveMenu(int index, CircularList<Menu> oldMenu) {
         oldMenu.remove(index);
         return oldMenu;
     }
 
     @Override
-    public ArrayListADT<Menu> UpdateMenu(int index, Menu details , ArrayListADT<Menu> oldMenu) {
-        oldMenu.replace(index,details);
+    public CircularList<Menu> UpdateMenu(int index, Menu details , CircularList<Menu> oldMenu) {
+//        oldMenu.replace(index,details);
         return oldMenu;
     }
     

@@ -12,5 +12,5 @@ import entity.*;
  * @author Tarc
  */
 public interface RestaurantInterface {
-    ArrayListADT<Restaurant> RegisterRestaurant(Restaurant newRestaurant,ArrayListADT<Restaurant> restaurantList);
+    CircularList<Restaurant> RegisterRestaurant(Restaurant newRestaurant,CircularList<Restaurant> restaurantList);
 }

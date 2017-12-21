@@ -14,7 +14,7 @@ public class MaintainDM {
     int empNum;
     
     
-     public ArrayListADT<Staff> createStaffRecord(ArrayListADT<Staff> staffList){
+     public CircularList<Staff> createStaffRecord(CircularList<Staff> staffList){
      empPass=123456;
      empNum=1000;
         
@@ -71,7 +71,7 @@ public class MaintainDM {
       return staffList ;
      }
      
-     public ArrayListADT<Staff> UpdateStaffInfo(int staffid,ArrayListADT<Staff> staffList)
+     public CircularList<Staff> UpdateStaffInfo(int staffid,CircularList<Staff> staffList)
      {
           Scanner scanner = new Scanner(System.in); 
          System.out.println("Please key in the staff ID you wish to update:");
@@ -198,7 +198,7 @@ public class MaintainDM {
  
        public static void main(String args[]){
          MaintainDM DM = new MaintainDM();
-         ArrayListADT<Staff> testlist = new ArrayListADT<Staff>();
+         CircularList<Staff> testlist = new CircularList<Staff>();
          DM.createStaffRecord(testlist);
          DM.UpdateStaffInfo(0, testlist);
          
