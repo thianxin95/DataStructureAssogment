@@ -56,19 +56,19 @@ public class DMADT implements MaintainDM {
     }
 
     @Override
-    public Staff UpdateDM( int staffid,ArrayListADT<Staff> staffList) {
+    public ArrayListADT<Staff> UpdateDM( int staffid,ArrayListADT<Staff> staffList) {
          
         for(int i=0;i<staffList.getNumberOfEntries();i++)
         {
             if(staffList.get(i).getStaffID() == staffid){
-            return staffList.get(i);
+                    staffList.get(i);
+                    
+                    //return staffList;
             }
-             // return staffList;
-                
-        
-    }
-          Staff updateRecord = new Staff();
-            return updateRecord;
+             
+             
+        }
+        return staffList;
     }
     
      
@@ -82,7 +82,7 @@ public class DMADT implements MaintainDM {
            testlist.add(teststaff1);
            testlist.add(teststaff2);
         //  testlist = lol.CreateRecord(testlist);
-          // testlist = lol.UpdateDM(testlist);
+          // testlist = .UpdateDM(testlist);
            
             //testlist=lol.CheckDMInfo(testlist);
             

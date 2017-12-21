@@ -71,7 +71,7 @@ public class MaintainDM {
       return staffList ;
      }
      
-     public Staff UpdateStaffInfo(int staffid,ArrayListADT<Staff> staffList)
+     public ArrayListADT<Staff> UpdateStaffInfo(int staffid,ArrayListADT<Staff> staffList)
      {
           Scanner scanner = new Scanner(System.in); 
          System.out.println("Please key in the staff ID you wish to update:");
@@ -79,15 +79,16 @@ public class MaintainDM {
             
          DMADT dmadt = new DMADT();
          dmadt.UpdateDM(staffid, staffList);
-         Staff staff = new Staff();
-       
+        
+        // Staff staff = new Staff();
+         System.out.print("ArrayList:"+staffList.toString());
+        // System.out.print();
                 
-                
-                System.out.println("Name:"+staff.getStaffName()); 
-                System.out.println("Phone:"+staff.getStaffPhone());
-                System.out.println("Address:"+staff.getStaffAddress());
-                System.out.println("Age:"+staff.getStaffAge());
-                System.out.println("Status:"+staff.getStaffStatus());
+                System.out.println("Name:"+staffList.get(1).getStaffName()); 
+                System.out.println("Phone:"+staffList.get(1).getStaffPhone());
+                System.out.println("Address:"+staffList.get(0).getStaffAddress());
+                System.out.println("Age:"+staffList.get(0).getStaffAge());
+                System.out.println("Status:"+staffList.get(0).getStaffStatus());
                
                 System.out.println("Key in the number you wish to update");
                 System.out.println("1. Name");
@@ -102,72 +103,72 @@ public class MaintainDM {
                 {
                     case 1:
                     {
-                    System.out.println("Name:"+staff.getStaffName());
+                    System.out.println("Name:"+staffList.get(1).getStaffName());
                     System.out.print("Enter a new name:");
                     String name= scanner.next();
-                    staff.setStaffName(name);
-                    System.out.println("Name:"+staff.getStaffName()); 
-                    System.out.println("Phone:"+staff.getStaffPhone());
-                    System.out.println("Address:"+staff.getStaffAddress());
-                    System.out.println("Age:"+staff.getStaffAge());
-                    System.out.println("Status:"+staff.getStaffStatus());
+                    staffList.get(1).setStaffName(name);
+                    System.out.println("Name:"+staffList.get(1).getStaffName()); 
+                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
+                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
+                    System.out.println("Age:"+staffList.get(0).getStaffAge());
+                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
                     }
                     break;
                 
                     case 2:
                     {
-                    System.out.println("Phone:"+staff.getStaffPhone());
+                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
                     System.out.print("Enter a new phone:");
                     int phone= scanner.nextInt();
-                    staff.setStaffPhone(phone);
-                    System.out.println("Name:"+staff.getStaffName()); 
-                    System.out.println("Phone:"+staff.getStaffPhone());
-                    System.out.println("Address:"+staff.getStaffAddress());
-                    System.out.println("Age:"+staff.getStaffAge());
-                    System.out.println("Status:"+staff.getStaffStatus());
+                    staffList.get(0).setStaffPhone(phone);
+                    System.out.println("Name:"+staffList.get(0).getStaffName()); 
+                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
+                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
+                    System.out.println("Age:"+staffList.get(0).getStaffAge());
+                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
                     }
                 break;
                
                     case 3:
                     {
-                    System.out.println("Address:"+staff.getStaffAddress());
+                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
                     System.out.print("Enter a new Address:");
                     String address= scanner.next();
-                    staff.setStaffAddress(address);
-                    System.out.println("Name:"+staff.getStaffName()); 
-                    System.out.println("Phone:"+staff.getStaffPhone());
-                    System.out.println("Address:"+staff.getStaffAddress());
-                    System.out.println("Age:"+staff.getStaffAge());
-                    System.out.println("Status:"+staff.getStaffStatus());
+                    staffList.get(0).setStaffAddress(address);
+                    System.out.println("Name:"+staffList.get(0).getStaffName()); 
+                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
+                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
+                    System.out.println("Age:"+staffList.get(0).getStaffAge());
+                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
                     }
                     break;
                 
                     case 4:
                     {
-                    System.out.println("Age:"+staff.getStaffAge());
+                    System.out.println("Age:"+staffList.get(0).getStaffAge());
                     System.out.print("Enter a new age:");
                     int age= scanner.nextInt();
-                    staff.setStaffAge(age);
-                    System.out.println("Name:"+staff.getStaffName()); 
-                    System.out.println("Phone:"+staff.getStaffPhone());
-                    System.out.println("Address:"+staff.getStaffAddress());
-                    System.out.println("Age:"+staff.getStaffAge());
-                    System.out.println("Status:"+staff.getStaffStatus());
+                    staffList.get(0).setStaffAge(age);
+                    System.out.println("Name:"+staffList.get(0).getStaffName()); 
+                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
+                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
+                    System.out.println("Age:"+staffList.get(0).getStaffAge());
+                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
                     }
                    break;
                    
                    
                     case 5:
                     {
-                    System.out.println("Status:"+staff.getStaffStatus());
+                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
                     System.out.print("Enter a new status:");
                     String status= scanner.next();
-                    staff.setStaffStatus(status);
-                    System.out.println("Name:"+staff.getStaffName()); 
-                    System.out.println("Phone:"+staff.getStaffPhone());
-                    System.out.println("Address:"+staff.getStaffAddress());
-                    System.out.println("Age:"+staff.getStaffAge());
-                    System.out.println("Status:"+staff.getStaffStatus());
+                    staffList.get(0).setStaffStatus(status);
+                    System.out.println("Name:"+staffList.get(0).getStaffName()); 
+                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
+                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
+                    System.out.println("Age:"+staffList.get(0).getStaffAge());
+                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
                     }
                    break;
    
@@ -175,7 +176,7 @@ public class MaintainDM {
             
         
         
-        return staff;
+        return staffList;
      }
      
      
