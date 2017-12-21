@@ -85,19 +85,22 @@ public class MainMenu {
                         System.out.println("5. Delete Menu");
                         System.out.printf("Choice : ");
                         int choice = scan.nextInt();
+                        RestaurantRegister RR = new RestaurantRegister();
                         MaintainMenu MM = new MaintainMenu();
+                        MenuDisplay MD = new MenuDisplay();
                         if(choice == 1){
-                            RestaurantRegister RR = new RestaurantRegister();
                             restaurantList = RR.RestaurantRegistration(restaurantList);
                         }else if(choice == 2){
                             menuList = MM.RegisterMenu(menuList);
                         }else if(choice == 3){
-                            TestDisplay test = new TestDisplay();
-                            test.DisplayTesting(menuList);
+                            MD.DisplayMainMenu(menuList);
                         }else if(choice == 4){
                             menuList = MM.UpdateDetails(menuList);
                         }else if(choice == 5){
                             menuList = MM.DeleteDetails(menuList);
+                        }else{
+                            System.out.println("Please Select Existed Choice");
+                            MainMenuFunctions();
                         }
                         //probably bugged. Wont return List
                         break;
