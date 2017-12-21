@@ -13,10 +13,9 @@ public interface DoublyLinkedList<T> {
     
     public int size();
     public boolean isEmpty();
-    public void addFirst();
-    public void addLast();
-    public void GetList();
-    public void replace();
+    public void Add(T anEntry);
+    public T GetEntry(int position);
+    public void Update(int position, T entry);
          
     
 }
