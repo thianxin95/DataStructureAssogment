@@ -1,7 +1,6 @@
 package CoreFunctions;
 
 import ADT.*;
-import JavaInterfaces.MenuInterface;
 import java.util.*;
 import entity.*;
 import JavaInterfaces.*;
@@ -104,14 +103,14 @@ public class MaintainMenu{
         return oldMenuList;
     }
     
-    public void DisplayMenu(ArrayListADT<Menu> oldMenuList){
+    public void DisplayMenu(ArrayListADT<Menu> menuList){
         
         Menu displaymenu = new Menu();
         
-        for(int i = 0; i < oldMenuList.getNumberOfEntries(); i++){
-            displaymenu = oldMenuList.get(i);
+        for(int i = 0; i < menuList.getNumberOfEntries(); i++){
+            displaymenu = menuList.get(i);
             System.out.println((i+1) + ". \n" + displaymenu);
         }
     }
-    
 }
+
