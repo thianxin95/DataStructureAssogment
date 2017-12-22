@@ -74,10 +74,11 @@ public class MaintainMenu{
         System.out.printf("Menu Price : ");
         double updateprice = scanDouble.nextDouble();
         
-        Menu updatemenu = new Menu(id,updatename,updateprice);
+        Menu updatemenu = new Menu(id,updatename,updateprice);       
+        Menu removeItem = oldMenuList.getEntry(selectmenu);
         
         MenuADT menuadt = new MenuADT();
-        menuadt.UpdateMenu(selectmenu, updatemenu , oldMenuList);
+        menuadt.UpdateMenu(removeItem, updatemenu , oldMenuList);
         
         return oldMenuList;
     }
@@ -86,19 +87,18 @@ public class MaintainMenu{
         
         Scanner scanInt = new Scanner(System.in);
         
-        
         System.out.println("Please Select The Menu That You Wanted to Delete : ");
         
         DisplayMenu(oldMenuList);
         
         int selectmenu = scanInt.nextInt();
         
-        getmenu = oldMenuList.getEntry(selectmenu);
+        Menu removeItem = oldMenuList.getEntry(selectmenu);
         
-        System.out.println(getmenu);
+        System.out.println(removeItem + "is removed");
         
         MenuADT menuadt = new MenuADT();
-        menuadt.RemoveMenu(selectmenu, oldMenuList);
+        menuadt.RemoveMenu(removeItem , oldMenuList);
 
         return oldMenuList;
     }

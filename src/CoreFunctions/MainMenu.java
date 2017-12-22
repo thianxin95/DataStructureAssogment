@@ -83,6 +83,7 @@ public class MainMenu {
                         System.out.println("3. Display Menu");
                         System.out.println("4. Update Menu");
                         System.out.println("5. Delete Menu");
+                        System.out.println("6. Cancel");
                         System.out.printf("Choice : ");
                         int choice = scan.nextInt();
                         RestaurantRegister RR = new RestaurantRegister();
@@ -98,6 +99,8 @@ public class MainMenu {
                             menuList = MM.UpdateDetails(menuList);
                         }else if(choice == 5){
                             menuList = MM.DeleteDetails(menuList);
+                        }else if(choice == 6){
+                            MainMenuFunctions();
                         }else{
                             System.out.println("Please Select Existed Choice");
                             MainMenuFunctions();
