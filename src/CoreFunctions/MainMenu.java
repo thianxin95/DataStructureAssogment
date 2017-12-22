@@ -79,27 +79,49 @@ public class MainMenu {
                         System.out.println("Login to Restaurant Owner Area");
                         //incomplete login function....bypass to RestaurantRegister
                         System.out.println("1. Register Restaurant");
-                        System.out.println("2. Add Menu");
-                        System.out.println("3. Display Menu");
-                        System.out.println("4. Update Menu");
-                        System.out.println("5. Delete Menu");
-                        System.out.println("6. Cancel");
+                        System.out.println("2. Login Restaurant");
+                        System.out.println("3. Back to Main Menu");
                         System.out.printf("Choice : ");
                         int choice = scan.nextInt();
+                        
                         RestaurantRegister RR = new RestaurantRegister();
                         MaintainMenu MM = new MaintainMenu();
                         MenuDisplay MD = new MenuDisplay();
+                        
                         if(choice == 1){
                             restaurantList = RR.RestaurantRegistration(restaurantList);
                         }else if(choice == 2){
-                            menuList = MM.RegisterMenu(menuList);
+                            System.out.printf("Log in ID : R");
+                            Scanner scanner = new Scanner(System.in);
+                            int id = scanner.nextInt();
+                            
+                            for(int i = 0 ; i < restaurantList.getNumberofSize() ; i++){
+                                if(id == restaurantList.get(i).getIdNumber()){
+                                    System.out.println("Currently Log In : " + restaurantList.get(i).getRestaurantName());
+                                    System.out.println("1. Add Menu");
+                                    System.out.println("2. Display Menu");
+                                    System.out.println("3. Update Menu");
+                                    System.out.println("4. Delete Menu");
+                                    System.out.println("5. Log Out");
+                                    choice = scan.nextInt();
+                                    
+                                    if(choice == 1){
+                                        menuList = MM.RegisterMenu(menuList,restaurantList.get(i).getRestaurantName());
+                                    }else if(choice == 2){
+                                        MD.DisplayMainMenu(menuList,restaurantList.get(i).getRestaurantName());
+                                    }else if(choice == 3){
+                                        menuList = MM.UpdateDetails(menuList,restaurantList.get(i).getRestaurantName());
+                                    }else if(choice == 4){
+                                        menuList = MM.DeleteDetails(menuList,restaurantList.get(i).getRestaurantName());
+                                    }else if(choice == 5){
+                                        MainMenuFunctions();
+                                    }else{
+                                        System.out.println("Please Select Existed Choice");
+                                        MainMenuFunctions();
+                                    }
+                                }
+                            }
                         }else if(choice == 3){
-                            MD.DisplayMainMenu(menuList);
-                        }else if(choice == 4){
-                            menuList = MM.UpdateDetails(menuList);
-                        }else if(choice == 5){
-                            menuList = MM.DeleteDetails(menuList);
-                        }else if(choice == 6){
                             MainMenuFunctions();
                         }else{
                             System.out.println("Please Select Existed Choice");

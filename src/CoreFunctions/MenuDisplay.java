@@ -16,7 +16,7 @@ import java.util.*;
 
 public class MenuDisplay {
     
-    public void DisplayMainMenu(LinkList<Menu> menuList) {
+    public void DisplayMainMenu(LinkList<Menu> menuList,String restaurantName) {
         
         Scanner scan = new Scanner(System.in);
         
@@ -27,26 +27,28 @@ public class MenuDisplay {
         int choice = scan.nextInt();
         
         if(choice == 1){
-            DisplayMenu(menuList);
+            DisplayMenu(menuList,restaurantName);
         }else if(choice == 2){
-            DisplayNewestItems(menuList);
+            DisplayNewestItems(menuList,restaurantName);
         }else{
             System.out.println("Please Select Existed Options");
-            DisplayMainMenu(menuList);
+            DisplayMainMenu(menuList,restaurantName);
         }
     }
     
-    public void DisplayMenu(LinkList<Menu> menuList){
+    public void DisplayMenu(LinkList<Menu> menuList, String restaurant){
         
         Menu displaymenu = new Menu();
         
         for(int i = 0; i < menuList.getNumberofSize(); i++){
-            displaymenu = menuList.get(i);
-            System.out.println((i+1) + ". \n" + displaymenu);
+            if(menuList.get(i).getRestaurantName().equals(restaurant)){
+                displaymenu = menuList.get(i);
+                System.out.println((i+1) + ". \n" + displaymenu);
+            }        
         }
     }
     
-     public void DisplayNewestItems(LinkList<Menu> menuList){
+     public void DisplayNewestItems(LinkList<Menu> menuList, String restaurant){
          
         Menu getmenu = new Menu();
         
@@ -54,9 +56,11 @@ public class MenuDisplay {
         
         int i;
         
-        for(i = 0; i < menuList.getNumberofSize(); i++){            
-            getmenu = menuList.get(i);
-            stack.push(getmenu);
+        for(i = 0; i < menuList.getNumberofSize(); i++){
+            if(menuList.get(i).getRestaurantName().equals(restaurant)){
+                getmenu = menuList.get(i);
+                stack.push(getmenu);
+            }                       
         }      
         
         while(stack.isEmpty() == false){

@@ -12,15 +12,17 @@ public class Menu implements Serializable{
     private String MenuId;
     private String MenuName;
     private double MenuPrice;
+    private String restaurantName;
     
     public Menu(){
         
     }
     
-    public Menu(String MenuId, String MenuName, double MenuPrice) {
+    public Menu(String MenuId, String MenuName, double MenuPrice,String restaurantName) {
         this.MenuId = MenuId;
         this.MenuName = MenuName;
         this.MenuPrice = MenuPrice;
+        this.restaurantName = restaurantName;
     }
     
     public String getMenuId(){
@@ -45,6 +47,14 @@ public class Menu implements Serializable{
     
     public void setMenuPrice(double MenuPrice){
         this.MenuPrice = MenuPrice;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
     
     @Override
