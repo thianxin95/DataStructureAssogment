@@ -16,7 +16,7 @@ public interface DoublyLinkedList<T> {
     public void Add(T anEntry);
     public void deleteRecord(int id, T anEntry);
     public T GetEntry(int position);
-    public T Update(int position, T entry);
+   
          
     
 }

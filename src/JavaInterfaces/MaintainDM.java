@@ -11,7 +11,7 @@ import entity.*;
  *
  * @author acer
  */
-public interface MaintainDM {
+public interface MaintainDM<T> {
     
     public DoublyLinkedList<Staff> CreateRecord(Staff newStaff,DoublyLinkedList<Staff> stafflist);
     public DoublyLinkedList<Staff> CheckDMInfo(DoublyLinkedList<Staff> stafflist);

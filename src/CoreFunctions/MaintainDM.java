@@ -77,13 +77,11 @@ public class MaintainDM {
           Scanner scanner = new Scanner(System.in); 
          System.out.println("Please key in the staff ID you wish to update:");
          staffid= scanner.nextInt();
-            
+         staffid = staffid - 1000; 
          DMADT dmadt = new DMADT();
          dmadt.UpdateDM(staffid, staffList);
         
-        // Staff staff = new Staff();
-         System.out.print("ArrayList:"+staffList.toString());
-        // System.out.print();
+      
                 
                 System.out.println("Name:"+staffList.GetEntry(staffid).getStaffName()); 
                 System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
@@ -98,86 +96,116 @@ public class MaintainDM {
                 System.out.println("4. Age");
                 System.out.println("5. Status");
                 System.out.print("Your Selection is:");
-             /*   int id2= scanner.nextInt();
+                int id2= scanner.nextInt();
                
                 switch(id2)
                 {
                     case 1:
                     {
-                    System.out.println("Name:"+staffList.get(1).getStaffName());
+                    System.out.println("Name:"+staffList.GetEntry(staffid).getStaffName());
                     System.out.print("Enter a new name:");
                     String name= scanner.next();
-                    staffList.get(1).setStaffName(name);
-                    System.out.println("Name:"+staffList.get(1).getStaffName()); 
-                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
-                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
-                    System.out.println("Age:"+staffList.get(0).getStaffAge());
-                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
+                    staffList.GetEntry(staffid).setStaffName(name);
+                    System.out.println("Name:"+staffList.GetEntry(staffid).getStaffName()); 
+                    System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
+                    System.out.println("Address:"+staffList.GetEntry(staffid).getStaffAddress());
+                    System.out.println("Age:"+staffList.GetEntry(staffid).getStaffAge());
+                    System.out.println("Status:"+staffList.GetEntry(staffid).getStaffStatus());
                     }
                     break;
                 
                     case 2:
                     {
-                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
+                    System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
                     System.out.print("Enter a new phone:");
                     int phone= scanner.nextInt();
-                    staffList.get(0).setStaffPhone(phone);
-                    System.out.println("Name:"+staffList.get(0).getStaffName()); 
-                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
-                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
-                    System.out.println("Age:"+staffList.get(0).getStaffAge());
-                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
+                    staffList.GetEntry(staffid).setStaffPhone(phone);
+                    System.out.println("Name:"+staffList.GetEntry(staffid).getStaffName()); 
+                    System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
+                    System.out.println("Address:"+staffList.GetEntry(staffid).getStaffAddress());
+                    System.out.println("Age:"+staffList.GetEntry(staffid).getStaffAge());
+                    System.out.println("Status:"+staffList.GetEntry(staffid).getStaffStatus());
                     }
                 break;
                
                     case 3:
                     {
-                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
+                    System.out.println("Address:"+staffList.GetEntry(staffid).getStaffAddress());
                     System.out.print("Enter a new Address:");
                     String address= scanner.next();
-                    staffList.get(0).setStaffAddress(address);
-                    System.out.println("Name:"+staffList.get(0).getStaffName()); 
-                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
-                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
-                    System.out.println("Age:"+staffList.get(0).getStaffAge());
-                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
+                    staffList.GetEntry(staffid).setStaffAddress(address);
+                    System.out.println("Name:"+staffList.GetEntry(staffid).getStaffName()); 
+                    System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
+                    System.out.println("Address:"+staffList.GetEntry(staffid).getStaffAddress());
+                    System.out.println("Age:"+staffList.GetEntry(staffid).getStaffAge());
+                    System.out.println("Status:"+staffList.GetEntry(staffid).getStaffStatus());
                     }
                     break;
                 
                     case 4:
                     {
-                    System.out.println("Age:"+staffList.get(0).getStaffAge());
+                    System.out.println("Age:"+staffList.GetEntry(staffid).getStaffAge());
                     System.out.print("Enter a new age:");
                     int age= scanner.nextInt();
-                    staffList.get(0).setStaffAge(age);
-                    System.out.println("Name:"+staffList.get(0).getStaffName()); 
-                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
-                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
-                    System.out.println("Age:"+staffList.get(0).getStaffAge());
-                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
+                    staffList.GetEntry(staffid).setStaffAge(age);
+                    System.out.println("Name:"+staffList.GetEntry(staffid).getStaffName()); 
+                    System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
+                    System.out.println("Address:"+staffList.GetEntry(staffid).getStaffAddress());
+                    System.out.println("Age:"+staffList.GetEntry(staffid).getStaffAge());
+                    System.out.println("Status:"+staffList.GetEntry(staffid).getStaffStatus());
                     }
                    break;
                    
                    
                     case 5:
                     {
-                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
+                    System.out.println("Status:"+staffList.GetEntry(staffid).getStaffStatus());
                     System.out.print("Enter a new status:");
                     String status= scanner.next();
-                    staffList.get(0).setStaffStatus(status);
-                    System.out.println("Name:"+staffList.get(0).getStaffName()); 
-                    System.out.println("Phone:"+staffList.get(0).getStaffPhone());
-                    System.out.println("Address:"+staffList.get(0).getStaffAddress());
-                    System.out.println("Age:"+staffList.get(0).getStaffAge());
-                    System.out.println("Status:"+staffList.get(0).getStaffStatus());
+                    staffList.GetEntry(staffid).setStaffStatus(status);
+                    System.out.println("Name:"+staffList.GetEntry(staffid).getStaffName()); 
+                    System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
+                    System.out.println("Address:"+staffList.GetEntry(staffid).getStaffAddress());
+                    System.out.println("Age:"+staffList.GetEntry(staffid).getStaffAge());
+                    System.out.println("Status:"+staffList.GetEntry(staffid).getStaffStatus());
                     }
                    break;
    
             }
             
-        */
+        
         
         return staffList;
+     }
+     
+     
+     public DoublyLinkedList<Staff>CheckInfoStaff(DoublyLinkedList<Staff> staffList)
+     {
+       Scanner scanner = new Scanner(System.in); 
+       System.out.println("Please key in the staff ID:");
+       int staffid= scanner.nextInt();
+       staffid = staffid - 1000; 
+         DMADT dmadt = new DMADT();
+         dmadt.UpdateDM(staffid, staffList);
+           
+             
+       
+            
+                Staff staff = staffList.GetEntry(staffid);
+                System.out.println("ID:"+staffList.GetEntry(staffid).getStaffID()); 
+                System.out.println("Name:"+staffList.GetEntry(staffid).getStaffName()); 
+                System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
+                System.out.println("Address:"+staffList.GetEntry(staffid).getStaffAddress());
+                System.out.println("Age:"+staffList.GetEntry(staffid).getStaffAge());
+                System.out.println("Status:"+staffList.GetEntry(staffid).getStaffStatus());
+               
+                 
+            
+                
+        
+        
+        
+       return staffList;
      }
 
      
@@ -203,6 +231,7 @@ public class MaintainDM {
         DoubleLinkListADT<Staff> testlist = new DoubleLinkListADT<Staff>();
          DM.createStaffRecord(testlist);
          DM.UpdateStaffInfo(0, testlist);
+         DM.CheckInfoStaff(testlist);
          
          
      }

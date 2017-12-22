@@ -25,20 +25,13 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
     @Override
     public void Add(T anEntry) {
         Node newNode = new Node(anEntry);
-
-        if (isEmpty()) {
-            newNode.next = null;
-            newNode.prev = null;
-            first = last= newNode;
-           
-
-        } else {
-            first.prev = newNode;
-            newNode.next = first;
-            newNode.prev = null;
+ if (first == null) {
             first = newNode;
-            
-            
+            last = newNode;
+        } else {
+            last.next = newNode;
+            newNode.prev = last;
+            last = newNode;
         }
         size++;
     }
@@ -51,7 +44,7 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
     @Override
     public T GetEntry(int index) {
       Node <T>  current= first;
-        if(index <0 || index >= size)
+        if(index <0 || index > size)
         {
             throw new IndexOutOfBoundsException();
         }
@@ -70,10 +63,7 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
         
     }
 
-    @Override
-    public T Update(int position, T entry) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
      private class Node<T> {
         private T data;
         private Node next;
@@ -134,6 +124,19 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
         }
         System.out.println(temp.toString() + " is popped from the list");
     }
+    public static void main(String args[]){
+        DoubleLinkListADT<Integer> test = new DoubleLinkListADT<Integer>();
+        test.Add(1);
+        test.Add(2);
+        test.Add(3);
+        System.out.println("Test get :" + test.GetEntry(0));
+        System.out.println("Test get 2:"  + test.GetEntry(1));
+        System.out.println("Test get 3: " + test.GetEntry(2));
+
+}
+    
+    
+    
 }
     
     
