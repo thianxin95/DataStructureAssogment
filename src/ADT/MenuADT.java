@@ -21,14 +21,15 @@ public class MenuADT<T> implements MenuInterface{
     }
 
     @Override
-    public LinkList<Menu> RemoveMenu(int index, LinkList<Menu> oldMenu) {
-        //oldMenu.remove(index);
+    public LinkList<Menu> RemoveMenu(Menu removeItem , LinkList<Menu> oldMenu) {
+        oldMenu.remove(removeItem);
         return oldMenu;
     }
 
     @Override
-    public LinkList<Menu> UpdateMenu(int index, Menu details , LinkList<Menu> oldMenu) {
-//        oldMenu.replace(index,details);
+    public LinkList<Menu> UpdateMenu(Menu remove, Menu details , LinkList<Menu> oldMenu) {
+        oldMenu.remove(remove);
+        oldMenu.add(details);
         return oldMenu;
     }
     

@@ -13,6 +13,6 @@ import entity.*;
  */
 public interface MenuInterface {
     LinkList<Menu> AddMenu(Menu newMenu , LinkList<Menu> oldMenu);
-    LinkList<Menu> RemoveMenu(int index , LinkList<Menu> oldMenu);
-    LinkList<Menu> UpdateMenu(int index , Menu updatedetails , LinkList<Menu> oldMenu);
+    LinkList<Menu> RemoveMenu(Menu removeItem , LinkList<Menu> oldMenu);
+    LinkList<Menu> UpdateMenu(Menu removeItem , Menu updatedetails , LinkList<Menu> oldMenu);
 }
