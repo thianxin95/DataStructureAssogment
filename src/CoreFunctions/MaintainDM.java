@@ -246,17 +246,17 @@ public class MaintainDM {
         DoubleLinkListADT<Staff> testlist = new DoubleLinkListADT<Staff>();
         LinkList<Orders> test2list = new LinkList<Orders>();
      //   int OrderID, int OrderCustomerID, String OrderName, String OrderProductID, int ProductQuantity, String PaymentStatus
-     Orders order= new Orders(5001,1001,"niama","2gfg",2,"Pending");
-     Orders order2= new Orders(5002,1002,"niama","2gfg",2,"Pending");
-     Orders order3= new Orders(5031,1003,"gg","2gfg",2,"No");
+    // Orders order= new Orders(5001,1001,"niama","2gfg",2,"Pending");
+   //  Orders order2= new Orders(5002,1002,"niama","2gfg",2,"Pending");
+    // Orders order3= new Orders(5031,1003,"gg","2gfg",2,"No");
     
-        test2list.add(order);
-        test2list.add(order2);
-        test2list.add(order3);
-        // DM.createStaffRecord(testlist);
-      //   DM.UpdateStaffInfo(0, testlist);
-       // DM.CheckInfoStaff(testlist);
-        DM.PendingOrder(test2list);
+       // test2list.add(order);
+      //  test2list.add(order2);
+       // test2list.add(order3);
+         DM.createStaffRecord(testlist);
+         DM.UpdateStaffInfo(0, testlist);
+        DM.CheckInfoStaff(testlist);
+    //   DM.PendingOrder(test2list);
          
          
      }
