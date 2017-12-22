@@ -13,7 +13,7 @@ public class MaintainMenu{
     
     private Menu getmenu;
     
-    public CircularList<Menu> RegisterMenu(CircularList<Menu> oldMenuList){
+    public LinkList<Menu> RegisterMenu(LinkList<Menu> oldMenuList){
         
         Scanner scan = new Scanner(System.in);
         Scanner scandouble = new Scanner(System.in);
@@ -50,7 +50,7 @@ public class MaintainMenu{
         return oldMenuList;
     }
     
-   public CircularList<Menu> UpdateDetails(CircularList<Menu> oldMenuList){
+   public LinkList<Menu> UpdateDetails(LinkList<Menu> oldMenuList){
        
         Scanner scanInt = new Scanner(System.in);
         Scanner scanString = new Scanner(System.in);
@@ -82,7 +82,7 @@ public class MaintainMenu{
         return oldMenuList;
     }
     
-    public CircularList<Menu> DeleteDetails(CircularList<Menu> oldMenuList){
+    public LinkList<Menu> DeleteDetails(LinkList<Menu> oldMenuList){
         
         Scanner scanInt = new Scanner(System.in);
         
@@ -104,12 +104,12 @@ public class MaintainMenu{
     }
     
     
-    public void DisplayMenu(CircularList<Menu> menuList){
+    public void DisplayMenu(LinkList<Menu> menuList){
 
         
         Menu displaymenu = new Menu();
         
-        for(int i = 0; i < menuList.getNumberOfEntries(); i++){
+        for(int i = 0; i < menuList.getNumberofSize(); i++){
             displaymenu = menuList.get(i);
             System.out.println((i+1) + ". \n" + displaymenu);
         }

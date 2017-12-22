@@ -15,19 +15,19 @@ import JavaInterfaces.*;
 public class MenuADT<T> implements MenuInterface{
 
     @Override
-    public CircularList<Menu> AddMenu(Menu newMenu, CircularList<Menu> oldMenu) {
+    public LinkList<Menu> AddMenu(Menu newMenu, LinkList<Menu> oldMenu) {
         oldMenu.add(newMenu);
         return oldMenu;
     }
 
     @Override
-    public CircularList<Menu> RemoveMenu(int index, CircularList<Menu> oldMenu) {
-        oldMenu.remove(index);
+    public LinkList<Menu> RemoveMenu(int index, LinkList<Menu> oldMenu) {
+        //oldMenu.remove(index);
         return oldMenu;
     }
 
     @Override
-    public CircularList<Menu> UpdateMenu(int index, Menu details , CircularList<Menu> oldMenu) {
+    public LinkList<Menu> UpdateMenu(int index, Menu details , LinkList<Menu> oldMenu) {
 //        oldMenu.replace(index,details);
         return oldMenu;
     }
