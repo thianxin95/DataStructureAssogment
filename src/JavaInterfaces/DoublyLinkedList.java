@@ -11,10 +11,11 @@ package JavaInterfaces;
  */
 public interface DoublyLinkedList<T> {
     
-    public int size();
+    public int getSize();
     public boolean isEmpty();
     public void Add(T anEntry);
-     T GetEntry(int position);
+    public void deleteRecord(int id, T anEntry);
+    public T GetEntry(int position);
     public T Update(int position, T entry);
          
     

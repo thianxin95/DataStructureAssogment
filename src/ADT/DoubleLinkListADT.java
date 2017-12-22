@@ -9,100 +9,130 @@ import entity.*;
 
 
 public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
-    private Node firstNode;
-    private Node lastNode;
-    private int size = 0;
+
+     private Node first = null;
+     private Node last = null;
+     private int size =0;
 
     @Override
-    public int size() {
-        return size;
+    public int getSize() {
+       return size;
+    }
+
+    public boolean isEmpty(){
+        return (first == null);
+    };
+    @Override
+    public void Add(T anEntry) {
+        Node newNode = new Node(anEntry);
+
+        if (isEmpty()) {
+            newNode.next = null;
+            newNode.prev = null;
+            first = last= newNode;
+           
+
+        } else {
+            first.prev = newNode;
+            newNode.next = first;
+            newNode.prev = null;
+            first = newNode;
+            
+            
+        }
+        size++;
     }
 
     @Override
-    public boolean isEmpty() {
+    public void deleteRecord(int id, T anEntry) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void Add(T anEntry) {
-        Node newNode = new Node(anEntry);
-        if(firstNode == null){
-            firstNode = newNode;
-        }else{
-            // make new node's previous field point to the last node
-            newNode.previous = lastNode;
-            // make the last node's next field point to the new node
-            lastNode.next = newNode;
-            
-        }
-        // make last node point to the new node
-        lastNode = newNode;
-    }
-
-    @Override
     public T GetEntry(int index) {
-       if(index < 1){
-            return null;
+      Node <T>  current= first;
+        if(index <0 || index >= size)
+        {
+            throw new IndexOutOfBoundsException();
         }
-        int count = 1;
-        for(Node currentNode = firstNode; currentNode != null; currentNode = currentNode.next){
-            if(count == index)
-                return currentNode.data;
-            count++;
-        }
-        return null;
-    }
-    public T get(int index) {
-        index = index + 1;
-       if(index < 1){
-            return null;
-        }
+        else
+        {
       
-        int count = 1;
-        for(Node currentNode = firstNode; currentNode != null; currentNode = currentNode.next){
-            if(count == index)
-                return currentNode.data;
-            count++;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+               
+            }
+            return current.data;
         }
-        return null;
+         
+     
+        
+        
     }
-
-    
-    
 
     @Override
-    public T Update(int index, T entry) {
-         if(index !=0){
-            return null;
-        }
-        
-        int count = 1;
-        
-        for(Node currentNode = firstNode; currentNode != null; currentNode = currentNode.next){
-            if(count == index)
-                return currentNode.data;
-            count++;
-        }
-
-
-        return null;
-        
+    public T Update(int position, T entry) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-        private class Node{
-        T data;
-        Node next;
-        Node previous;
+     private class Node<T> {
+        private T data;
+        private Node next;
+        private Node prev;
 
         public Node(T data) {
             this.data = data;
         }
+    }
 
-        public Node(T data, Node next, Node previous) {
-            this.data = data;
-            this.next = next;
-            this.previous = previous;
-        }        
+   
+    public void addFirst(T data) {
+        Node newNode = new Node(data);
+
+        if (isEmpty()) {
+            newNode.next = null;
+            newNode.prev = null;
+            first = newNode;
+            last = newNode;
+
+        } else {
+            first.prev = newNode;
+            newNode.next = first;
+            newNode.prev = null;
+            first = newNode;
+        }
+    }
+
+    
+
+    public void removeFirst() {
+        if (!isEmpty()) {
+            Node temp = first;
+
+            if (first.next == null) {
+                first = null;
+                last = null;
+            } else {
+                first = first.next;
+                first.prev = null;
+            }
+            System.out.println(temp.toString() + " is popped from the list");
+        }
+    }
+
+    public void removeLast() {
+        Node temp = last;
+
+        if (!isEmpty()) {
+
+            if (first.next == null) {
+                first = null;
+                last = null;
+            } else {
+                last = last.prev;
+                last.next = null;
+            }
+        }
+        System.out.println(temp.toString() + " is popped from the list");
     }
 }
     

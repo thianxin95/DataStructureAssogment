@@ -6,6 +6,7 @@
 package CoreFunctions;
 
 import ADT.*;
+import JavaInterfaces.*;
 import java.util.*;
 import entity.*;
 
@@ -14,7 +15,7 @@ public class MaintainDM {
     int empNum;
     
     
-     public CircularList<Staff> createStaffRecord(CircularList<Staff> staffList){
+     public DoublyLinkedList<Staff> createStaffRecord(DoublyLinkedList<Staff> staffList){
      empPass=123456;
      empNum=1000;
         
@@ -71,7 +72,7 @@ public class MaintainDM {
       return staffList ;
      }
      
-     public CircularList<Staff> UpdateStaffInfo(int staffid,CircularList<Staff> staffList)
+     public DoublyLinkedList<Staff> UpdateStaffInfo(int staffid,DoublyLinkedList<Staff> staffList)
      {
           Scanner scanner = new Scanner(System.in); 
          System.out.println("Please key in the staff ID you wish to update:");
@@ -84,11 +85,11 @@ public class MaintainDM {
          System.out.print("ArrayList:"+staffList.toString());
         // System.out.print();
                 
-                System.out.println("Name:"+staffList.get(1).getStaffName()); 
-                System.out.println("Phone:"+staffList.get(1).getStaffPhone());
-                System.out.println("Address:"+staffList.get(0).getStaffAddress());
-                System.out.println("Age:"+staffList.get(0).getStaffAge());
-                System.out.println("Status:"+staffList.get(0).getStaffStatus());
+                System.out.println("Name:"+staffList.GetEntry(staffid).getStaffName()); 
+                System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
+                System.out.println("Address:"+staffList.GetEntry(staffid).getStaffAddress());
+                System.out.println("Age:"+staffList.GetEntry(staffid).getStaffAge());
+                System.out.println("Status:"+staffList.GetEntry(staffid).getStaffStatus());
                
                 System.out.println("Key in the number you wish to update");
                 System.out.println("1. Name");
@@ -97,7 +98,7 @@ public class MaintainDM {
                 System.out.println("4. Age");
                 System.out.println("5. Status");
                 System.out.print("Your Selection is:");
-                int id2= scanner.nextInt();
+             /*   int id2= scanner.nextInt();
                
                 switch(id2)
                 {
@@ -174,16 +175,17 @@ public class MaintainDM {
    
             }
             
-        
+        */
         
         return staffList;
      }
+
      
      
      
      
      
-     public  int getUniqueEmpId() {
+     public int getUniqueEmpId() {
         System.out.println( +empNum);
         return empNum++;
     }
@@ -198,7 +200,7 @@ public class MaintainDM {
  
        public static void main(String args[]){
          MaintainDM DM = new MaintainDM();
-         CircularList<Staff> testlist = new CircularList<Staff>();
+        DoubleLinkListADT<Staff> testlist = new DoubleLinkListADT<Staff>();
          DM.createStaffRecord(testlist);
          DM.UpdateStaffInfo(0, testlist);
          
