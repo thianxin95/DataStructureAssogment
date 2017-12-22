@@ -13,7 +13,7 @@ public class MaintainMenu{
     
     private Menu getmenu;
     
-    public LinkList<Menu> RegisterMenu(LinkList<Menu> oldMenuList){
+    public LinkList<Menu> RegisterMenu(LinkList<Menu> oldMenuList, String restaurantName){
         
         Scanner scan = new Scanner(System.in);
         Scanner scandouble = new Scanner(System.in);
@@ -28,7 +28,7 @@ public class MaintainMenu{
             
             if(checkFirstId != 'F' && checkFirstId != 'D'){
                 System.out.println("Please Enter Valid ID (\"F\" as Food , \"D\" as Drink)");
-                RegisterMenu(oldMenuList);
+                RegisterMenu(oldMenuList,restaurantName);
             }
             
             System.out.println("Menu Name : ");
@@ -38,7 +38,7 @@ public class MaintainMenu{
             double menuPrice = scandouble.nextDouble();
             
             MenuADT menuadt = new MenuADT();
-            Menu newMenu = new Menu(menuId,menuName,menuPrice);
+            Menu newMenu = new Menu(menuId,menuName,menuPrice,restaurantName);
             
             oldMenuList = menuadt.AddMenu(newMenu, oldMenuList);
             
@@ -50,7 +50,7 @@ public class MaintainMenu{
         return oldMenuList;
     }
     
-   public LinkList<Menu> UpdateDetails(LinkList<Menu> oldMenuList){
+   public LinkList<Menu> UpdateDetails(LinkList<Menu> oldMenuList, String restaurantName){
        
         Scanner scanInt = new Scanner(System.in);
         Scanner scanString = new Scanner(System.in);
@@ -58,7 +58,7 @@ public class MaintainMenu{
         
         System.out.println("Please Select The Menu That You Wanted to Update : ");
                 
-        DisplayMenu(oldMenuList);
+        DisplayMenu(oldMenuList,restaurantName);
         
         int selectmenu = scanInt.nextInt();
         
@@ -74,7 +74,7 @@ public class MaintainMenu{
         System.out.printf("Menu Price : ");
         double updateprice = scanDouble.nextDouble();
         
-        Menu updatemenu = new Menu(id,updatename,updateprice);       
+        Menu updatemenu = new Menu(id,updatename,updateprice,restaurantName);       
         Menu removeItem = oldMenuList.getEntry(selectmenu);
         
         MenuADT menuadt = new MenuADT();
@@ -83,13 +83,13 @@ public class MaintainMenu{
         return oldMenuList;
     }
     
-    public LinkList<Menu> DeleteDetails(LinkList<Menu> oldMenuList){
+    public LinkList<Menu> DeleteDetails(LinkList<Menu> oldMenuList, String restaurantName){
         
         Scanner scanInt = new Scanner(System.in);
         
         System.out.println("Please Select The Menu That You Wanted to Delete : ");
         
-        DisplayMenu(oldMenuList);
+        DisplayMenu(oldMenuList,restaurantName);
         
         int selectmenu = scanInt.nextInt();
         
@@ -104,14 +104,15 @@ public class MaintainMenu{
     }
     
     
-    public void DisplayMenu(LinkList<Menu> menuList){
-
-        
+    public void DisplayMenu(LinkList<Menu> menuList,String restaurant){
+    
         Menu displaymenu = new Menu();
         
         for(int i = 0; i < menuList.getNumberofSize(); i++){
-            displaymenu = menuList.get(i);
-            System.out.println((i+1) + ". \n" + displaymenu);
+            if(menuList.get(i).getRestaurantName().equals(restaurant)){
+                displaymenu = menuList.get(i);
+                System.out.println((i+1) + ". \n" + displaymenu);
+            }         
         }
     }
 }
