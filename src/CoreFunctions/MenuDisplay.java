@@ -16,7 +16,7 @@ import java.util.*;
 
 public class MenuDisplay {
     
-    public void DisplayMainMenu(CircularList<Menu> menuList) {
+    public void DisplayMainMenu(LinkList<Menu> menuList) {
         
         Scanner scan = new Scanner(System.in);
         
@@ -36,17 +36,17 @@ public class MenuDisplay {
         }
     }
     
-    public void DisplayMenu(CircularList<Menu> menuList){
+    public void DisplayMenu(LinkList<Menu> menuList){
         
         Menu displaymenu = new Menu();
         
-        for(int i = 0; i < menuList.getNumberOfEntries(); i++){
+        for(int i = 0; i < menuList.getNumberofSize(); i++){
             displaymenu = menuList.get(i);
             System.out.println((i+1) + ". \n" + displaymenu);
         }
     }
     
-     public void DisplayNewestItems(CircularList<Menu> menuList){
+     public void DisplayNewestItems(LinkList<Menu> menuList){
          
         Menu getmenu = new Menu();
         
@@ -54,7 +54,7 @@ public class MenuDisplay {
         
         int i;
         
-        for(i = 0; i < menuList.getNumberOfEntries(); i++){            
+        for(i = 0; i < menuList.getNumberofSize(); i++){            
             getmenu = menuList.get(i);
             stack.push(getmenu);
         }      

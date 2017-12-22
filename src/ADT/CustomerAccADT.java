@@ -15,18 +15,22 @@ import entity.Customer;
 public class CustomerAccADT<T> implements CustomerAccInterface{
 
     @Override
-    public CircularList<Customer> RegisterCustomer(Customer newCustomer, CircularList<Customer> customerlist) {
+    public LinkList<Customer> RegisterCustomer(Customer newCustomer, LinkList<Customer> customerlist) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        newCustomer.setCustomerID(customerlist.getNumberOfEntries() + 5001); // setting customer ID
+        newCustomer.setCustomerID(customerlist.getNumberofSize()+ 5001); // setting customer ID
         customerlist.add(newCustomer);
         return customerlist;
     
     }
 
     @Override
-    public Customer LoginCustomer(String ID, String Password, CircularList<Customer> customerlist) {
+    public Customer LoginCustomer(String ID, String Password, LinkList<Customer> customerlist) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            int i = Integer.parseInt(ID) - 5000;
+            int i = Integer.parseInt(ID) - 5001;
+            System.out.print(customerlist.size);
+           for(int x = 0; x<customerlist.size ; x ++){
+               System.out.print(customerlist.get(x).getCustomerName() + "\n");
+           }
             if(customerlist.get(i).getPassword().equals(Password) & customerlist.get(i).getCustomerID() == Integer.parseInt(ID)){
                 return customerlist.get(i);
             }else{

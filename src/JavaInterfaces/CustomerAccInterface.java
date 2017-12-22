@@ -14,6 +14,6 @@ import entity.*;
  */
 
 public interface CustomerAccInterface {
-    CircularList<Customer> RegisterCustomer(Customer newCustomer, CircularList<Customer> customerlist);
-    Customer LoginCustomer(String ID, String Password, CircularList<Customer> customerlist);
+    LinkList<Customer> RegisterCustomer(Customer newCustomer, LinkList<Customer> customerlist);
+    Customer LoginCustomer(String ID, String Password, LinkList<Customer> customerlist);
 }

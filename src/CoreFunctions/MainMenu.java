@@ -23,9 +23,9 @@ public class MainMenu {
     
     Scanner scan = new Scanner(System.in);
     private String LoggedInID = "";
-    private CircularList<Restaurant> restaurantList = new CircularList<Restaurant>();
-    private CircularList<Menu> menuList = new CircularList<>();
-    private CircularList<Customer> customer = new CircularList<Customer>();
+    private LinkList<Restaurant> restaurantList = new LinkList<Restaurant>();
+    private LinkList<Menu> menuList = new LinkList<Menu>();
+    private LinkList<Customer> customer = new LinkList<Customer>();
     private Customer CustomerLoggedIn = new Customer();
     public void MainMenuFunctions(){
         ///Defining Entity Objects
@@ -70,8 +70,8 @@ public class MainMenu {
                         }if(loginChoice == 2){
                             customer=login.RegisterAccount(customer);
                             System.out.println("Registration Sucessful");
-                            System.out.println(customer.getNumberOfEntries());
-                            int i = customer.getNumberOfEntries() + 5000;
+                            System.out.println(customer.getNumberofSize());
+                            int i = customer.getNumberofSize() + 5000;
                             System.out.println("Please REMEMBER that your ID is " + i + "\n\n\n");
                             break;
                         }

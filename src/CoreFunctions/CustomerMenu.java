@@ -21,23 +21,23 @@ public class CustomerMenu {
 
     
     Scanner scan = new Scanner(System.in);
-    CircularList<Items> itemlist = new CircularList<Items>(); 
-    public void CustomerMenu(Customer customer, CircularList<Restaurant> restaurantList){
+    LinkList<Items> itemlist = new LinkList<Items>(); 
+    public void CustomerMenu(Customer customer, LinkList<Restaurant> restaurantList){
         String details = "";
         System.out.println();
         System.out.println();
         System.out.println();
         System.out.println("Welcome back,"+ customer.getCustomerName() );
         System.out.println();
-        if(restaurantList.getNumberOfEntries()!=0){
+        if(restaurantList.getNumberofSize()!=0){
             System.out.println("Here is a list of our current restaurant");
-            for(int i = 0; i < restaurantList.getNumberOfEntries(); i ++){
+            for(int i = 0; i < restaurantList.getNumberofSize(); i ++){
                 details += (i + 1) + ". " + restaurantList.get(i) + "\n";
             }
                 System.out.println(details);
                 System.out.print("Please choose your desired restaurant:");
                 int answer = scan.nextInt();
-                if(answer <= restaurantList.getNumberOfEntries()+ 1 && answer>=0 ){
+                if(answer <= restaurantList.getNumberofSize()+ 1 && answer>=0 ){
                     int choice = answer-1;
                     //System.out.println(restaurantList.get(choice) + "\n");
                     System.out.print("You have choosed : " + restaurantList.get(choice).getRestaurantName() + "\n\n");
@@ -50,7 +50,7 @@ public class CustomerMenu {
                     }
                     String OrderList = "";
                     System.out.println("\nThank You for order");
-                    for(int i = 0; i < itemlist.getNumberOfEntries(); i ++){
+                    for(int i = 0; i < itemlist.getNumberofSize(); i ++){
                         OrderList += (i + 1) + ". " + itemlist.get(i) + "\n";
                     }
                     System.out.println("Here is a list of your order");
