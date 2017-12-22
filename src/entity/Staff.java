@@ -10,16 +10,16 @@ import java.util.*;
 public class Staff {
      int staffID;
      String staffName;
-     int staffPhone;
+     String staffPhone;
      String staffAddress;
      int staffAge;
      String staffStatus;
-
      int staffPassword;
+     String staffWorkStatus;
      
      public Staff(){}
      
-     public Staff(int staffID, String staffName, int staffPhone, String address,int staffAge, String staffStatus, int staffPassword)
+     public Staff(int staffID, String staffName, String staffPhone, String address,int staffAge, String staffStatus, int staffPassword, String staffWorkStatus)
      {
          this.staffID=staffID;
          this.staffName=staffName;
@@ -28,6 +28,7 @@ public class Staff {
          this.staffAge= staffAge;
          this.staffStatus=staffStatus;
          this.staffPassword = staffPassword;
+         this.staffWorkStatus= staffWorkStatus;
      }
      
     
@@ -43,10 +44,10 @@ public class Staff {
     public void setStaffName(String staffName){
         this.staffName=staffName;
     }
-    public int getStaffPhone(){
+    public String getStaffPhone(){
         return staffPhone;
     }
-    public void setStaffPhone(int staffPhone){
+    public void setStaffPhone(String staffPhone){
         this.staffPhone=staffPhone;
     }
     public String getStaffAddress(){
@@ -67,6 +68,12 @@ public class Staff {
     }
     public String getStaffStatus(){
         return staffStatus;
+    }
+     public String getStaffWorkStatus(){
+        return staffWorkStatus;
+    }
+    public void setStaffWorkStatus(String staffWorkStatus){
+        this.staffWorkStatus=staffWorkStatus;
     }
     
      public int getStaffPassword(){

@@ -67,6 +67,20 @@ public class DMADT<T> implements MaintainDM<T> {
         return staffList;
     }
 
+    @Override
+    public LinkList<Orders> RetrievePending(LinkList<Orders> orderList) {
+          for (int i = 0; i < orderList.getNumberofSize(); i++){
+             
+             if(orderList.get(i).getPaymentStatus().equals("Pending")){
+                
+                System.out.println(orderList.get(i).toString());
+              
+             }
+             
+            
+         } return orderList;
+    }
+
    
      
      
