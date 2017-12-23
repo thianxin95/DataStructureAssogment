@@ -6,7 +6,7 @@
 package CoreFunctions;
 
 
-import ADT.DeliveryManADT;
+//import ADT.DeliveryManADT;
 import ADT.LinkList;
 import entity.DeliveryMan;
 import entity.Orders;
@@ -52,6 +52,7 @@ public class DeliveryManMenu {
         String name;
         String in;
         String out = "Pending";
+        System.out.println("    Clock in Successful!!");
         System.out.println("    Clock in at : "+dateFormat.format(dateIn));
         id = staff.getStaffID();
         name = staff.getStaffName();
@@ -59,11 +60,11 @@ public class DeliveryManMenu {
         DeliveryMan dMan = new DeliveryMan(id, name, in, out);
         deliveryManList.add(dMan);
          //test area
-        System.out.println("size:"+deliveryManList.getNumberofSize());
-        System.out.println(deliveryManList.get(0));
-        System.out.println(deliveryManList.get(1));        
+//        System.out.println("size:"+deliveryManList.getNumberofSize());
+//        System.out.println(deliveryManList.get(0));
+//        System.out.println(deliveryManList.get(1));        
         staff.setStaffWorkStatus("Available");
-        System.out.println(staff.getStaffWorkStatus());
+//        System.out.println(staff.getStaffWorkStatus());
   
        
         
@@ -77,7 +78,7 @@ public class DeliveryManMenu {
         System.out.println("GoodBye "+ staff.getStaffName()+"!");
         System.out.println("Have a nice day...");
         System.out.println("You clock out at : "+dateFormat.format(dateOut));
-        staff.setStaffStatus("Not onDuty");
+        staff.setStaffStatus("Not on duty");
         System.out.println("Work status changed to " + staff.getStaffStatus() +"...");
         int i = deliveryManList.getNumberofSize();
         int j = i - 1;
@@ -102,12 +103,13 @@ public class DeliveryManMenu {
     
     
    
-   public Staff DeliveryManLogin(LinkList<Staff> stafflist){
+   public Staff DeliveryManLogin(LinkList<Staff> staffList){
        //deliveryManList.add(0,new DeliveryMan (1000, "123456", "Lee Thian Xin", "0143468777", "Kuala Lumpur", 18, "", "", ""));
       // Staff staff1 = new Staff(1000, "Lee Thian Xin", 7774456, "Kuala Lumpur",18, "", 123456);
        //Staff staff2 = new Staff(1001, "Dicky", 7774456, "Kuala Kangsar",18, "", 122222);
        //stafflist.add(staff1);
        //stafflist.add(staff2);
+       clear.clearScreen();
        int successLogin = 0;
        int authorization = 0;
        while(successLogin == 0){
@@ -116,12 +118,12 @@ public class DeliveryManMenu {
             System.out.println("Please key in your password: ");
             int pass = scanner.nextInt();
         int i= 0;
-        for(i=0;i<stafflist.getNumberofSize();i++){
+        for(i=0;i<staffList.getNumberofSize();i++){
             //if(authorization < 2){
              
-                if(userID == stafflist.get(i).getStaffID() && pass == stafflist.get(i).getStaffPassword()){
+                if(userID == staffList.get(i).getStaffID() && pass == staffList.get(i).getStaffPassword()){
                     System.out.println("Logged In"); 
-                    user = stafflist.get(i);
+                    user = staffList.get(i);
                     successLogin = 1;
                     authorization = 0;
                     

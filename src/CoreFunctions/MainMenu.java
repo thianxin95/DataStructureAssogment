@@ -28,6 +28,11 @@ public class MainMenu {
     private Customer CustomerLoggedIn = new Customer();
     private LinkList<Staff> staffList = new LinkList<Staff>();
     private LinkList<DeliveryMan> deliveryManList = new LinkList<DeliveryMan>();
+    private LinkedStack<FoodDelivered> foodDeliveredList = new LinkedStack<FoodDelivered>();
+    //private Queue<Orders> orderList = new Queue<Orders>();
+    
+    ClearScreen clear = new ClearScreen();
+    
     Staff loggedinstaff = new Staff();
     DeliveryManMenu dMenu = new DeliveryManMenu();
     Queue<Orders> orderlist = new Queue<Orders>();
@@ -172,14 +177,26 @@ public class MainMenu {
                                         if(wStatus!= loggedinstaff.getStaffWorkStatus()){                                                                                    
                                         dMenu.ClockIn(loggedinstaff, deliveryManList);
                                         }else{
+                                            clear.clearScreen();
                                             System.out.println("Operation denied!");
                                             System.out.println("You had already logged in.");
+//                                            System.out.println(deliveryManList.get(0));         
+//                                            System.out.println(deliveryManList.get(1));
                                         }
                                                                                
                                     }else if(Selection == 2){
+                                        
                                         dMenu.DisplayOrder();                                        
                                     }else if(Selection == 3){
+                                        String wStatus = "Available";
+                                        String wStatus1= "Break";
+                                        if(wStatus == loggedinstaff.getStaffWorkStatus() || wStatus1 == loggedinstaff.getStaffWorkStatus() ){
                                         dMenu.ClockOut(loggedinstaff, deliveryManList);
+                                        }else{
+                                            clear.clearScreen();
+                                            System.out.println("Operation denied!");
+                                            System.out.println("You did not logged in.");
+                                        }
                                         
                                         
                                     }else if(Selection == 4){
@@ -203,84 +220,7 @@ public class MainMenu {
                                 
                         }
                         break;
-                        
-               /*     
-                    case 3:
-                        System.out.println("Staff Area");
-                        System.out.println("======================");
-                        System.out.println("1.Login to Delivery Man Area");
-                        System.out.println("2.Login to Staff Management Area");
-                        System.out.println("======================\nEnter your choice:");
-                        int answer3 = scan.nextInt();
-                        if(answer3 == 1){
-                              Orders order = new Orders(8001, 5001 , "Fodd" , "aedasd" , 5 , "Paid"); // Fake Object TEST ONLY
-                              Orders order2 = new Orders(8002, 5001 , "Fodd" , "aedasd" , 5 , "Paid"); // Fake Object TEST ONLY
-                              CircularList<Orders> orderlist = new CircularList<Orders>(); // Fake Object TEST ONLY
-                              orderlist.add(order); // Fake Object TEST ONLY
-                              orderlist.add(order2); // Fake Object TEST ONLY
-                              DeliveryMan logged_DeliveryMan = new DeliveryMan(5001,"Lee", "PUCHONG" , "NIGHT", 3, 0143333333, 24); // Fake Object TEST ONLY
-                              DeliveryManMenu delman_menu = new DeliveryManMenu();
-                              delman_menu.showDeliveryMenu(logged_DeliveryMan, orderlist); // Pass in FAKE OBJECT
-                        }else if(answer3 == 2){
-                            // Human Resources department
-                                checkStaffInfo staffInfo = new checkStaffInfo();
-                                System.out.println("Welcome to Human Resources");
-                                System.out.println("===========================");
-                                System.out.println("1.View Staff Information");
-                                System.out.println("2.Update Staff Record");
-                                System.out.println("3.View Pending Order");
-                                System.out.println("4.View Transaction Report");
-                                System.out.println("Please enter you selection:");
-                                int answer5= scan.nextInt();
-                                if(answer5 ==1){
-                                    
-                                staffInfo.checkStaffInfo();
-                                }
-                                else if(answer5==2){
-                                    System.out.println("Hi");
-                                }
-                                else if(answer5==3)
-                                {
-                                    Orders order = new Orders(8001, 5001 , "Fodd" , "aedasd" , 5 , "Pending"); 
-                                    Orders order2 = new Orders(8002, 5001 , "Fodd" , "aedasd" , 5 , "Pending"); 
-                                    List<Orders> orderlist = new ArrayList<Orders>();
-                                    orderlist.add(order); 
-                                    orderlist.add(order2); 
-                                    staffInfo.RetrievePendingOrder(orderlist);
-                                }
-                                else if(answer5==4){
-                                    System.out.println("Hi");
-                                }
-                               
-                              
-                        }
-                        //incomplete
-                        break;
-                    case 4:
-                        System.out.println();
-                        System.out.println();
-                        System.out.println("Registration Area");
-                        System.out.println("========================");
-                        System.out.println("1.Customer Registration");
-                        System.out.println("2.Restaurant Owner Registration");
-                        System.out.println("Enter Your Choice :");
-                        int answer2 = scan.nextInt();
-                        if(answer2 == 1){
-                            System.out.println("Customer Registration Area");
-                            //Customer Registration
-                            //1. Call Registration Method
-                            //2. Ask Information
-                            //3. Return Data back here.(ADD ArrayList)
-                        }else if(answer2 == 2){
-                            System.out.println("Restaurant Owner Registration Area");
-                            //Restaurant Owner Registration Additional Information.
-                            //1. Call Registration Method
-                            //2. Ask Information
-                            //3. Return Data back here.(ADD ArrayList)
-                        }else{
-                            break;
-                        }
-                        // Incomplete method. incomplete AccountRegistration methods. */
+
                     case 5:
                         GoodBye();
                         break;

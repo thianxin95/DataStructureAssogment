@@ -5,14 +5,14 @@
  */
 package JavaInterfaces;
 
+import ADT.LinkList;
+import entity.Staff;
+
 /**
  *
  * @author Daniel
  */
-public interface DeliveryManInterface<T> {
-    public boolean add(T newEntry);
-   public boolean add(int newPosition, T newEntry);
-    public T getEntry(int givenPosition);
-    public int getNumberOfEntries();
-    public boolean isEmpty();
+public interface DeliveryManInterface {
+      Staff LoginDeliveryMan(int ID, int Password, LinkList<Staff> staffList);
+
 }
