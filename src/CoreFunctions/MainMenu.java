@@ -38,8 +38,8 @@ public class MainMenu {
     Queue<Orders> orderlist = new Queue<Orders>();
     private void DefaultData(){
 
-        staffList.Add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, ""));
-        staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, ""));
+       // staffList.Add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, ""));
+        //staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, ""));
     }
     
     public void MainMenuFunctions(){
@@ -54,7 +54,7 @@ public class MainMenu {
             System.out.println("2.Login to Restaurant Onwer Area");
             System.out.println("3.Login to Staff Area");
             System.out.println("4.Register an Account");
-            System.out.println("5.Exit");
+            System.out.println("5.HR Area");
             System.out.println("==========================");
             System.out.print("Enter Your Choice : ");
             int answer = scan.nextInt();
@@ -248,7 +248,7 @@ public class MainMenu {
                                   HR.UpdateStaffInfo(0, staffList);
                                 }
                                 else if(answer5==4){
-                          //         HR.PendingOrder(orderlist);
+                                   HR.PendingOrder(orderlist);
                                        
                                             }
                                 else if(answer5==5){

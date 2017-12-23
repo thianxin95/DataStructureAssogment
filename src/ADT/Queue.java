@@ -68,6 +68,21 @@ public class Queue<T> implements QueueInterface<T> {
     public int getSize() {
         return numberOfItem;
     }
+
+   // @Override
+    public T getEntry(int i) {
+        T result = null;
+
+    if ((i >= 1) && (i <= numberOfItem)) {
+      Node currentNode = front;
+      for (int a = 0; a < i - 1; ++a) {
+        currentNode = currentNode.next;		
+      }
+      result = currentNode.item;	
+    }
+
+    return result;
+    }
     private class Node{
         private T item;
         private Node next;
@@ -81,14 +96,17 @@ public class Queue<T> implements QueueInterface<T> {
             next = linkPortion;
         }
     }
-   public static void main(String[] args) {
-       Queue de = new Queue();
-       de.enqueue(40);
+    public static void main(String[] args) {
+        Queue de = new Queue();
+        de.enqueue(40);
         de.enqueue(30);
         de.enqueue(20);
         System.out.println(de.getSize());
         System.out.println(de.getFront());
+        System.out.println(de.getEntry(3));
         System.out.println(de.dequeue());
+        System.out.println(de.getEntry(3));
+        System.out.println(de.getEntry(2));
         System.out.println(de.getSize());
         System.out.println(de.getFront());
         System.out.println(de.isEmpty());
@@ -96,3 +114,4 @@ public class Queue<T> implements QueueInterface<T> {
         
     }
 }
+

@@ -16,6 +16,8 @@ public class Staff {
      String staffStatus;
      int staffPassword;
      String staffWorkStatus;
+     int totalDelivery;
+     double totalDistance;
      
      public Staff(){}
      

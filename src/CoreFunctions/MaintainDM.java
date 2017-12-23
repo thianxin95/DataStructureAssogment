@@ -213,13 +213,14 @@ public class MaintainDM {
        return staffList;
      }
 
-     public LinkList<Orders> PendingOrder(LinkList<Orders> orderList)
+    
+    public ADT.Queue<Orders> PendingOrder(ADT.Queue<Orders> orderList)
      {
          DMADT dmadt = new DMADT();
         System.out.println("The pending order list:");
         System.out.println("List of food order\n");
         System.out.println(String.format("%-10s %-12s %-12s %-12s %-12s %-12s\n", "Order ID", "Customer ID", "Order Name", "Order Product ID", "Product Quantity", "Payment Status"));
-      //  LinkList<Orders> pendingOrders = dmadt.RetrievePending(orderList);
+        dmadt.RetrievePending(orderList);
         
        
         return orderList;

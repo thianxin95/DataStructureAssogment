@@ -71,14 +71,14 @@ public class DMADT<T> implements MaintainDM<T> {
     public Queue<Orders> RetrievePending(Queue<Orders> orderList) {
           for (int i = 0; i < orderList.getSize(); i++){
              
-           //  if(orderList.getFront(i).getPaymentStatus().equals("Pending")){
+             if(orderList.getEntry(i).getPaymentStatus().equals("Pending")){
                 
-              //  System.out.println(orderList.getFront(i).toString());
+                System.out.println(orderList.getEntry(i).toString());
               
-           //  }
+             }
              
             
-       //  } return orderList;
+         } return orderList;
     }
 
     //@Override
@@ -121,8 +121,13 @@ public class DMADT<T> implements MaintainDM<T> {
      
    */
 
+    
+
+
+
     @Override
-    public DoublyLinkedList<FoodDelivered> DailyTransactionReport(DoublyLinkedList<FoodDelivered> deliveredList, DoublyLinkedList<Staff> staffList) {
+    public DoublyLinkedList<Staff> DailyTransactionReport(DoublyLinkedList<Staff> staffList) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
