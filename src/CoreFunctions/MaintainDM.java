@@ -40,7 +40,7 @@ public class MaintainDM {
            staff.setStaffAddress(address);
 
            System.out.print("Delivery Man Phone Number:");
-           int phoneNum= scanner.nextInt();
+           String phoneNum= scanner.nextLine();
            staff.setStaffPhone(phoneNum);
 
 
@@ -54,8 +54,13 @@ public class MaintainDM {
             System.out.print("Deliver Man Password:");
             staff.setStaffPassword(getUniqueEmpPass());
             
-             DMADT dmadt = new DMADT();
-             dmadt.CreateRecord(staff, staffList);
+            
+            staff.setStaffWorkStatus("");
+            
+            
+            
+           DMADT dmadt = new DMADT();
+           dmadt.CreateRecord(staff, staffList);
 
            System.out.println("ID:"+staff.getStaffID());
            System.out.println("Name:"+staff.getStaffName());
@@ -118,7 +123,7 @@ public class MaintainDM {
                     {
                     System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
                     System.out.print("Enter a new phone:");
-                    int phone= scanner.nextInt();
+                    String phone= scanner.next();
                     staffList.GetEntry(staffid).setStaffPhone(phone);
                     System.out.println("Name:"+staffList.GetEntry(staffid).getStaffName()); 
                     System.out.println("Phone:"+staffList.GetEntry(staffid).getStaffPhone());
@@ -208,7 +213,17 @@ public class MaintainDM {
        return staffList;
      }
 
-     
+     public LinkList<Orders> PendingOrder(LinkList<Orders> orderList)
+     {
+         DMADT dmadt = new DMADT();
+        System.out.println("The pending order list:");
+        System.out.println("List of food order\n");
+        System.out.println(String.format("%-10s %-12s %-12s %-12s %-12s %-12s\n", "Order ID", "Customer ID", "Order Name", "Order Product ID", "Product Quantity", "Payment Status"));
+        LinkList<Orders> pendingOrders = dmadt.RetrievePending(orderList);
+        
+       
+        return orderList;
+     }
      
      
      
@@ -229,9 +244,19 @@ public class MaintainDM {
        public static void main(String args[]){
          MaintainDM DM = new MaintainDM();
         DoubleLinkListADT<Staff> testlist = new DoubleLinkListADT<Staff>();
+        LinkList<Orders> test2list = new LinkList<Orders>();
+     //   int OrderID, int OrderCustomerID, String OrderName, String OrderProductID, int ProductQuantity, String PaymentStatus
+    // Orders order= new Orders(5001,1001,"niama","2gfg",2,"Pending");
+   //  Orders order2= new Orders(5002,1002,"niama","2gfg",2,"Pending");
+    // Orders order3= new Orders(5031,1003,"gg","2gfg",2,"No");
+    
+       // test2list.add(order);
+      //  test2list.add(order2);
+       // test2list.add(order3);
          DM.createStaffRecord(testlist);
          DM.UpdateStaffInfo(0, testlist);
-         DM.CheckInfoStaff(testlist);
+        DM.CheckInfoStaff(testlist);
+    //   DM.PendingOrder(test2list);
          
          
      }

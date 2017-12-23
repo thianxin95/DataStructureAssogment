@@ -11,13 +11,9 @@ package entity;
  * @author Daniel
  */
 public class DeliveryMan {
-    private int staffID;
-    private String password;
-    private String staffName;
-    private String staffPhone;
-    private String staffAddress;
-    private int staffAge;
-    private  String staffStatus;
+    private int staffID;   
+    private String staffName;    
+    //private  String staffStatus;
     private String checkIn;
     private String checkOut;
     
@@ -27,14 +23,10 @@ public class DeliveryMan {
         
     }
 
-    public DeliveryMan(int staffID, String password, String staffName, String staffPhone, String staffAddress, int staffAge, String staffStatus, String checkIn, String checkOut) {
+    public DeliveryMan(int staffID, String staffName, String checkIn, String checkOut) {
         this.staffID = staffID;
-        this.password = password;
         this.staffName = staffName;
-        this.staffPhone = staffPhone;
-        this.staffAddress = staffAddress;
-        this.staffAge = staffAge;
-        this.staffStatus = staffStatus;
+        
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
@@ -55,14 +47,6 @@ public class DeliveryMan {
         this.checkOut = checkOut;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public int getStaffID() {
         return staffID;
     }
@@ -79,40 +63,9 @@ public class DeliveryMan {
         this.staffName = staffName;
     }
 
-    public String getStaffPhone() {
-        return staffPhone;
-    }
-
-    public void setStaffPhone(String staffPhone) {
-        this.staffPhone = staffPhone;
-    }
-
-    public String getStaffAddress() {
-        return staffAddress;
-    }
-
-    public void setStaffAddress(String staffAddress) {
-        this.staffAddress = staffAddress;
-    }
-
-    public int getStaffAge() {
-        return staffAge;
-    }
-
-    public void setStaffAge(int staffAge) {
-        this.staffAge = staffAge;
-    }
-
-    public String getStaffStatus() {
-        return staffStatus;
-    }
-
-    public void setStaffStatus(String staffStatus) {
-        this.staffStatus = staffStatus;
-    }
     
     public String toString(){
-        String output = String.format("%-20s %-23s", this.getStaffName(), this.getStaffID());
+        String output = String.format("%-20s %-23s %-23s %-23s", this.getStaffName(), this.getStaffID(), this.getCheckIn(), this.getCheckOut());
         return output;
     }
     

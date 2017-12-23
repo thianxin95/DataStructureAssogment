@@ -191,7 +191,7 @@ Index
       Node<T> tmp = head;
       for (int k = 0; k < index; k++) tmp = tmp.next;
         ////
-      if( tmp == null) throw new IndexOutOfBoundsException();
+      if( tmp == null) return null;
             return tmp.data;
     }
     
