@@ -186,7 +186,7 @@ Index
     @Override
     public T get(int index) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       if (head == null) throw new IndexOutOfBoundsException();
+       if (head == null) return null;
 
       Node<T> tmp = head;
       for (int k = 0; k < index; k++) tmp = tmp.next;
@@ -197,7 +197,7 @@ Index
     
     
     
- /*  public static void main(String args[]){
+  public static void main(String args[]){
        LinkList list = new LinkList();
        list.addNodeLast(1);
        list.addNodeLast(2);
@@ -209,7 +209,24 @@ Index
                      System.out.println("Size :" + list.getNumberofSize());
        list.remove(list.get(0));
         System.out.print(list.get(0));
-
-   }*//////
+        
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        //int CustomerID, String Password, String CustomerName, String CustomerAddress, String CustomerPhone
+        Customer customer = new Customer(5001, "12345" , "Test1" , "test1" , "1231231");
+        Customer customer2 = new Customer(5002, "12345" , "Test1" , "test1" , "1231231");
+        Customer customer3 = new Customer(5003, "12345" , "Test1" , "test1" , "1231231");
+        
+        LinkList<Customer> customerlist = new LinkList<Customer>();
+        customerlist.add(customer);
+        customerlist.add(customer2);
+        customerlist.add(customer3);
+        
+        System.out.println("Before Remove :"  + customerlist.get(0).getCustomerID());
+        customerlist.remove(customer);
+        System.out.println("After Remove :"  + customerlist.get(0).getCustomerID());
+        
+   }
     
 }

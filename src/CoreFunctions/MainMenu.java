@@ -59,9 +59,7 @@ public class MainMenu {
                                     // parse it to Customer choose restaurant.
                                     CustomerMenu cmenu = new CustomerMenu();
                                     //System.out.print("Test Restaurant return : " + restaurantList.get(0).getOwnerName()); 
-                                    Restaurant restaurant  = new Restaurant("Restaurant1" , "Petaling Jaya", "Chin", "0102872306");
-                                    restaurantList.add(restaurant);
-                                    cmenu.CustomerMenu(CustomerLoggedIn, restaurantList); // RestaurantList does not goes to the method, printing nothing atm.
+                                    cmenu.CustomerMenu(CustomerLoggedIn, restaurantList , menuList); // RestaurantList does not goes to the method, printing nothing atm.
                                     break;
                             }else{
                                  System.out.println("Login Unsuccesful\n\n\n");
