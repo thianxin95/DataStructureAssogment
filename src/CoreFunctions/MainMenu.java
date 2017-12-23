@@ -146,6 +146,7 @@ public class MainMenu {
                         //probably bugged. Wont return List
                         break;
                     case 3:
+                        System.out.pri
                         DeliveryManUi dUI = new DeliveryManUi();
                         switch(dUI.MenuDisplay()){
                             case 1:                                                   
