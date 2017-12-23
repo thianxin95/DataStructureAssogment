@@ -27,6 +27,16 @@ public class MainMenu {
     private LinkList<Menu> menuList = new LinkList<Menu>();
     private LinkList<Customer> customer = new LinkList<Customer>();
     private Customer CustomerLoggedIn = new Customer();
+    private LinkList<Staff> staffList = new LinkList<Staff>();
+    private LinkList<DeliveryMan> deliveryManList = new LinkList<DeliveryMan>();
+    Staff loggedinstaff = new Staff();
+    DeliveryManMenu dMenu = new DeliveryManMenu();
+    private void DefaultData(){
+
+        staffList.add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, ""));
+        staffList.add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, ""));
+    }
+    
     public void MainMenuFunctions(){
         ///Defining Entity Objects
 
@@ -132,25 +142,58 @@ public class MainMenu {
                     case 3:
                         DeliveryManUi dUI = new DeliveryManUi();
                         switch(dUI.MenuDisplay()){
-                            case 1:
-                                DeliveryManMenu dMenu = new DeliveryManMenu();
-                                switch(dMenu.DeliveryManFunctionMenu()){
-                                    case 1:
-                                        break;
-                                    default:
+                            case 1:                                                   
+                                loggedinstaff = dMenu.DeliveryManLogin(staffList);
+                                dMenu.DeliveryManFunctionMenu(loggedinstaff);
+                                int couter = 1;
+                                while(couter ==1){
+                                System.out.println("================Functions===================");
+                                System.out.println("1.Clock in");
+                                System.out.println("2.Check order detail");
+                                System.out.println("3.Clock out.");
+                                int Selection;
+                                    do{
+                                          System.out.println("Please key in your selection(integer): ");
+                                          try{
+                                              Selection = scan.nextInt();
+                                          }catch(Exception ex){
+                                          System.out.println("The selection you key in must be an integer."); 
+                                          System.out.println("Please enter your selection:");
+                                          scan.nextLine();
+                                          Selection = 0;
+                                          }
+                                          if(Selection<1 || Selection>3){
+                                              System.out.println("Integer out of range!");
+                                              System.out.println("Please key in your selection");
+                                          }
+                                      }while(Selection<1 || Selection>3);
+
+                                    if(Selection ==1){
+                                        dMenu.ClockIn(loggedinstaff, deliveryManList);
+                                                                               
+                                    }else if(Selection == 2){
+                                        dMenu.DisplayOrder();                                        
+                                    }else if(Selection == 3){
+                                        dMenu.ClockOut(loggedinstaff, deliveryManList);
+                                        couter = 2;
                                         MainMenuFunctions();
-                                }
-                                loop = 2;
+                                    }
+                                    
+                                }                                
+                                break;
+                                
+                            case 2:
+//                                DeliveryManMenu dMenu1 = new DeliveryManMenu();
+//                                dMenu1.test();
+                                
                                 break;
                             default:
                                 MainMenuFunctions();
                                 
-                        }
-                        
-                        
+                                break;
                                 
+                        }
                         break;
- 
                         
                /*     
                     case 3:
@@ -251,6 +294,7 @@ public class MainMenu {
     
     public static void main(String args[]){
        MainMenu mainmenu = new MainMenu();
+       mainmenu.DefaultData();
        mainmenu.MainMenuFunctions();
        
     }

@@ -186,12 +186,12 @@ Index
     @Override
     public T get(int index) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       if (head == null) throw new IndexOutOfBoundsException();
+       if (head == null) return null;
 
       Node<T> tmp = head;
       for (int k = 0; k < index; k++) tmp = tmp.next;
         ////
-      if( tmp == null) throw new IndexOutOfBoundsException();
+      if( tmp == null) return null;
             return tmp.data;
     }
     
