@@ -6,87 +6,54 @@
 package ADT;
 
 import JavaInterfaces.DeliveryManInterface;
-import entity.DeliveryMan;
+import entity.Staff;
+import java.util.Scanner;
+
+
 
 /**
  *
  * @author Daniel
  */
-public class DeliveryManADT<T> implements DeliveryManInterface<T>{
-    private Node<T> firstNode;
-  private int numberOfEntries;
-
-    @Override
-    public T getEntry(int givenPosition) {
-         T result = null;
-
-    if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
-      result = getNodeAt(givenPosition).getData();
-    }
-
-    return result;
-    }
-     private Node<T> getNodeAt(int givenPosition) {
-    Node<T> currentNode = firstNode;
-
-    // traverse the list to locate the desired node
-    for (int counter = 1; counter < givenPosition; counter++) {
-      currentNode = currentNode.getNext();
-    }
-
-    return currentNode;
-  }
-     public int getNumberOfEntries() {
-    return numberOfEntries;
-  }
-
-    public boolean isEmpty() {
-    boolean result;
-
-    if (numberOfEntries == 0) {
-      result = true;
-    } else {
-      result = false;
-    }
-
-    return result;
-  }
-
-    @Override
-    public boolean add(int newPosition, T newEntry) {
-        boolean isSuccessful = true;
-
-    if ((newPosition >= 1) && (newPosition <= numberOfEntries + 1)) {
-      Node<T> newNode = new Node<T>(newEntry);
-
-      if (isEmpty() || (newPosition == 1)) {     // case 1: add to beginning of list
-        newNode.setNext(firstNode);
-        firstNode = newNode;
-      } else {								                      // case 2: list is not empty and newPosition > 1
-        Node nodeBefore = getNodeAt(newPosition - 1);
-        Node nodeAfter = nodeBefore.getNext();
-        newNode.setNext(nodeAfter);
-        nodeBefore.setNext(newNode);
-      }
-
-        numberOfEntries++;
-      } else {
-        isSuccessful = false;
-      }
-    return isSuccessful;
-    }
-
-    @Override
-    public boolean add(T newEntry) {
-        Node<T> newNode = new Node<>(newEntry);
-
-        if (isEmpty()) {
-            firstNode = newNode;
-        } else {
-            Node<T> lastNode = getNodeAt(numberOfEntries);
-            lastNode.setNext(newNode);
-        }
-        numberOfEntries++;
-        return true;
-    }
-}
+//public class DeliveryManADT<T> implements DeliveryManInterface{
+//    Scanner scanner = new Scanner(System.in);
+//
+//    @Override
+//    public Staff LoginDeliveryMan(int ID, int Password, LinkList<Staff> staffList) {
+//        Staff user;
+//        int successLogin = 0;
+//       int authorization = 0;
+//       while(successLogin == 0){
+//            System.out.println("Please key in your User ID: ");
+//            int userID = scanner.nextInt();
+//            System.out.println("Please key in your password: ");
+//            int pass = scanner.nextInt();
+//        int i= 0;
+//        for(i=0;i<staffList.getNumberofSize();i++){
+//            //if(authorization < 2){
+//             
+//                if(userID == staffList.get(i).getStaffID() && pass == staffList.get(i).getStaffPassword()){
+//                    System.out.println("Logged In"); 
+//                    user = staffList.get(i);
+//                    successLogin = 1;
+//                    authorization = 0;
+//                    
+//                }
+////                else
+////                    System.out.println("Invalid Input! Please try again.");
+////                    authorization++;
+////                  
+////                }
+////            else{
+////                System.out.println("Your account has been suspended.\n");
+////                MainMenu menu = new MainMenu();
+////                menu.MainMenuFunctions();
+////            }
+//
+//        }
+//       }
+       
+//       return user;
+//
+//}
+//}
