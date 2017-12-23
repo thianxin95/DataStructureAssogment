@@ -55,11 +55,22 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
             }
             return current.data;
         }
-         
-     
-        
+    }
+    public T displayDescending(T anEntry) {
+    Node current = last;
+   // int data1;
+    while (current.left != null) {
+        if (current.data>current.left.data) {
+            anEntry = (T) current.left.data;
+            current.left.data = current.data;
+            current.data = anEntry;
+            current = current.left;
+        }
+    return  (T) current.data;
         
     }
+  
+}
    
 
 

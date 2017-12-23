@@ -21,7 +21,7 @@ public class Staff {
      
      public Staff(){}
      
-     public Staff(int staffID, String staffName, String staffPhone, String address,int staffAge, String staffStatus, int staffPassword, String staffWorkStatus)
+     public Staff(int staffID, String staffName, String staffPhone, String address,int staffAge, String staffStatus, int staffPassword, String staffWorkStatus,int totalDelivery, double totalDistance)
      {
          this.staffID=staffID;
          this.staffName=staffName;
@@ -31,6 +31,8 @@ public class Staff {
          this.staffStatus=staffStatus;
          this.staffPassword = staffPassword;
          this.staffWorkStatus= staffWorkStatus;
+         this.totalDelivery=totalDelivery;
+         this.totalDistance=totalDistance;
      }
      
     
@@ -83,6 +85,18 @@ public class Staff {
 }
     public void setStaffPassword( int staffPassword){
    this.staffPassword=staffPassword;
+}
+    public int getTotalDelivery(){
+   return totalDelivery;
+}
+    public void setTotalDelivery( int totalDelivery){
+   this.totalDelivery=totalDelivery;
+}
+    public double getDistance(){
+   return totalDistance;
+}
+    public void setDistance( int totalDistance){
+   this.totalDistance=totalDistance;
 }
 
      
