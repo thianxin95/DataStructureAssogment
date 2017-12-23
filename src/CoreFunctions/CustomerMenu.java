@@ -22,7 +22,8 @@ public class CustomerMenu {
     
     Scanner scan = new Scanner(System.in);
     LinkList<Items> itemlist = new LinkList<Items>(); 
-    public void CustomerMenu(Customer customer, LinkList<Restaurant> restaurantList, LinkList<Menu> menulist){
+    Queue<Orders> orderQueue = new Queue<Orders>();
+    public Queue<Orders> CustomerMenu(Customer customer, LinkList<Restaurant> restaurantList, LinkList<Menu> menulist){
         String details = "";
         System.out.println();
         System.out.println();
@@ -50,11 +51,41 @@ public class CustomerMenu {
                     }
                     String OrderList = "";
                     System.out.println("\nThank You for order");
+                    double totalprice=0;
                     for(int i = 0; i < itemlist.getNumberofSize(); i ++){
+                        totalprice =( itemlist.get(i).getQuantity() * itemlist.get(i).getitemPrice() ) + totalprice;
                         OrderList += (i + 1) + ". " + itemlist.get(i) + "\n";
                     }
                     System.out.println("Here is a list of your order");
                     System.out.println(OrderList);
+                    
+                    System.out.print("");
+                     System.out.println("Total Amount: RM" + totalprice);
+                    System.out.print("Make Payment now? (1 = yes / 2 = no)");
+                    int makePayment = scan.nextInt();
+                    int orderID = customer.getCustomerID();
+                    if(makePayment == 1){
+                        System.out.println("Payment Accepted. Thank you for your purchase and please come again!");
+                        for(int i = 0 ; i < itemlist.getNumberofSize(); i ++){
+                            Orders order = new Orders(orderID, orderID, itemlist.get(i).getItemName(), itemlist.get(i).getProductID() ,itemlist.get(i).getQuantity(), "Paid", restaurantList.get(choice).getRestaurantName());
+                            orderQueue.enqueue(order);
+                        }
+                        try{
+                            Thread.sleep(3000);
+                        }catch(Exception e){
+                            
+                        }
+                    }if(makePayment == 2){
+                        System.out.println("Order Canceled. Come again next time");
+                        try{
+                            Thread.sleep(3000);
+                        }catch(Exception e){
+                            
+                        }
+                    }else{
+                    System.out.println("Sorry, incorrect input.");
+                    }
+                    
                 }else{
                     System.out.println("Sorry, incorrect input.");
                 }
@@ -63,7 +94,7 @@ public class CustomerMenu {
         }
 
         
-        // incomplete method, should have print all the registered restaurant and return back to main menu
+        return orderQueue;
     }
     
     public void CategoryList(LinkList<Menu> menulist, String RestuarantName){
@@ -98,7 +129,7 @@ public class CustomerMenu {
                         if(menulist.get(i).getMenuId().equals(foodChoice)){ //bugged start
                             System.out.print("Please enter the Quantity");
                             quantity = scan.nextInt();
-                            Items items = new Items(menulist.get(i).getMenuName(), "Food" , menulist.get(i).getMenuPrice(), quantity);
+                            Items items = new Items(menulist.get(i).getMenuName(), "Food" , menulist.get(i).getMenuPrice(), quantity , foodChoice);
                             itemlist.add(items);
                         } // bugged
                     }
@@ -122,20 +153,21 @@ public class CustomerMenu {
             for(int i = 0; i< menulist.getNumberofSize(); i ++){
                 if(menulist.get(i).getRestaurantName() == RestuarantName){
                       if(menulist.get(i).getMenuId().charAt(0) == 'D'){
-                          System.out.printf("%-6s %-12s %-12s\n", menulist.get(i).getMenuId(), menulist.get(i).getMenuName() , menulist.get(i).getMenuPrice());
+                          System.out.printf("%-6s %-12s %-12s\n", menulist.get(i).getMenuId(), menulist.get(i).getMenuName() , menulist.get(i).getMenuPrice() );
                       } 
                 }
             }
+            scan.nextLine(); // Consumes \n after nextINT
             System.out.println("Please enter MenuID you desire :");
             String foodChoice = "";
             if(scan.hasNext()){
                 foodChoice = scan.nextLine();
                 if(foodChoice.charAt(0) == 'D'){
                     for(int i = 0; i< menulist.getNumberofSize(); i ++){
-                        if(menulist.get(i).getMenuId() == foodChoice){
+                        if(menulist.get(i).getMenuId().equals(foodChoice)){
                             System.out.print("Please enter the Quantity");
                             quantity = scan.nextInt();
-                            Items items = new Items(menulist.get(i).getMenuName(), "Drinks" , menulist.get(i).getMenuPrice(), quantity);
+                            Items items = new Items(menulist.get(i).getMenuName(), "Drinks" , menulist.get(i).getMenuPrice(), quantity, foodChoice);
                             itemlist.add(items);
                         }
                     }

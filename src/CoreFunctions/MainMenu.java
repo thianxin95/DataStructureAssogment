@@ -5,7 +5,6 @@
  */
 package CoreFunctions;
 import ADT.*;
-import java.util.*;
 import entity.*;
 
 
@@ -31,6 +30,7 @@ public class MainMenu {
     private LinkList<DeliveryMan> deliveryManList = new LinkList<DeliveryMan>();
     Staff loggedinstaff = new Staff();
     DeliveryManMenu dMenu = new DeliveryManMenu();
+    Queue<Orders> orderlist = new Queue<Orders>();
     private void DefaultData(){
 
         staffList.add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, ""));
@@ -69,7 +69,7 @@ public class MainMenu {
                                     // parse it to Customer choose restaurant.
                                     CustomerMenu cmenu = new CustomerMenu();
                                     //System.out.print("Test Restaurant return : " + restaurantList.get(0).getOwnerName()); 
-                                    cmenu.CustomerMenu(CustomerLoggedIn, restaurantList , menuList); // RestaurantList does not goes to the method, printing nothing atm.
+                                    orderlist = cmenu.CustomerMenu(CustomerLoggedIn, restaurantList , menuList); // RestaurantList does not goes to the method, printing nothing atm.
                                     break;
                             }else{
                                  System.out.println("Login Unsuccesful\n\n\n");

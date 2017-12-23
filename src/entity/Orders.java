@@ -16,17 +16,19 @@ public class Orders {
     private String OrderProductID = "";
     private int ProductQuantity;
     private String PaymentStatus = "";
+    private String RestaurantName= "";
     
     public Orders(){
     
 }
-     public Orders(int OrderID, int OrderCustomerID, String OrderName, String OrderProductID, int ProductQuantity, String PaymentStatus){
+     public Orders(int OrderID, int OrderCustomerID, String OrderName, String OrderProductID, int ProductQuantity, String PaymentStatus, String RestaurantName){
         this.OrderID = OrderID;
         this.OrderCustomerID = OrderCustomerID;
         this.OrderName = OrderName;
         this.OrderProductID = OrderProductID;
         this.ProductQuantity = ProductQuantity;
         this.PaymentStatus = PaymentStatus;
+        this.RestaurantName = RestaurantName;
     }
 
     public int getOrderID() {
@@ -51,6 +53,10 @@ public class Orders {
 
     public String getPaymentStatus() {
         return PaymentStatus;
+    }
+    
+    public String getRestaurantName(){
+        return RestaurantName;
     }
     
       public String toString() {

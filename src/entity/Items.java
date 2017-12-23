@@ -14,15 +14,17 @@ public class Items {
     String Category;
     double itemPrice;
     int quantity;
+    String productID;
     public Items(){
         
     }
     
-    public Items(String ItemName, String Category, double itemPrice , int quantity){
+    public Items(String ItemName, String Category, double itemPrice , int quantity, String ProductID ){
         this.ItemName = ItemName;
         this.Category = Category;
         this.itemPrice = itemPrice;
         this.quantity = quantity;
+        this.productID = ProductID;
         
     }
     
@@ -37,6 +39,10 @@ public class Items {
     }
     public int getQuantity(){
         return quantity;
+    }
+    
+    public String getProductID(){
+        return productID;
     }
      public String toString() {
         return String.format("Item Name : %-20s Category : %-20s  Price : %10.2f  Quantity : %10d\n",ItemName, Category , itemPrice , quantity);
