@@ -22,7 +22,7 @@ public class CustomerMenu {
     
     Scanner scan = new Scanner(System.in);
     LinkList<Items> itemlist = new LinkList<Items>(); 
-    public void CustomerMenu(Customer customer, LinkList<Restaurant> restaurantList){
+    public void CustomerMenu(Customer customer, LinkList<Restaurant> restaurantList, LinkList<Menu> menulist){
         String details = "";
         System.out.println();
         System.out.println();
@@ -44,7 +44,7 @@ public class CustomerMenu {
                     System.out.println("Getting Food List......");
                     int continuechoice = 1;
                     while(continuechoice == 1){
-                        CategoryList();
+                        CategoryList(menulist, restaurantList.get(choice).getRestaurantName());
                         System.out.print("Added Succesfully, Continue? (1 = y, 2 = no) ?:");
                         continuechoice = scan.nextInt();
                     }
@@ -66,169 +66,91 @@ public class CustomerMenu {
         // incomplete method, should have print all the registered restaurant and return back to main menu
     }
     
-    public void CategoryList(){
+    public void CategoryList(LinkList<Menu> menulist, String RestuarantName){
         int quantity = 0;
+        LinkList<Items> listItem = new LinkList<Items>();
         System.out.print("Category");
         System.out.println("===================");
         System.out.println("1. Food");
         System.out.println("2. Beverage");
-        System.out.println("3. Desserts");
-        System.out.println("Please enter your choice");
+  //      System.out.println("3. Desserts");
+        System.out.println("Please enter your choice :");
         int catchoice = scan.nextInt();
         if (catchoice == 1 ){
             //Food
             System.out.println("\n\nFood");
             System.out.println("==============");
-            System.out.println("1. Nasi Lemak   RM1");
-            System.out.println("2. Ayam Goreng  RM2");
-            System.out.println("3. Mee Goreng   RM2");
-            System.out.println("4. Pizza        RM5");
-            System.out.println("5. Nasi Ayam    RM5");
-            System.out.println("Please enter your choice");
-            int foodChoice = 0;
+            System.out.println("MenuID  MenuName    MenuPrice");
+            for(int i = 0; i< menulist.getNumberofSize(); i ++){
+                if(menulist.get(i).getRestaurantName() == RestuarantName){
+                      if(menulist.get(i).getMenuId().charAt(0) == 'F'){
+                          System.out.printf("%-6s %-12s %-12s\n", menulist.get(i).getMenuId(), menulist.get(i).getMenuName() , menulist.get(i).getMenuPrice());
+                      } 
+                }
+            }
+            scan.nextLine(); // Consumes \n after nextINT
+            System.out.println("Please enter MenuID you desire :");
+            String foodChoice = "";
             if(scan.hasNext()){
-                foodChoice = scan.nextInt();
+                foodChoice = scan.nextLine();
+                if(foodChoice.charAt(0) == 'F'){
+                    for(int i = 0; i< menulist.getNumberofSize(); i++){
+                        if(menulist.get(i).getMenuId().equals(foodChoice)){ //bugged start
+                            System.out.print("Please enter the Quantity");
+                            quantity = scan.nextInt();
+                            Items items = new Items(menulist.get(i).getMenuName(), "Food" , menulist.get(i).getMenuPrice(), quantity);
+                            itemlist.add(items);
+                        } // bugged
+                    }
+                    
+                    
+                    
+                }else{
+                    System.out.println("Sorry, incorrect input.");
+                }
+                
             }else{
                 System.out.println("Sorry, incorrect input.");
             }
             //String ItemName, String Category, int itemPrice , int quantity
-            if(foodChoice == 1 ){
-                System.out.println("\n\nSelected Food : Nasi Lemak");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("Nasi Lemak" , "Food" , 1 , quantity);
-                itemlist.add(item);
-            }if(foodChoice == 2 ){
-                System.out.println("\n\nSelected Food : Ayam Goreng");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("Ayam Goreng" , "Food" , 2 , quantity);
-                itemlist.add(item);
-            }if(foodChoice == 3 ){
-                System.out.println("\n\nSelected Food : Mee Goreng");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("Mee Goreng" , "Food" , 2 , quantity);
-                itemlist.add(item);
-            }if(foodChoice == 4 ){
-                System.out.println("\n\nSelected Food : Pizza");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("Pizza" , "Food" , 5 , quantity);
-                itemlist.add(item);
-            }if(foodChoice == 5 ){
-                System.out.println("\n\nSelected Food : Nasi Ayam");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("Nasi Ayam" , "Food" , 5 , quantity);
-                itemlist.add(item);
-            }if(foodChoice <= 0 || foodChoice >= 6){
-                    System.out.println("Sorry, incorrect input.");
-                    CategoryList();
-                }
+
         }if(catchoice ==  2){
             //Beverages
             System.out.println("\n\nBeverages");
             System.out.println("==============");
-            System.out.println("1. Coke        RM2");
-            System.out.println("2. 7up         RM2");
-            System.out.println("3. Kikapo      RM2");
-            System.out.println("4. Teh Tarik   RM2");
-            System.out.println("5. Kopi        RM2");
-            System.out.println("Please enter your choice");
-            int beverageChoice = scan.nextInt();
-            if(beverageChoice == 1){
-                System.out.println("\n\nSelected Beverages : Coke");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("Coke" , "Beverages" , 2 , quantity);
-                itemlist.add(item);
-            }
-            if(beverageChoice == 2){
-                System.out.println("\n\nSelected Beverages : 7up");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("7up" , "Beverages" , 2 , quantity);
-                itemlist.add(item);
-            }
-            if(beverageChoice == 3){
-                System.out.println("\n\nSelected Beverages : Kikapo");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("Kikapo" , "Beverages" , 2 , quantity);
-                itemlist.add(item);
-            }
-            if(beverageChoice == 4){
-                System.out.println("\n\nSelected Beverages : Teh Tarik");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("Teh Tarik" , "Beverages" , 2 , quantity);itemlist.add(item);
-                
-            }
-            if(beverageChoice == 5){
-                System.out.println("\n\nSelected Beverages : Kopi");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("Kopi" , "Beverages" , 2 , quantity);itemlist.add(item);
-            }if(beverageChoice <= 0 || beverageChoice >= 6){
-                    System.out.println("Sorry, incorrect input.");
-                    CategoryList();
+             System.out.println("MenuID  MenuName    MenuPrice");
+            for(int i = 0; i< menulist.getNumberofSize(); i ++){
+                if(menulist.get(i).getRestaurantName() == RestuarantName){
+                      if(menulist.get(i).getMenuId().charAt(0) == 'D'){
+                          System.out.printf("%-6s %-12s %-12s\n", menulist.get(i).getMenuId(), menulist.get(i).getMenuName() , menulist.get(i).getMenuPrice());
+                      } 
                 }
-        }if(catchoice == 3){
-            //Side Dishes
-            System.out.println("\n\nDesserts");
-            System.out.println("==============");
-            System.out.println("1. Chocolate Ice Cream  RM2");
-            System.out.println("2. Vanilla Ice Cream    RM2");
-            System.out.println("3. GreenTea Ice Cream   RM2");
-            System.out.println("4. Durian Ice Cream     RM2");
-            System.out.println("5. KitKat Ice Cream     RM2");
-            System.out.println("Please enter your choice");
-            int dessertchoice = scan.nextInt();
-            
-            if(dessertchoice == 1){
-                System.out.println("\n\nSelected Desserts :Chocolate Ice Cream ");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("Chocolate Ice Cream" , "Desserts" , 2 , quantity);itemlist.add(item);
             }
-            if(dessertchoice == 2){
-                System.out.println("\n\nSelected Desserts : Vanilla Ice Cream");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                  Items item = new Items("Vanilla Ice Cream" , "Desserts" , 2 , quantity);itemlist.add(item);
-
-            }
-            if(dessertchoice == 3){
-                System.out.println("\n\nSelected Desserts : GreenTea Ice Cream");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                  Items item = new Items("GreenTea Ice Cream" , "Desserts" , 2 , quantity);itemlist.add(item);
-
-            }
-            if(dessertchoice == 4){
-                System.out.println("\n\nSelected Desserts : Durian Ice Cream");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                  Items item = new Items("Durian Ice Cream" , "Desserts" , 2 , quantity);itemlist.add(item);
-
-            }
-            if(dessertchoice == 5){
-                System.out.println("\n\nSelected Desserts :KitKat Ice Cream ");
-                System.out.println("Please enter quatity: ");
-                quantity = scan.nextInt();
-                Items item = new Items("KitKat Ice Cream" , "Desserts" , 2 , quantity);itemlist.add(item);
-            }if(dessertchoice <= 0 || dessertchoice >= 6){
+            System.out.println("Please enter MenuID you desire :");
+            String foodChoice = "";
+            if(scan.hasNext()){
+                foodChoice = scan.nextLine();
+                if(foodChoice.charAt(0) == 'D'){
+                    for(int i = 0; i< menulist.getNumberofSize(); i ++){
+                        if(menulist.get(i).getMenuId() == foodChoice){
+                            System.out.print("Please enter the Quantity");
+                            quantity = scan.nextInt();
+                            Items items = new Items(menulist.get(i).getMenuName(), "Drinks" , menulist.get(i).getMenuPrice(), quantity);
+                            itemlist.add(items);
+                        }
+                    }
+                    
+                    
+                    
+                }else{
                     System.out.println("Sorry, incorrect input.");
-                    CategoryList();
                 }
-        }if(catchoice <= 0 || catchoice >= 4){
-                    System.out.println("Sorry, incorrect input.");
-                    CategoryList();
+           
         }
         
     }
     
     
     
+    }
 }
