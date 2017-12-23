@@ -18,13 +18,13 @@ public class FoodDelivered {
     private String OrderProductID;
     private int ProductQuantity;
     private double DistanceTravelled;
-    private double RemainTime;
-    //exampls 1000, 2000, 3000, fried nooddle, 5, 6, 20
+   
+    //exampls 1000, 2000, 3000, fried nooddle, 5, 6
     public FoodDelivered(){
         
     }
 
-    public FoodDelivered(int StaffID, int OrderID, int OrderCustomerID, String OrderName, String OrderProductID, int ProductQuantity, double DistanceTravelled, double RemainTime) {
+    public FoodDelivered(int StaffID, int OrderID, int OrderCustomerID, String OrderName, String OrderProductID, int ProductQuantity, double DistanceTravelled) {
         this.StaffID = StaffID;
         this.OrderID = OrderID;
         this.OrderCustomerID = OrderCustomerID;
@@ -32,7 +32,7 @@ public class FoodDelivered {
         this.OrderProductID = OrderProductID;
         this.ProductQuantity = ProductQuantity;
         this.DistanceTravelled = DistanceTravelled;
-        this.RemainTime = RemainTime;
+        
     }
 
     public int getStaffID() {
@@ -63,15 +63,13 @@ public class FoodDelivered {
         return DistanceTravelled;
     }
 
-    public double getRemainTime() {
-        return RemainTime;
-    }
+
 
 
 
     public String toString() {
-    return String.format("%-12d %-12s %-12s %-12s %12s %12s %12s %12s",
-            StaffID, OrderID, OrderCustomerID, OrderName, OrderProductID, ProductQuantity, DistanceTravelled, RemainTime);
+    return String.format("%-12d %-12s %-12s %-12s %12s %12s %12s",
+            StaffID, OrderID, OrderCustomerID, OrderName, OrderProductID, ProductQuantity, DistanceTravelled);
   }
     
     
