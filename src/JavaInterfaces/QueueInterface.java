@@ -14,6 +14,6 @@ public interface QueueInterface<T> {
     public T dequeue();
     public T getFront();
     public boolean isEmpty();
-    
+    public int getSize();
     
 }
