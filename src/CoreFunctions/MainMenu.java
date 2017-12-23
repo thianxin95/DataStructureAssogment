@@ -148,7 +148,8 @@ public class MainMenu {
                                 System.out.println("================Functions===================");
                                 System.out.println("1.Clock in");
                                 System.out.println("2.Check order detail");
-                                System.out.println("3.Clock out.");
+                                System.out.println("3.Clock out");
+                                System.out.println("4.Log out");
                                 int Selection;
                                     do{
                                           System.out.println("Please key in your selection(integer): ");
@@ -160,20 +161,30 @@ public class MainMenu {
                                           scan.nextLine();
                                           Selection = 0;
                                           }
-                                          if(Selection<1 || Selection>3){
+                                          if(Selection<1 || Selection>4){
                                               System.out.println("Integer out of range!");
                                               System.out.println("Please key in your selection");
                                           }
-                                      }while(Selection<1 || Selection>3);
+                                      }while(Selection<1 || Selection>4);
 
                                     if(Selection ==1){
+                                        String wStatus = "Available";
+                                        if(wStatus!= loggedinstaff.getStaffWorkStatus()){                                                                                    
                                         dMenu.ClockIn(loggedinstaff, deliveryManList);
+                                        }else{
+                                            System.out.println("Operation denied!");
+                                            System.out.println("You had already logged in.");
+                                        }
                                                                                
                                     }else if(Selection == 2){
                                         dMenu.DisplayOrder();                                        
                                     }else if(Selection == 3){
                                         dMenu.ClockOut(loggedinstaff, deliveryManList);
+                                        
+                                        
+                                    }else if(Selection == 4){
                                         couter = 2;
+                                        System.out.println("You had logged out the system.");
                                         MainMenuFunctions();
                                     }
                                     

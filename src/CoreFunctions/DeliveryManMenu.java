@@ -35,67 +35,17 @@ public class DeliveryManMenu {
         
     }
 
-    public void DeliveryManFunctionMenu(Staff staff){
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//        Date dateIn = new Date();
-//        int id;
-//        String name;
-//        String in;
-//        String out = "Pending";
-        
+    public void DeliveryManFunctionMenu(Staff staff){        
         clear.clearScreen();
         System.out.println("        Hello "+ staff.getStaffName()+"!");
         System.out.println("       Welcome to delivery man area");
-        System.out.println("            Have a nice day...");
-       // System.out.println("    Clock in at : "+dateFormat.format(dateIn));
-//        System.out.println("================Functions===================");
-//        System.out.println("1.Clock in");
-//        System.out.println("2.Check order detail");
-//        System.out.println("3.Clock out.");
-        
-        
-//        id = staff.getStaffID();
-//        name = staff.getStaffName();
-//        in = dateFormat.format(dateIn);
-//        DeliveryMan dMan = new DeliveryMan(id, name, in, out);
-//        deliveryManList.add(dMan);
-//        //test area
-//       // System.out.println("size:"+deliveryManList.getNumberofSize());
-//        //System.out.println(deliveryManList.get(1));
-//        //System.out.println(deliveryManList.get(1));
-//       // System.out.println(staff.getStaffStatus());
-//        System.out.println(stafflist.getNumberofSize());
-//        for(int a = 1;a<=stafflist.getNumberofSize();a++){
-//            System.out.println("here"+stafflist.get(a).getStaffName());
-//            System.out.println("here"+staff.getStaffName());
-//            if(stafflist.get(a).getStaffName().equals(staff.getStaffName())){
-//                stafflist.get(a).setStaffStatus("Available");
-//                System.out.println(stafflist.get(a).getStaffStatus());
-//            }
-//        }
-//        System.out.println(staff.getStaffStatus());
-       
-//        int Selection;
-//        do{
-//              System.out.println("Please key in your selection(integer): ");
-//              try{
-//                  Selection = scanner.nextInt();
-//              }catch(Exception ex){
-//              System.out.println("The selection you key in must be an integer."); 
-//              System.out.println("Please enter your selection:");
-//              scanner.nextLine();
-//              Selection = 0;
-//              }
-//              if(Selection<1 || Selection>3){
-//                  System.out.println("Integer out of range!");
-//                  System.out.println("Please key in your selection");
-//              }
-//          }while(Selection<1 || Selection>3);
-//          return Selection;                           
+        System.out.println("            Have a nice day...");                          
     }
     
     public void ClockIn(Staff staff, LinkList<DeliveryMan> deliveryManList){
         clear.clearScreen();
+        
+        
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date dateIn = new Date();
         int id;
@@ -111,40 +61,16 @@ public class DeliveryManMenu {
          //test area
         System.out.println("size:"+deliveryManList.getNumberofSize());
         System.out.println(deliveryManList.get(0));
-        System.out.println(deliveryManList.get(1));
-        System.out.println(staff.getStaffStatus());
-        staff.setStaffStatus("Available");
-//        System.out.println(staffList.getNumberofSize());
-//        for(int a = 1;a<=staffList.getNumberofSize();a++){
-//            System.out.println("here "+staffList.get(a).getStaffName());
-//            System.out.println("here "+staff.getStaffName());
-//            if(staffList.get(a).getStaffName().equals(staff.getStaffName())){
-//                staffList.get(a).setStaffStatus("Available");
-//                System.out.println(staffList.get(a).getStaffStatus());
-//            }
-//        }
-        System.out.println(staff.getStaffStatus());
-//        int Selection;
-//        do{
-//              System.out.println("Enter 1 to continue... ");
-//              try{
-//                  Selection = scanner.nextInt();
-//              }catch(Exception ex){
-//              System.out.println("The selection you key in must be an integer."); 
-//              System.out.println("Please enter your selection:");
-//              scanner.nextLine();
-//              Selection = 0;
-//              }
-//              if(Selection<1 || Selection>1){
-//                  System.out.println("Integer out of range!");
-//                  System.out.println("Please key in your selection");
-//              }
-//          }while(Selection<1 || Selection>1);
-//          return Selection;
+        System.out.println(deliveryManList.get(1));        
+        staff.setStaffWorkStatus("Available");
+        System.out.println(staff.getStaffWorkStatus());
+  
+       
         
     }
     
     public void ClockOut(Staff staff, LinkList<DeliveryMan> deliveryManList){
+        clear.clearScreen();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date dateOut = new Date();
         clear.clearScreen();
