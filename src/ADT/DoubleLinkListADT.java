@@ -10,8 +10,8 @@ import entity.*;
 
 public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
 
-     private Node first = null;
-     private Node last = null;
+      Node first = null;
+      Node last = null;
      private int size =0;
 
     @Override
@@ -29,17 +29,15 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
             first = newNode;
             last = newNode;
         } else {
-            last.next = newNode;
-            newNode.prev = last;
+            last.right = newNode;
+            newNode.left = last;
             last = newNode;
         }
         size++;
     }
 
-    @Override
-    public void deleteRecord(int id, T anEntry) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ 
+    
 
     @Override
     public T GetEntry(int index) {
@@ -52,7 +50,7 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
         {
       
             for (int i = 0; i < index; i++) {
-                current = current.next;
+                current = current.right;
                
             }
             return current.data;
@@ -62,12 +60,14 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
         
         
     }
+   
+
 
    
      private class Node<T> {
         private T data;
-        private Node next;
-        private Node prev;
+         Node right;
+         Node left;
 
         public Node(T data) {
             this.data = data;

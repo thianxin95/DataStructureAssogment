@@ -14,7 +14,6 @@ public interface DoublyLinkedList<T> {
     public int getSize();
     public boolean isEmpty();
     public void Add(T anEntry);
-    public void deleteRecord(int id, T anEntry);
     public T GetEntry(int position);
    
          
