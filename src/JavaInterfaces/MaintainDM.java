@@ -16,7 +16,7 @@ public interface MaintainDM<T> {
     public DoublyLinkedList<Staff> CreateRecord(Staff newStaff,DoublyLinkedList<Staff> stafflist);
     public DoublyLinkedList<Staff> CheckDMInfo(DoublyLinkedList<Staff> stafflist);
     public DoublyLinkedList<Staff> UpdateDM(int staffid,DoublyLinkedList<Staff> staffList );
-    public LinkList<Orders>RetrievePending(LinkList<Orders> orderList);
+    public Queue<Orders>RetrievePending(Queue<Orders> orderList);
     public DoublyLinkedList<FoodDelivered> DailyTransactionReport(DoublyLinkedList<FoodDelivered> deliveredList,DoublyLinkedList<Staff> staffList);
     
 }

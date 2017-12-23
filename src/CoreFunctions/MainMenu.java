@@ -26,7 +26,7 @@ public class MainMenu {
     private LinkList<Menu> menuList = new LinkList<Menu>();
     private LinkList<Customer> customer = new LinkList<Customer>();
     private Customer CustomerLoggedIn = new Customer();
-    private LinkList<Staff> staffList = new LinkList<Staff>();
+    private DoubleLinkListADT<Staff> staffList = new DoubleLinkListADT<Staff>();
     private LinkList<DeliveryMan> deliveryManList = new LinkList<DeliveryMan>();
     private LinkedStack<FoodDelivered> foodDeliveredList = new LinkedStack<FoodDelivered>();
     //private Queue<Orders> orderList = new Queue<Orders>();
@@ -38,8 +38,8 @@ public class MainMenu {
     Queue<Orders> orderlist = new Queue<Orders>();
     private void DefaultData(){
 
-        staffList.add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, ""));
-        staffList.add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, ""));
+        staffList.Add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, ""));
+        staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, ""));
     }
     
     public void MainMenuFunctions(){
@@ -143,11 +143,11 @@ public class MainMenu {
                         //probably bugged. Wont return List
                         break;
                     case 3:
-                        System.out.pri
+                        
                         DeliveryManUi dUI = new DeliveryManUi();
                         switch(dUI.MenuDisplay()){
                             case 1:                                                   
-                                loggedinstaff = dMenu.DeliveryManLogin(staffList);
+                            //    loggedinstaff = dMenu.DeliveryManLogin(staffList);
                                 dMenu.DeliveryManFunctionMenu(loggedinstaff);
                                 int couter = 1;
                                 while(couter ==1){
@@ -223,8 +223,44 @@ public class MainMenu {
                         break;
 
                     case 5:
-                        GoodBye();
+                        MaintainDM HR = new MaintainDM();
+                                int ContinueHuman= 1;
+                                while(ContinueHuman == 1){
+                                System.out.println("Welcome to Human Resources");
+                                System.out.println("===========================");
+                                System.out.println("1.Create Staff Information");
+                                System.out.println("2.View Staff Record");
+                                System.out.println("3.Update Staff Record");
+                                System.out.println("4.View Pending Order");
+                                System.out.println("5.View Daily Transaction ");
+                                System.out.println("6. Exit");
+                                System.out.println("Please enter you selection:");
+                                int answer5= scan.nextInt();
+                                if(answer5 ==1){
+                                    HR.createStaffRecord(staffList);
+                               
+                                }
+                                else if(answer5==2){
+                                    HR.CheckInfoStaff(staffList);
+                                }
+                                else if(answer5==3)
+                                {
+                                  HR.UpdateStaffInfo(0, staffList);
+                                }
+                                else if(answer5==4){
+                          //         HR.PendingOrder(orderlist);
+                                       
+                                            }
+                                else if(answer5==5){
+                                    
+                                    
+                                }else if(answer5 == 6){
+                                    ContinueHuman = 0;
+                                }
+
+                        
                         break;
+                }
                 }
 
             }else{

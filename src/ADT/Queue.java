@@ -81,18 +81,18 @@ public class Queue<T> implements QueueInterface<T> {
             next = linkPortion;
         }
     }
-//    public static void main(String[] args) {
-//        Queue de = new Queue();
-//        de.enqueue(40);
-//        de.enqueue(30);
-//        de.enqueue(20);
-//        System.out.println(de.getSize());
-//        System.out.println(de.getFront());
-//        System.out.println(de.dequeue());
-//        System.out.println(de.getSize());
-//        System.out.println(de.getFront());
-//        System.out.println(de.isEmpty());
-//        System.out.println(de.getFront());
-//        
-//    }
+   public static void main(String[] args) {
+       Queue de = new Queue();
+       de.enqueue(40);
+        de.enqueue(30);
+        de.enqueue(20);
+        System.out.println(de.getSize());
+        System.out.println(de.getFront());
+        System.out.println(de.dequeue());
+        System.out.println(de.getSize());
+        System.out.println(de.getFront());
+        System.out.println(de.isEmpty());
+        System.out.println(de.getFront());
+        
+    }
 }
