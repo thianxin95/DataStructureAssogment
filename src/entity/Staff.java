@@ -111,9 +111,7 @@ public class Staff {
      
      
     public String toString() {
-        return String.format("Staff ID : %5d / Name : %-20s / Phone : %10d / Address : %-20s / Age : %2d   Status : %-20s\n",staffID,staffName,staffPhone,staffAddress,staffAge,staffStatus);
-  }  
-    public String toStringList() {
-        return String.format("Staff ID : %5d / Name : %-20s / Total Delivery : %10d / Total Distance : %-20d \n",staffID,staffName,totalDelivery,totalDistance);
-  }   
+         return String.format("Staff ID : %5d / Name : %-20s / Total Delivery : %10d / Total Distance : %-20.2f \n",staffID,staffName,totalDelivery,totalDistance);
+     }  
+
 }

@@ -242,11 +242,14 @@ public class MainMenu {
                                
                                 }
                                 else if(answer5==2){
-                                    HR.DisplayStaffRecord(staffList,0);
+                                    Scanner scanner = new Scanner(System.in);
+                                    System.out.print("Please enter the staff id:");
+                                    int staffid = scanner.nextInt();
+                                    HR.DisplayStaffRecord(staffList, staffid);
                                 }
                                 else if(answer5==3)
                                 {
-                                  HR.UpdateStaffInfo(0, staffList);
+                                  HR.UpdateStaffInfo(staffList);
                                 }
                                 else if(answer5==4){
                                    HR.PendingOrder(orderlist);

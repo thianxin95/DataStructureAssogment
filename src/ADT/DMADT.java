@@ -58,71 +58,19 @@ public class DMADT<T> implements MaintainDM<T> {
 
     @Override
     public DoublyLinkedList<Staff> DailyTransactionReport(DoublyLinkedList<Staff> staffList) {
-            
-            int[] arr = this.getArrayInt(staffList);
-            
-            
-            
-            for (int i = 0; i < arr.length; i++) {
-                for (int j = i + 1; j < arr.length; j++) {
-                    int tmp = 0;
-                    if (arr[i] > arr[j]) {
-                        tmp = arr[i];
-                        arr[i] = arr[j];
-                        arr[j] = tmp;
-                    }
-                }
-           }
-           int[] reverse = new int[50];
-           int countdown = 0;
-            for(int x = arr.length; x< arr.length; x--){
-                reverse[countdown] = arr[x - 1];
-                countdown++;
-            }
-            int loop = 1;
-            while(loop == 1){
-              for(int i=0;i<staffList.getSize();i++){
-                if(staffList.GetEntry(i).getTotalDelivery() == reverse[i]){
-                  staffList.GetEntry(i).getStaffID();
-                  staffList.GetEntry(i).getStaffName();
-                  staffList.GetEntry(i).getTotalDelivery();
-                  staffList.GetEntry(i).getDistance();
-                 System.out.println(staffList.toString());
-              }
-               if(staffList.GetEntry(i).getTotalDelivery() == reverse[0]){
-                   loop =0;
-               }
-            }
-    
-        
- /*           for(int i=0;i<staffList.getSize();i++){
-                staffList.GetEntry(i).getStaffID();
-                staffList.GetEntry(i).getStaffName();
-                staffList.GetEntry(i).getTotalDelivery();
-                staffList.GetEntry(i).getDistance();
-               System.out.println(staffList.toString());
-                
-            }*/
       
-   
+        
+    System.out.println(staffList.reverseString());
+    return staffList;
     }
-             return staffList;
+             
     }
-    public int[] getArrayInt(DoublyLinkedList<Staff> staffList){
-        int Arr[] = new int[50];
-        for(int i = 0 ; i<staffList.getSize(); i++){
-            Arr[i]=staffList.GetEntry(i).getTotalDelivery();
-        }
-        return Arr;
-    }
-
-   
+ 
 
     
     
     
     
     
-}
 
 

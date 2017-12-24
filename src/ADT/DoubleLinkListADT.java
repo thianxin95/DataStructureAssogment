@@ -23,45 +23,54 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
         return (first == null);
     };
     @Override
-    public void Add(T anEntry) {
-        Node newNode = new Node(anEntry);
- if (first == null) {
+      public void Add(T newEntry) {
+      
+        Node newNode = new Node(newEntry);    
+        if(first == null){
             first = newNode;
             last = newNode;
-        } else {
-            last.right = newNode;
+        }else{
             newNode.left = last;
-            last = newNode;
+            last.right = newNode;
         }
-        size++;
+        last = newNode;
+        size ++ ;
     }
+
     
-    public void deleteNode (T key) {
-     if(first == null)
-            throw new RuntimeException("cannot delete");
-
-        if( first.data.equals(key) )
-        {
-           first = first.right;
-           return;
+    @Override
+    public boolean deleteNode(T anEntry)
+    {
+   if(first == null){
+            return false;
+        }else if(first.data.equals(anEntry)){
+            //remove first node
+            first.left = null;
+            first = first.right;
+            size--;
+            return true;
+        }else if(last.data.equals(anEntry)){
+            //remove last node
+            last = last.left;
+            last.right = null;
+            size--;
+            return true;
+        }else{
+            //remove middle node
+            Node currentNode = first;
+            while(currentNode != null){
+                if(currentNode.data.equals(anEntry)){
+                    currentNode.left.right = currentNode.right;
+                    currentNode.right.left = currentNode.left;
+                    return true;
+                }else{
+                    currentNode = currentNode.right;
+                }
+            }
+            size--;
         }
-
-        Node<T> cur  = first;
-        Node<T> prev = null;
-
-        while(cur != null && !cur.data.equals(key) )
-        {
-           prev = cur;
-           cur = cur.right;
-        }
-
-        if(cur == null)
-           throw new RuntimeException("cannot delete");
-
-        
-        prev.right = cur.right;
-        size --;
-    } 
+        return false;
+    }
 
 
 
@@ -85,8 +94,23 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
             return current.data;
         }
     }
+    
+    public String toString(){
+        return "";
+    }
   
-   
+    @Override
+   public String reverseString(){
+       Node currentNode = last;
+       String result = "";
+       
+       for(int hight = getSize()-1; hight >=0; hight--){
+           result = result + currentNode.data + " ";
+           currentNode = currentNode.left;
+       }
+       
+       return result;
+   }
 
 
    
