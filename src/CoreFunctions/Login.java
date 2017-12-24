@@ -22,18 +22,29 @@ public class Login {
         //return String AccountID that valids
         //int CustomerID, String CustomerName, String CustomerAddress, String CustomerPhone
         CustomerAccADT caccadt = new CustomerAccADT();
+        Customer logged_customer = new Customer();
         Scanner scan = new Scanner(System.in);
         System.out.println("Login to Customer Area");
         System.out.println("============================");
         System.out.print("Enter Login ID (Enter 0 to cancel):");
         String Login = scan.nextLine();
-        System.out.print("Enter Password : ");
-        String Password = scan.nextLine();
+        if(Login.equals("0")){
+            System.out.print("Login Aborted ");
+            Customer logincustomer = new Customer();
+        }else{
+            System.out.print("Enter Password : ");
+            String Password = scan.nextLine();
+
+            
+            if(Login.charAt(0) == '5' & Integer.parseInt(Login) > 5000){
+                logged_customer = caccadt.LoginCustomer(Login, Password, CustomerList);
+            }else{
+                System.out.print("Login Aborted or Failed Input for Login ID");
+                logged_customer = null;
+            }
+
         
-        Customer logged_customer = new Customer();
-        logged_customer = caccadt.LoginCustomer(Login, Password, CustomerList);
-        
-        
+        }
         return logged_customer;
        // Customer logged_customer = new Customer(5001, "140397", "Chin", "PJ" , "0102872306");
         // Code for Verifying Account
