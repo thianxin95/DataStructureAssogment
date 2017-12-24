@@ -34,6 +34,15 @@ public class Staff {
          this.totalDelivery=totalDelivery;
          this.totalDistance=totalDistance;
      }
+     public Staff(int staffID, String staffName, String staffPhone, String address,int staffAge, String staffStatus)
+     {
+           this.staffID=staffID;
+         this.staffName=staffName;
+         this.staffPhone=staffPhone;
+         this.staffAddress=address;
+         this.staffAge= staffAge;
+         this.staffStatus=staffStatus;
+     }
      
     
     public int getStaffID(){
@@ -103,5 +112,8 @@ public class Staff {
      
     public String toString() {
         return String.format("Staff ID : %5d / Name : %-20s / Phone : %10d / Address : %-20s / Age : %2d   Status : %-20s\n",staffID,staffName,staffPhone,staffAddress,staffAge,staffStatus);
+  }  
+    public String toStringList() {
+        return String.format("Staff ID : %5d / Name : %-20s / Total Delivery : %10d / Total Distance : %-20d \n",staffID,staffName,totalDelivery,totalDistance);
   }   
 }

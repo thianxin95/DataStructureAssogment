@@ -223,9 +223,10 @@ public class MainMenu {
                         break;
 
                     case 5:
-                        MaintainDM HR = new MaintainDM();
+                       
                                 int ContinueHuman= 1;
                                 while(ContinueHuman == 1){
+                                MaintainDM HR = new MaintainDM();
                                 System.out.println("Welcome to Human Resources");
                                 System.out.println("===========================");
                                 System.out.println("1.Create Staff Information");
@@ -241,7 +242,7 @@ public class MainMenu {
                                
                                 }
                                 else if(answer5==2){
-                                    HR.CheckInfoStaff(staffList);
+                                    HR.DisplayStaffRecord(staffList,0);
                                 }
                                 else if(answer5==3)
                                 {
@@ -259,8 +260,9 @@ public class MainMenu {
                                 }
 
                         
-                        break;
+                      
                 }
+                                  break;
                 }
 
             }else{

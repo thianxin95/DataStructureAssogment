@@ -35,6 +35,35 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
         }
         size++;
     }
+    
+    public void deleteNode (T key) {
+     if(first == null)
+            throw new RuntimeException("cannot delete");
+
+        if( first.data.equals(key) )
+        {
+           first = first.right;
+           return;
+        }
+
+        Node<T> cur  = first;
+        Node<T> prev = null;
+
+        while(cur != null && !cur.data.equals(key) )
+        {
+           prev = cur;
+           cur = cur.right;
+        }
+
+        if(cur == null)
+           throw new RuntimeException("cannot delete");
+
+        
+        prev.right = cur.right;
+        size --;
+    } 
+
+
 
  
     
@@ -56,21 +85,7 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
             return current.data;
         }
     }
-    public T displayDescending(T anEntry) {
-    Node current = last;
-   // int data1;
-    while (current.left != null) {
-        if (current.data>current.left.data) {
-            anEntry = (T) current.left.data;
-            current.left.data = current.data;
-            current.data = anEntry;
-            current = current.left;
-        }
-    return  (T) current.data;
-        
-    }
   
-}
    
 
 
@@ -98,6 +113,7 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
         test.Add(1);
         test.Add(2);
         test.Add(3);
+        test.deleteNode(2);
         System.out.println("Test get :" + test.GetEntry(0));
         System.out.println("Test get 2:"  + test.GetEntry(1));
         System.out.println("Test get 3: " + test.GetEntry(2));

@@ -14,8 +14,9 @@ import entity.*;
 public interface MaintainDM<T> {
     
     public DoublyLinkedList<Staff> CreateRecord(Staff newStaff,DoublyLinkedList<Staff> stafflist);
-    public DoublyLinkedList<Staff> CheckDMInfo(DoublyLinkedList<Staff> stafflist);
-    public DoublyLinkedList<Staff> UpdateDM(int staffid,DoublyLinkedList<Staff> staffList );
+//    public DoublyLinkedList<Staff>DisplayStaffRecord(DoublyLinkedList<Staff> stafflist);
+    public DoublyLinkedList<Staff> UpdateDM( Staff remove,Staff updatedetail,DoublyLinkedList<Staff> staffList);
+    public DoublyLinkedList<Staff>Delete(Staff removeStaff , DoublyLinkedList<Staff> stafflist);
     public Queue<Orders>RetrievePending(Queue<Orders> orderList);
     public DoublyLinkedList<Staff> DailyTransactionReport(DoublyLinkedList<Staff> staffList);
     
