@@ -40,6 +40,7 @@ public class MainMenu {
 
         staffList.Add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, "",0,0));
         staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, "",2,3));
+        customer.add(new Customer(customer.getNumberofSize()+ 5001,"12345","Test" , "KL" , "1234"));
         orderlist.enqueue(new Orders(2000, 5000, "Fried chicken", "6000", 3, "", "KFC"));
         orderlist.enqueue(new Orders(2001, 5001, "McChicken", "6001" , 4, "", "McDonald"));
     }
@@ -71,6 +72,7 @@ public class MainMenu {
                         System.out.print("Please Enter your Option : ");
                         int loginChoice = scan.nextInt();
                         if(loginChoice == 1){
+                            
                             CustomerLoggedIn = login.MainLogin(customer); // Initiate the method of LOGIN, if no success, it suppose to give empty object of CUSTOMER. Please Refer to ADT.
                              if(CustomerLoggedIn.getCustomerName() != ""){ // Check for Login Succesfull
                                     // parse it to Customer choose restaurant.

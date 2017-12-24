@@ -40,7 +40,7 @@ public class Login {
                 logged_customer = caccadt.LoginCustomer(Login, Password, CustomerList);
             }else{
                 System.out.print("Login Aborted or Failed Input for Login ID");
-                logged_customer = null;
+                logged_customer = new Customer();
             }
 
         
