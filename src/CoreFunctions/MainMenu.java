@@ -43,6 +43,7 @@ public class MainMenu {
         customer.add(new Customer(customer.getNumberofSize()+ 5001,"12345","Test" , "KL" , "1234"));
         orderlist.enqueue(new Orders(2000, 5000, "Fried chicken", "6000", 3, "", "KFC"));
         orderlist.enqueue(new Orders(2001, 5001, "McChicken", "6001" , 4, "", "McDonald"));
+        restaurantList.add(new Restaurant("KFC", "Address" , "Kentucky" , 123456));
     }
     
     public void MainMenuFunctions(){

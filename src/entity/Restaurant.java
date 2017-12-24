@@ -10,7 +10,7 @@ public class Restaurant implements Serializable{
     private String RestaurantName;
     private String RestaurantLocation;
     private String OwnerName;
-    private String RestaurantPhone;
+    private int RestaurantPhone;
     
     public Restaurant(){
         
@@ -20,7 +20,7 @@ public class Restaurant implements Serializable{
         this.IdNumber = IdNumber;
     }
     
-    public Restaurant(String RestaurantName, String RestaurantLocation, String OwnerName, String RestaurantPhone) {
+    public Restaurant(String RestaurantName, String RestaurantLocation, String OwnerName, int RestaurantPhone) {
         this.IdNumber = RestaurantID++;
         this.RestaurantName = RestaurantName;
         this.RestaurantLocation = RestaurantLocation;
@@ -68,11 +68,11 @@ public class Restaurant implements Serializable{
         this.OwnerName = OwnerName;
     }
     
-    public String getRestaurantPhone(){
+    public int getRestaurantPhone(){
         return RestaurantPhone;
     }
     
-    public void setRestaurantPhone(String RestaurantPhone){
+    public void setRestaurantPhone(int RestaurantPhone){
         this.RestaurantPhone = RestaurantPhone;
     }
 
@@ -112,6 +112,6 @@ public class Restaurant implements Serializable{
     
     @Override
     public String toString() {
-        return String.format("No : %10d / Name : %-20s / Location : %-20s / Owner Name : %-20s / Phone : %-20s \n",IdNumber,RestaurantName,RestaurantLocation,OwnerName,RestaurantPhone);
+        return String.format("No : %10d / Name : %-20s / Location : %-20s / Owner Name : %-20s / Phone : %10d \n",IdNumber,RestaurantName,RestaurantLocation,OwnerName,RestaurantPhone);
   }   
 }

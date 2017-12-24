@@ -14,6 +14,7 @@ public class RestaurantRegister{
     public LinkList<Restaurant> RestaurantRegistration(LinkList<Restaurant> oldRestaurantList){
         
         Scanner scan = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String answer;
         
         do{
@@ -27,8 +28,15 @@ public class RestaurantRegister{
             String OwnerName = scan.nextLine();
             
             System.out.println("You Restaurant Phone Number : ");
-            String restaurantPhone = scan.nextLine();
+            int restaurantPhone = 0;
             
+            try{
+                restaurantPhone = scanner.nextInt();
+            }catch(Exception ex){
+                System.out.println("Please Enter Correct Number");
+                break;
+            }
+                      
             RestaurantADT restaurantadt = new RestaurantADT();
             Restaurant newRestaurant  = new Restaurant(restaurantName , restaurantLocation, OwnerName, restaurantPhone);
             oldRestaurantList = restaurantadt.RegisterRestaurant(newRestaurant,oldRestaurantList);
@@ -37,6 +45,11 @@ public class RestaurantRegister{
             answer = scan.nextLine();
             
         }while( answer.equals("y") || answer.equals("Y")); 
+        
+        for(int i = 0; i < oldRestaurantList.getNumberofSize() ; i++){
+            System.out.println(oldRestaurantList.get(i));
+        }
+        
         return oldRestaurantList;
     }
 }
