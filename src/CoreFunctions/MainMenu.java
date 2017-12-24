@@ -38,8 +38,12 @@ public class MainMenu {
     Queue<Orders> orderlist = new Queue<Orders>();
     private void DefaultData(){
 
-       // staffList.Add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, ""));
-        //staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, ""));
+     //   staffList.Add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, "",0,0));
+       // staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, "",2,3));
+        customer.add(new Customer(customer.getNumberofSize()+ 5001,"12345","Test" , "KL" , "1234"));
+        orderlist.enqueue(new Orders(2000, 5000, "Fried chicken", "6000", 3, "", "KFC"));
+        orderlist.enqueue(new Orders(2001, 5001, "McChicken", "6001" , 4, "", "McDonald"));
+        restaurantList.add(new Restaurant("KFC", "Address" , "Kentucky" , 123456));
     }
     
     public void MainMenuFunctions(){
@@ -69,6 +73,7 @@ public class MainMenu {
                         System.out.print("Please Enter your Option : ");
                         int loginChoice = scan.nextInt();
                         if(loginChoice == 1){
+                            
                             CustomerLoggedIn = login.MainLogin(customer); // Initiate the method of LOGIN, if no success, it suppose to give empty object of CUSTOMER. Please Refer to ADT.
                              if(CustomerLoggedIn.getCustomerName() != ""){ // Check for Login Succesfull
                                     // parse it to Customer choose restaurant.
@@ -147,15 +152,17 @@ public class MainMenu {
                         DeliveryManUi dUI = new DeliveryManUi();
                         switch(dUI.MenuDisplay()){
                             case 1:                                                   
-                            //    loggedinstaff = dMenu.DeliveryManLogin(staffList);
+                                loggedinstaff = dMenu.DeliveryManLogin(staffList);
                                 dMenu.DeliveryManFunctionMenu(loggedinstaff);
                                 int couter = 1;
                                 while(couter ==1){
                                 System.out.println("================Functions===================");
                                 System.out.println("1.Clock in");
                                 System.out.println("2.Check order detail");
-                                System.out.println("3.Clock out");
-                                System.out.println("4.Log out");
+                                System.out.println("3.View personal detail");
+                                System.out.println("4.Break");
+                                System.out.println("5.Clock out");
+                                System.out.println("6.Log out");
                                 int Selection;
                                     do{
                                           System.out.println("Please key in your selection(integer): ");
@@ -167,11 +174,11 @@ public class MainMenu {
                                           scan.nextLine();
                                           Selection = 0;
                                           }
-                                          if(Selection<1 || Selection>4){
+                                          if(Selection<1 || Selection>6){
                                               System.out.println("Integer out of range!");
                                               System.out.println("Please key in your selection");
                                           }
-                                      }while(Selection<1 || Selection>4);
+                                      }while(Selection<1 || Selection>6);
 
                                     if(Selection ==1){
                                         String wStatus = "Available";
@@ -184,11 +191,68 @@ public class MainMenu {
 //                                            System.out.println(deliveryManList.get(0));         
 //                                            System.out.println(deliveryManList.get(1));
                                         }
-                                                                               
-                                    }else if(Selection == 2){
+
                                         
-                                        dMenu.DisplayOrder();                                        
+                                    }else if(Selection == 2){
+                                        String wStatus = "Available";
+                                        String wStatus1= "Break";
+                                        if(wStatus == loggedinstaff.getStaffWorkStatus() || wStatus1 == loggedinstaff.getStaffWorkStatus() ){
+                                            if(orderlist.getSize()>0){
+                                            dMenu.DisplayOrder(loggedinstaff, orderlist);   
+                                            System.out.println("================Functions===================");
+                                            System.out.println("Select 1 to start the delivery.");
+                                            System.out.println("1.Delivery");
+                                            System.out.println("2.Exit");
+
+                                            int Selection1;
+                                        do{
+                                              System.out.println("Please key in your selection(integer): ");
+                                              try{
+                                                  Selection1 = scan.nextInt();
+                                              }catch(Exception ex){
+                                              System.out.println("The selection you key in must be an integer."); 
+                                              System.out.println("Please enter your selection:");
+                                              scan.nextLine();
+                                              Selection1 = 0;
+                                              }
+                                              if(Selection1<1 || Selection1>2){
+                                                  System.out.println("Integer out of range!");
+                                                  System.out.println("Please key in your selection");
+                                              }
+                                          }while(Selection1<1 || Selection1>2);
+                                          if (Selection1 == 1){
+                                              dMenu.DeliveryOrder(loggedinstaff, orderlist);
+
+                                          }else if(Selection == 2){
+                                              clear.clearScreen();
+                                                System.out.println("Back to delivery man function menu...");
+                                          }
+
+
+                                            }else{
+                                                clear.clearScreen();
+                                                System.out.println("No order yet...");
+                                            }
+                                        }else{
+                                            clear.clearScreen();
+                                            System.out.println("Operation denied!");
+                                            System.out.println("You did not logged in.");
+                                        }       
                                     }else if(Selection == 3){
+                                        dMenu.PersonalDetail(loggedinstaff, deliveryManList);
+                                    }
+                                    else if(Selection == 4){
+                                        String wStatus = "Available";
+                                        if(wStatus == loggedinstaff.getStaffWorkStatus()){
+                                        dMenu.Break(loggedinstaff);
+                                        }else{
+                                            clear.clearScreen();
+                                            System.out.println("Operation denied!");
+                                            System.out.println("You did logged in or you already set your status as break.");
+                                        }  
+                                        
+                                    }
+                                    else if(Selection == 5){
                                         String wStatus = "Available";
                                         String wStatus1= "Break";
                                         if(wStatus == loggedinstaff.getStaffWorkStatus() || wStatus1 == loggedinstaff.getStaffWorkStatus() ){
@@ -197,10 +261,8 @@ public class MainMenu {
                                             clear.clearScreen();
                                             System.out.println("Operation denied!");
                                             System.out.println("You did not logged in.");
-                                        }
-                                        
-                                        
-                                    }else if(Selection == 4){
+                                        }                                       
+                                    }else if(Selection == 6){
                                         couter = 2;
                                         System.out.println("You had logged out the system.");
                                         MainMenuFunctions();

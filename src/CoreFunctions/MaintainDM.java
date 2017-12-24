@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package CoreFunctions;
 
 import ADT.*;
@@ -56,8 +52,11 @@ public class MaintainDM {
             System.out.print("Deliver Man Password:");
             staff.setStaffPassword(getUniqueEmpPass());
             
-            
+            int n =0;
+            double  c= 0.00;
             staff.setStaffWorkStatus("");
+            staff.setTotalDelivery(n);
+            staff.setTotalDistance(c);
             
             
             
@@ -94,13 +93,8 @@ public class MaintainDM {
        MaintainDM main = new MaintainDM();
        main.DisplayStaffRecord(staffList,id);
        
-      
-       //int staffID= staffList.GetEntry(0).getStaffID();
-       //staff = staffList.GetEntry(staffID-1000);
-      
-             
         System.out.println("Key in the value you wish to update");
-      //  int newid = staff.getStaffID();
+     
        
         System.out.println("Name :");
         String name = scanName.next();
@@ -116,11 +110,11 @@ public class MaintainDM {
         
         System.out.println("Status:");
         String status = scanStatus.next();
-      //  int staffID, String staffName, String staffPhone, String address,int staffAge, String staffStatus
+      
         
         Staff updateStaff = new Staff(id,name,number,address,age,status);
         int temop = id;
-        id = id - 1001;
+        id = id - 1000;
         Staff remove = staffList.GetEntry(id);
          
       
@@ -135,9 +129,7 @@ public class MaintainDM {
      public DoublyLinkedList<Staff>DisplayStaffRecord(DoublyLinkedList<Staff> staffList,int staffid)
      {
        Staff staffinfo = new Staff();
-      //   System.out.println(staffList.getSize());
-      //   System.out.println(staffList.GetEntry(0).getStaffPassword());
-         
+      
 
       for(int i=0;i<staffList.getSize();i++)
         {
@@ -209,19 +201,21 @@ public class MaintainDM {
      //   LinkList<Orders> test2list = new LinkList<Orders>();
         
 
-  Staff stafflist = new Staff(1001,"Chim","123","tbr",12,"active",123456,"no",12,20.00);
-  Staff stafflist2 = new Staff(1002,"aw","123","tbr",12,"active",123456,"no",80,20.00);
- Staff stafflist3 = new Staff(1003,"dierereru","123","tbr",12,"active",123456,"no",70,20.00);
+ // Staff stafflist = new Staff(1001,"Chim","123","tbr",12,"active",123456,"no",12,20.00);
+//  Staff stafflist2 = new Staff(1002,"aw","123","tbr",12,"active",123456,"no",80,20.00);
+ //Staff stafflist3 = new Staff(1003,"dierereru","123","tbr",12,"active",123456,"no",70,20.00);
 
-    testlist.Add(stafflist);
-    testlist.Add(stafflist2);
-    testlist.Add(stafflist3);
-    
-    //DM.UpdateStaffInfo(testlist);
-    DM.DailyTransaction(testlist);
+   // testlist.Add(stafflist);
+   // testlist.Add(stafflist2);
+   // testlist.Add(stafflist3);
+    DM.createStaffRecord(testlist);
+    DM.UpdateStaffInfo(testlist);
+  //  DM.DailyTransaction(testlist);
    
          
      }
     
 }
+
+
 

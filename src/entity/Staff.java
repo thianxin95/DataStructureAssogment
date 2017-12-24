@@ -36,7 +36,7 @@ public class Staff {
      }
      public Staff(int staffID, String staffName, String staffPhone, String address,int staffAge, String staffStatus)
      {
-           this.staffID=staffID;
+         this.staffID=staffID;
          this.staffName=staffName;
          this.staffPhone=staffPhone;
          this.staffAddress=address;
@@ -101,10 +101,10 @@ public class Staff {
     public void setTotalDelivery( int totalDelivery){
    this.totalDelivery=totalDelivery;
 }
-    public double getDistance(){
+    public double getTotalDistance(){
    return totalDistance;
 }
-    public void setDistance( int totalDistance){
+    public void setTotalDistance(double  totalDistance){
    this.totalDistance=totalDistance;
 }
 
