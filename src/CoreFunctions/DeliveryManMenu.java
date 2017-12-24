@@ -7,8 +7,12 @@ package CoreFunctions;
 
 
 //import ADT.DeliveryManADT;
+import ADT.DoubleLinkListADT;
 import ADT.LinkList;
+import ADT.LinkedStack;
+import ADT.Queue;
 import entity.DeliveryMan;
+import entity.FoodDelivered;
 import entity.Orders;
 import entity.Staff;
 import java.text.DateFormat;
@@ -23,11 +27,9 @@ import java.util.Scanner;
  */
 public class DeliveryManMenu {
     ClearScreen clear = new ClearScreen();
-    //private LinkList<DeliveryMan> deliveryManList = new LinkList<DeliveryMan>();
     Scanner scanner = new Scanner(System.in);
     private DeliveryMan DeliveryManLoggedIn = new DeliveryMan();
-    Staff staff = new Staff();
-     //private LinkList<Staff> stafflist = new LinkList<Staff>();
+   // Staff staff = new Staff();
      private Staff user;
     
      
@@ -64,9 +66,65 @@ public class DeliveryManMenu {
 //        System.out.println(deliveryManList.get(0));
 //        System.out.println(deliveryManList.get(1));        
         staff.setStaffWorkStatus("Available");
-//        System.out.println(staff.getStaffWorkStatus());
-  
-       
+//        System.out.println(staff.getStaffWorkStatus());                 
+    }
+    
+    public void PersonalDetail(Staff staff, LinkList<DeliveryMan> deliveryManList){
+        clear.clearScreen();
+        System.out.println("===========Presonal information===========");
+        System.out.println("ID           : " + staff.getStaffID());
+        System.out.println("Name         : " + staff.getStaffName());
+        System.out.println("Phone number : " + staff.getStaffPhone());
+        System.out.println("Home address : " + staff.getStaffAddress());
+        System.out.println("\n");
+        System.out.println("=======Clock in & clock out record=======");
+//        int i = deliveryManList.getNumberofSize();
+//        int j = i - 1;
+    
+     System.out.println("Name                 ID                      Check In Date            Check out Date");
+    
+        for(int a = 0; a<deliveryManList.getNumberofSize(); a++){
+            if(staff.getStaffName() == deliveryManList.get(a).getStaffName()){
+                
+            System.out.println(deliveryManList.get(a));
+        }
+        }
+        
+
+    }
+    
+    public void Break(Staff staff){
+        clear.clearScreen();
+        System.out.println("Do you want to set your work status to break?");
+        System.out.println("1.Yes");
+        System.out.println("2.No");
+            int Selection;
+        do{
+              System.out.println("Please key in your selection(integer): ");
+              try{
+                  Selection = scanner.nextInt();
+              }catch(Exception ex){
+              System.out.println("The selection you key in must be an integer."); 
+              System.out.println("Please enter your selection:");
+              scanner.nextLine();
+              Selection = 0;
+              }
+              if(Selection<1 || Selection>2){
+                  System.out.println("Integer out of range!");
+                  System.out.println("Please key in your selection");
+              }
+          }while(Selection<1 || Selection>2);
+        if(Selection == 1){
+            clear.clearScreen();
+            staff.setStaffWorkStatus("Break");
+            System.out.println("Work status change successful!");
+            System.out.println(staff.getStaffWorkStatus());
+            
+        }else if(Selection == 2){
+            clear.clearScreen();
+            System.out.println("Back to previous page...");
+        }
+        
         
     }
     
@@ -78,38 +136,102 @@ public class DeliveryManMenu {
         System.out.println("GoodBye "+ staff.getStaffName()+"!");
         System.out.println("Have a nice day...");
         System.out.println("You clock out at : "+dateFormat.format(dateOut));
-        staff.setStaffStatus("Not on duty");
-        System.out.println("Work status changed to " + staff.getStaffStatus() +"...");
-        int i = deliveryManList.getNumberofSize();
-        int j = i - 1;
-        System.out.println(i);
-        String checkOut = dateFormat.format(dateOut);
+        staff.setStaffWorkStatus("Not on duty");
+        System.out.println("Work status changed to " + staff.getStaffWorkStatus() +"...");
+        String checkOut = dateFormat.format(dateOut);        
+
+        String status = "Pending";
+        for(int a = 0; a<deliveryManList.getNumberofSize(); a++){
+
+            if(staff.getStaffName() == deliveryManList.get(a).getStaffName() && status == deliveryManList.get(a).getCheckOut()){
+                deliveryManList.get(a).setCheckOut(checkOut);
+                
+//                System.out.println("LOOK AT HERE");
+            }
         
-        //deliveryManList.get(i).setCheckOut(checkOut);
-        deliveryManList.get(j).setCheckOut(checkOut);
-      // deliveryManList.get().setCheckOut(checkOut);
-        System.out.println(deliveryManList.get(0));
-        System.out.println(i);
-        System.out.println(deliveryManList.get(1));
-        System.out.println(i);
-//        System.out.println(deliveryManList.get(2));
+        }
+        //        System.out.println(deliveryManList.get(0));
 //        System.out.println(i);
+//        System.out.println(deliveryManList.get(1));
+//        System.out.println(i);
+
 
     }
     
-    public void DisplayOrder(){
-        System.out.println("NO ORDER YET");
+    
+    public void DisplayOrder(Staff staff, Queue<Orders> orderlist){
+            clear.clearScreen();
+            System.out.println("Order available!");
+            System.out.println("Order ID            : " + orderlist.getFront().getOrderID());
+            System.out.println("Customer ID         : " + orderlist.getFront().getOrderCustomerID());
+            System.out.println("Name of order       : " + orderlist.getFront().getOrderName());
+            System.out.println("Product ID          : " + orderlist.getFront().getOrderProductID());
+            System.out.println("Quantity of product : " + orderlist.getFront().getProductQuantity());
+            System.out.println("Name of Restaurant  : " + orderlist.getFront().getRestaurantName());
     }
     
+    public void DeliveryOrder(Staff staff, Queue<Orders> orderlist){
+        orderlist.dequeue();
+        System.out.println("Please key in the distance of the route:");
+        double route = scanner.nextDouble();
+        double totalRoute = 0;
+        totalRoute = staff.getTotalDistance();       
+        totalRoute = route + totalRoute;
+        int totalDelivered = 0;
+        totalDelivered = staff.getTotalDelivery();
+        totalDelivered++;
+        staff.setTotalDelivery(totalDelivered);
+        staff.setTotalDistance(totalRoute);
+        System.out.println("Enter 1 if you picked up the order item: ");
+            int Selection1;
+            do{
+                  System.out.println("");
+                  try{
+                      Selection1 = scanner.nextInt();
+                  }catch(Exception ex){
+                  System.out.println("The selection you key in must be an integer."); 
+                  System.out.println("Please enter your selection:");
+                  scanner.nextLine();
+                  Selection1 = 0;
+                  }
+                  if(Selection1<1 || Selection1>1){
+                      System.out.println("Integer out of range!");
+                      System.out.println("Please key in your selection");
+                  }
+              }while(Selection1<1 || Selection1>1);
+            if(Selection1 == 1){
+                        System.out.println("Enter 1 if you had delivered the order item: ");
+                           int Selection;
+                    do{
+                          System.out.println("");
+                          try{
+                              Selection = scanner.nextInt();
+                          }catch(Exception ex){
+                          System.out.println("The selection you key in must be an integer."); 
+                          System.out.println("Please enter your selection:");
+                          scanner.nextLine();
+                          Selection = 0;
+                          }
+                          if(Selection<1 || Selection>1){
+                              System.out.println("Integer out of range!");
+                              System.out.println("Please key in your selection");
+                          }
+                      }while(Selection<1 || Selection>1);
+                                if(Selection == 1){
+                                    clear.clearScreen();
+                                    System.out.println("******Order successful delivered******");
+                                }
+                
+            }
+        
+//        System.out.println(staff.getStaffName());
+//        System.out.println(staff.getTotalDistance());
+//        System.out.println(staff.getTotalDelivery());                      
+    }
     
    
-   public Staff DeliveryManLogin(LinkList<Staff> staffList){
-       //deliveryManList.add(0,new DeliveryMan (1000, "123456", "Lee Thian Xin", "0143468777", "Kuala Lumpur", 18, "", "", ""));
-      // Staff staff1 = new Staff(1000, "Lee Thian Xin", 7774456, "Kuala Lumpur",18, "", 123456);
-       //Staff staff2 = new Staff(1001, "Dicky", 7774456, "Kuala Kangsar",18, "", 122222);
-       //stafflist.add(staff1);
-       //stafflist.add(staff2);
-       clear.clearScreen();
+   public Staff DeliveryManLogin(DoubleLinkListADT<Staff> staffList){
+//       clear.clearScreen();
        int successLogin = 0;
        int authorization = 0;
        while(successLogin == 0){
@@ -118,12 +240,12 @@ public class DeliveryManMenu {
             System.out.println("Please key in your password: ");
             int pass = scanner.nextInt();
         int i= 0;
-        for(i=0;i<staffList.getNumberofSize();i++){
+        for(i=0;i<staffList.getSize();i++){
             //if(authorization < 2){
              
-                if(userID == staffList.get(i).getStaffID() && pass == staffList.get(i).getStaffPassword()){
+                if(userID == staffList.GetEntry(i).getStaffID() && pass == staffList.GetEntry(i).getStaffPassword()){
                     System.out.println("Logged In"); 
-                    user = staffList.get(i);
+                    user = staffList.GetEntry(i);
                     successLogin = 1;
                     authorization = 0;
                     

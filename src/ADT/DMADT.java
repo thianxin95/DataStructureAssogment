@@ -86,7 +86,7 @@ public class DMADT<T> implements MaintainDM<T> {
                   staffList.GetEntry(i).getStaffID();
                   staffList.GetEntry(i).getStaffName();
                   staffList.GetEntry(i).getTotalDelivery();
-                  staffList.GetEntry(i).getDistance();
+                  staffList.GetEntry(i).getTotalDistance();
                  System.out.println(staffList.toString());
               }
                if(staffList.GetEntry(i).getTotalDelivery() == reverse[0]){

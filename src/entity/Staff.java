@@ -101,10 +101,10 @@ public class Staff {
     public void setTotalDelivery( int totalDelivery){
    this.totalDelivery=totalDelivery;
 }
-    public double getDistance(){
+    public double getTotalDistance(){
    return totalDistance;
 }
-    public void setDistance( int totalDistance){
+    public void setTotalDistance(double  totalDistance){
    this.totalDistance=totalDistance;
 }
 
