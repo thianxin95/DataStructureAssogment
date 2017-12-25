@@ -5,6 +5,7 @@ import ADT.*;
 import JavaInterfaces.*;
 import java.util.*;
 import entity.*;
+import java.text.SimpleDateFormat;
 
 public class MaintainDM {
    int empPass;
@@ -162,7 +163,7 @@ public class MaintainDM {
          
         System.out.println("The pending order list:");
         System.out.println("List of food order\n");
-        System.out.println(String.format("%-10s %-12s %-12s %-12s %-12s %-12s\n", "Order ID", "Customer ID", "Order Name", "Order Product ID", "Product Quantity", "Payment Status"));
+        System.out.println(String.format("%-10s %-12s %-12s %-17s %-15s %-12s\n", "Order ID", "Customer ID", "Order Name", "Order Product ID", "Product Quantity", "Payment Status"));
         menuadt.RetrievePending(orderList);
         
        
@@ -172,10 +173,23 @@ public class MaintainDM {
     public DoublyLinkedList<Staff>DailyTransaction( DoublyLinkedList<Staff> staffList)
     {
         DMADT dmadt = new DMADT();
-      
+       int totalDelivery=0;
+        double totalDistance=0.00;
         System.out.println("Daily Transaction Report\n");
-        System.out.println(String.format("%-10s %-12s %-12s %-12s\n", "Delivery Man ID", "Delivery Man", "Total Delivery ", "Total Distance"));
+        String timeStamp = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
+        System.out.println("Today :"+timeStamp);
         dmadt.DailyTransactionReport(staffList);
+        
+        for(int i=0;i<staffList.getSize();i++)
+             
+        {
+           
+            totalDelivery+=staffList.GetEntry(i).getTotalDelivery();
+            totalDistance+=staffList.GetEntry(i).getTotalDistance();
+        }
+        System.out.print("\t\t\t\t\t\tTotal Delivery:"+totalDelivery+"\t\t");
+        System.out.println("Total Distance:"+totalDistance);
+        
         return staffList;
     }
      
@@ -201,16 +215,17 @@ public class MaintainDM {
      //   LinkList<Orders> test2list = new LinkList<Orders>();
         
 
- // Staff stafflist = new Staff(1001,"Chim","123","tbr",12,"active",123456,"no",12,20.00);
-//  Staff stafflist2 = new Staff(1002,"aw","123","tbr",12,"active",123456,"no",80,20.00);
- //Staff stafflist3 = new Staff(1003,"dierereru","123","tbr",12,"active",123456,"no",70,20.00);
+ Staff stafflist = new Staff(1000,"Chim","123","tbr",12,"active",123456,"no",12,20.00);
+  Staff stafflist2 = new Staff(1001,"aw","123","tbr",12,"active",123456,"no",80,20.00);
+ Staff stafflist3 = new Staff(1002,"dierereru","123","tbr",12,"active",123456,"no",70,20.00);
 
-   // testlist.Add(stafflist);
-   // testlist.Add(stafflist2);
-   // testlist.Add(stafflist3);
+    testlist.Add(stafflist);
+    testlist.Add(stafflist2);
+   testlist.Add(stafflist3);
     DM.createStaffRecord(testlist);
     DM.UpdateStaffInfo(testlist);
-  //  DM.DailyTransaction(testlist);
+    DM.DailyTransaction(testlist);
+  
    
          
      }

@@ -30,7 +30,7 @@ public class DMADT<T> implements MaintainDM<T> {
     public DoublyLinkedList<Staff> Delete( Staff removeStaff,DoublyLinkedList<Staff> staffList)
     {
         staffList.deleteNode(removeStaff);
-        return staffList;
+         return staffList;
     }
 
 

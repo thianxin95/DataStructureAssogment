@@ -25,23 +25,22 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
     @Override
       public void Add(T newEntry) {
       
-        Node newNode = new Node(newEntry);    
-        if(first == null){
-            first = newNode;
-            last = newNode;
-        }else{
-            newNode.left = last;
-            last.right = newNode;
-        }
-        last = newNode;
-        size ++ ;
+    Node temp = new Node(newEntry);
+    if (first == null) {
+        first = temp;
+    } else {
+        last.right = temp;
+        temp.left = last;
+    }
+    last = temp;
+    size++;
+
     }
 
     
     @Override
     public boolean deleteNode(T anEntry)
-    {
-   if(first == null){
+    {if(first == null){
             return false;
         }else if(first.data.equals(anEntry)){
             //remove first node
@@ -137,7 +136,7 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
         test.Add(1);
         test.Add(2);
         test.Add(3);
-        test.deleteNode(2);
+      //  test.deleteNode(2);
         System.out.println("Test get :" + test.GetEntry(0));
         System.out.println("Test get 2:"  + test.GetEntry(1));
         System.out.println("Test get 3: " + test.GetEntry(2));
