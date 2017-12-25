@@ -29,6 +29,7 @@ public class MaintainMenu{
             if(checkFirstId != 'F' && checkFirstId != 'D'){
                 System.out.println("Please Enter Valid ID (\"F\" as Food , \"D\" as Drink)");
                 RegisterMenu(oldMenuList,restaurantName);
+                break;
             }
             
             System.out.println("Menu Name : ");
