@@ -59,8 +59,7 @@ public class MainMenu {
             System.out.println("1.Login to Customer Area");
             System.out.println("2.Login to Restaurant Onwer Area");
             System.out.println("3.Login to Staff Area");
-            System.out.println("4.Register an Account");
-            System.out.println("5.HR Area");
+            System.out.println("4.HR Area");
             System.out.println("==========================");
             System.out.print("Enter Your Choice : ");
             int answer = scan.nextInt();
@@ -286,7 +285,7 @@ public class MainMenu {
                         }
                         break;
 
-                    case 5:
+                    case 4:
                        
                                 int ContinueHuman= 1;
                                 while(ContinueHuman == 1){
