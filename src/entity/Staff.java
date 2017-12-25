@@ -113,5 +113,9 @@ public class Staff {
     public String toString() {
          return String.format("Staff ID : %5d  Name : %-20s  Total Delivery : %10d  Total Distance : %-20.2f \n",staffID,staffName,totalDelivery,totalDistance);
      }  
+    
+    public String toString1(){
+        return String.format("%-12d %-20s %-20s %-12s", staffID, staffName, staffPhone, staffWorkStatus);
+    }
 
 }
