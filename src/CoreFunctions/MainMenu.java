@@ -41,8 +41,10 @@ public class MainMenu {
      //   staffList.Add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, "",0,0));
        // staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, "",2,3));
         customer.add(new Customer(customer.getNumberofSize()+ 5001,"12345","Test" , "KL" , "1234"));
-        orderlist.enqueue(new Orders(2000, 5000, "Fried chicken", "6000", 3, "", "KFC"));
-        orderlist.enqueue(new Orders(2001, 5001, "McChicken", "6001" , 4, "", "McDonald"));
+    //    orderlist.enqueue(new Orders(2000, 5000, "Fried chicken", "6000", 3, "Paid", "KFC"));
+    //    orderlist.enqueue(new Orders(2001, 5001, "McChicken", "6001" , 4, "Paid", "McDonald"));
+  //      orderlist.enqueue(new Orders(2001, 5001, "McChicken2", "6001" , 4, "Paid", "McDonald"));
+   //     orderlist.enqueue(new Orders(2001, 5001, "McChicken3", "6001" , 4, "Paid", "McDonald"));
         restaurantList.add(new Restaurant("KFC", "Address" , "Kentucky" , 123456));
     }
     
@@ -79,7 +81,7 @@ public class MainMenu {
                                     // parse it to Customer choose restaurant.
                                     CustomerMenu cmenu = new CustomerMenu();
                                     //System.out.print("Test Restaurant return : " + restaurantList.get(0).getOwnerName()); 
-                                    orderlist = cmenu.CustomerMenu(CustomerLoggedIn, restaurantList , menuList); // RestaurantList does not goes to the method, printing nothing atm.
+                                    orderlist = cmenu.CustomerMenu(CustomerLoggedIn, restaurantList , menuList , orderlist); // RestaurantList does not goes to the method, printing nothing atm.
                                     break;
                             }else{
                                  System.out.println("Login Unsuccesful\n\n\n");
@@ -314,9 +316,10 @@ public class MainMenu {
                                   HR.UpdateStaffInfo(staffList);
                                 }
                                 else if(answer5==4){
-                                   HR.PendingOrder(orderlist);
+                                   Queue<Orders> pendingOrder = orderlist;
+                                   HR.PendingOrder(pendingOrder);
                                        
-                                            }
+                                 }
                                 else if(answer5==5){
                                     
                                     

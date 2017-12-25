@@ -161,7 +161,7 @@ public class MaintainDM {
     public ADT.Queue<Orders> PendingOrder(ADT.Queue<Orders> orderList)
      {
          
-        System.out.println("The pending order list:");
+        System.out.println("The pending order list to be delivered:");
         System.out.println("List of food order\n");
         System.out.println(String.format("%-10s %-12s %-12s %-17s %-15s %-12s\n", "Order ID", "Customer ID", "Order Name", "Order Product ID", "Product Quantity", "Payment Status"));
         menuadt.RetrievePending(orderList);

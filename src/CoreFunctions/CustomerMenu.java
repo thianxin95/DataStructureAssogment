@@ -22,8 +22,8 @@ public class CustomerMenu {
     
     Scanner scan = new Scanner(System.in);
     LinkList<Items> itemlist = new LinkList<Items>(); 
-    Queue<Orders> orderQueue = new Queue<Orders>();
-    public Queue<Orders> CustomerMenu(Customer customer, LinkList<Restaurant> restaurantList, LinkList<Menu> menulist){
+//    Queue<Orders> orderQueue = new Queue<Orders>();
+    public Queue<Orders> CustomerMenu(Customer customer, LinkList<Restaurant> restaurantList, LinkList<Menu> menulist , Queue<Orders> oldOrders){
         String details = "";
         System.out.println();
         System.out.println();
@@ -68,7 +68,7 @@ public class CustomerMenu {
                         System.out.println("Payment Accepted. Thank you for your purchase and please come again!");
                         for(int i = 0 ; i < itemlist.getNumberofSize(); i ++){
                             Orders order = new Orders(orderID, orderID, itemlist.get(i).getItemName(), itemlist.get(i).getProductID() ,itemlist.get(i).getQuantity(), "Paid", restaurantList.get(choice).getRestaurantName());
-                            orderQueue.enqueue(order);
+                            oldOrders.enqueue(order);
                         }
                         try{
                             Thread.sleep(3000);
@@ -94,7 +94,7 @@ public class CustomerMenu {
         }
 
         
-        return orderQueue;
+        return oldOrders;
     }
     
     public void CategoryList(LinkList<Menu> menulist, String RestuarantName){

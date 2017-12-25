@@ -43,19 +43,19 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
     {if(first == null){
             return false;
         }else if(first.data.equals(anEntry)){
-            //remove first node
+            
             first.left = null;
             first = first.right;
             size--;
             return true;
         }else if(last.data.equals(anEntry)){
-            //remove last node
+           
             last = last.left;
             last.right = null;
             size--;
             return true;
         }else{
-            //remove middle node
+           
             Node currentNode = first;
             while(currentNode != null){
                 if(currentNode.data.equals(anEntry)){
@@ -110,6 +110,8 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
        
        return result;
    }
+   
+  
 
 
    
