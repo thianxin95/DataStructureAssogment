@@ -46,7 +46,7 @@ public class CustomerMenu {
                     int continuechoice = 1;
                     while(continuechoice == 1){
                         CategoryList(menulist, restaurantList.get(choice).getRestaurantName());
-                        System.out.print("Added Succesfully, Continue? (1 = y, 2 = no) ?:");
+                        System.out.print("Continue making Order? (1 = yes, 2 = no) ?:");
                         continuechoice = scan.nextInt();
                     }
                     String OrderList = "";
@@ -56,39 +56,42 @@ public class CustomerMenu {
                         totalprice =( itemlist.get(i).getQuantity() * itemlist.get(i).getitemPrice() ) + totalprice;
                         OrderList += (i + 1) + ". " + itemlist.get(i) + "\n";
                     }
-                    System.out.println("Here is a list of your order");
-                    System.out.println(OrderList);
-                    
-                    System.out.print("");
-                     System.out.println("Total Amount: RM" + totalprice);
-                    System.out.print("Make Payment now? (1 = yes / 2 = no)");
-                    int makePayment = scan.nextInt();
-                    int orderID = customer.getCustomerID();
-                    if(makePayment == 1){
-                        System.out.println("Payment Accepted. Thank you for your purchase and please come again!");
-                        for(int i = 0 ; i < itemlist.getNumberofSize(); i ++){
-                            Orders order = new Orders(orderID, orderID, itemlist.get(i).getItemName(), itemlist.get(i).getProductID() ,itemlist.get(i).getQuantity(), "Paid", restaurantList.get(choice).getRestaurantName());
-                            orderQueue.enqueue(order);
-                        }
-                        try{
-                            Thread.sleep(3000);
-                        }catch(Exception e){
-                            
-                        }
-                    }if(makePayment == 2){
-                        System.out.println("Order Canceled. Come again next time");
-                        try{
-                            Thread.sleep(3000);
-                        }catch(Exception e){
-                            
+                    if(OrderList != ""){
+                        System.out.println("Here is a list of your order");
+                        System.out.println(OrderList);
+
+                        System.out.print("");
+                         System.out.println("Total Amount: RM" + totalprice);
+                        System.out.print("Make Payment now? (1 = yes / 2 = no)");
+                        int makePayment = scan.nextInt();
+                        int orderID = customer.getCustomerID();
+                        if(makePayment == 1){
+                            System.out.println("Payment Accepted. Thank you for your purchase and please come again!");
+                            for(int i = 0 ; i < itemlist.getNumberofSize(); i ++){
+                                Orders order = new Orders(orderID, orderID, itemlist.get(i).getItemName(), itemlist.get(i).getProductID() ,itemlist.get(i).getQuantity(), "Paid", restaurantList.get(choice).getRestaurantName());
+                                orderQueue.enqueue(order);
+                            }
+                            try{
+                                Thread.sleep(3000);
+                            }catch(Exception e){
+
+                            }
+                        }if(makePayment == 2){
+                            System.out.println("Order Canceled. Come again next time");
+                            try{
+                                Thread.sleep(3000);
+                            }catch(Exception e){
+
+                            }
                         }
                     }else{
-                    System.out.println("Sorry, incorrect input.");
+                    System.out.println("Sorry, incorrect input or Empty checkout item, abort.");
                     }
                     
                 }else{
                     System.out.println("Sorry, incorrect input.");
                 }
+                
         }else{
             System.out.println("At this time, there is no restaurant in the system.\nPlease wait for Restaurant Owners to add theirs.\nReturning....");
         }
@@ -105,6 +108,7 @@ public class CustomerMenu {
         System.out.println("1. Food");
         System.out.println("2. Beverage");
   //      System.out.println("3. Desserts");
+        int Emptymenu = 1;
         System.out.println("Please enter your choice :");
         int catchoice = scan.nextInt();
         if (catchoice == 1 ){
@@ -112,41 +116,49 @@ public class CustomerMenu {
             System.out.println("\n\nFood");
             System.out.println("==============");
             System.out.println("MenuID  MenuName    MenuPrice");
+            
             for(int i = 0; i< menulist.getNumberofSize(); i ++){
                 if(menulist.get(i).getRestaurantName() == RestuarantName){
                       if(menulist.get(i).getMenuId().charAt(0) == 'F'){
                           System.out.printf("%-6s %-12s %-12s\n", menulist.get(i).getMenuId(), menulist.get(i).getMenuName() , menulist.get(i).getMenuPrice());
+                          Emptymenu =0;
                       } 
                 }
             }
-            scan.nextLine(); // Consumes \n after nextINT
-            System.out.println("Please enter MenuID you desire :");
-            String foodChoice = "";
-            if(scan.hasNext()){
-                foodChoice = scan.nextLine();
-                if(foodChoice.charAt(0) == 'F'){
-                    for(int i = 0; i< menulist.getNumberofSize(); i++){
-                        if(menulist.get(i).getMenuId().equals(foodChoice)){ //bugged start
-                            System.out.print("Please enter the Quantity");
-                            quantity = scan.nextInt();
-                            Items items = new Items(menulist.get(i).getMenuName(), "Food" , menulist.get(i).getMenuPrice(), quantity , foodChoice);
-                            itemlist.add(items);
-                        } // bugged
+            if(Emptymenu == 0){
+                scan.nextLine(); // Consumes \n after nextINT
+                System.out.println("Please enter MenuID you desire :");
+                String foodChoice = "";
+                if(scan.hasNext()){
+                    foodChoice = scan.nextLine();
+                    if(foodChoice.charAt(0) == 'F'){
+                        for(int i = 0; i< menulist.getNumberofSize(); i++){
+                            if(menulist.get(i).getMenuId().equals(foodChoice)){ //bugged start
+                                System.out.print("Please enter the Quantity : ");
+                                quantity = scan.nextInt();
+                                Items items = new Items(menulist.get(i).getMenuName(), "Food" , menulist.get(i).getMenuPrice(), quantity , foodChoice);
+                                itemlist.add(items);
+                            } // bugged
+                        }
+
+
+
+                    }else{
+                        System.out.println("Sorry, incorrect input.");
                     }
-                    
-                    
-                    
+
                 }else{
                     System.out.println("Sorry, incorrect input.");
                 }
-                
             }else{
-                System.out.println("Sorry, incorrect input.");
+                System.out.println("Sorry, Empty Menu");
             }
+                   
             //String ItemName, String Category, int itemPrice , int quantity
 
         }if(catchoice ==  2){
             //Beverages
+            int EmptyMenuB = 1;
             System.out.println("\n\nBeverages");
             System.out.println("==============");
              System.out.println("MenuID  MenuName    MenuPrice");
@@ -154,35 +166,35 @@ public class CustomerMenu {
                 if(menulist.get(i).getRestaurantName() == RestuarantName){
                       if(menulist.get(i).getMenuId().charAt(0) == 'D'){
                           System.out.printf("%-6s %-12s %-12s\n", menulist.get(i).getMenuId(), menulist.get(i).getMenuName() , menulist.get(i).getMenuPrice() );
+                          EmptyMenuB = 0;
                       } 
                 }
             }
-            scan.nextLine(); // Consumes \n after nextINT
-            System.out.println("Please enter MenuID you desire :");
-            String foodChoice = "";
-            if(scan.hasNext()){
-                foodChoice = scan.nextLine();
-                if(foodChoice.charAt(0) == 'D'){
-                    for(int i = 0; i< menulist.getNumberofSize(); i ++){
-                        if(menulist.get(i).getMenuId().equals(foodChoice)){
-                            System.out.print("Please enter the Quantity");
-                            quantity = scan.nextInt();
-                            Items items = new Items(menulist.get(i).getMenuName(), "Drinks" , menulist.get(i).getMenuPrice(), quantity, foodChoice);
-                            itemlist.add(items);
+            if(EmptyMenuB==0){
+                scan.nextLine(); // Consumes \n after nextINT
+                System.out.println("Please enter MenuID you desire :");
+                String foodChoice = "";
+                if(scan.hasNext()){
+                    foodChoice = scan.nextLine();
+                    if(foodChoice.charAt(0) == 'D'){
+                        for(int i = 0; i< menulist.getNumberofSize(); i ++){
+                            if(menulist.get(i).getMenuId().equals(foodChoice)){
+                                System.out.print("Please enter the Quantity : ");
+                                quantity = scan.nextInt();
+                                Items items = new Items(menulist.get(i).getMenuName(), "Drinks" , menulist.get(i).getMenuPrice(), quantity, foodChoice);
+                                itemlist.add(items);
+                            }
                         }
-                    }
-                    
-                    
-                    
-                }else{
-                    System.out.println("Sorry, incorrect input.");
+
+
+
+                    }else{
+                        System.out.println("Sorry, incorrect input.");
+                    } 
                 }
-           
+            }else{
+                System.out.println("Sorry, Empty Menu");
+            }
         }
-        
-    }
-    
-    
-    
     }
 }

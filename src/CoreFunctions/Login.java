@@ -62,11 +62,11 @@ public class Login {
         System.out.println("==============================");
         System.out.print("Please enter your Name :");
         String Name = scan.nextLine();
-        System.out.print("Please enter your password:");
+        System.out.print("Please enter your password :");
         String Password = scan.nextLine();
-        System.out.print("Please enter your address");
+        System.out.print("Please enter your address :");
         String Address = scan.nextLine();
-        System.out.print("Please enter your phone number");
+        System.out.print("Please enter your phone number :");
         String CustomerPhone = scan.nextLine();
         
         CustomerAccADT caccadt = new CustomerAccADT();
