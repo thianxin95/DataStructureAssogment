@@ -13,9 +13,10 @@ import ADT.LinkedStack;
 import ADT.Queue;
 import entity.Customer;
 import entity.DeliveryMan;
-import entity.FoodDelivered;
+
 import entity.Orders;
 import entity.Staff;
+import entity.TrackOrder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -190,14 +191,16 @@ public class DeliveryManMenu {
 
               
               for(int j = 0; j<customer.getNumberofSize(); j++){
-                  if(orderlist.getFront().getOrderCustomerID() == customer.getEntry(j).getCustomerID())
-                      System.out.println("Customer address: " + customer.getEntry(j).getCustomerAddress());                                       
+                  if(orderlist.getFront().getOrderCustomerID() == customer.get(j).getCustomerID())
+                      System.out.println("Customer address: " + customer.get(j).getCustomerAddress());                                       
               }              
     }
     
-    public void DeliveryOrder(Staff staff, Queue<Orders> orderlist){
+    public void DeliveryOrder(Staff staff, Queue<Orders> orderlist, LinkList<TrackOrder> trackOrderList){
         int id = orderlist.getFront().getOrderCustomerID();
-        System.out.println(id);
+        System.out.println(id);//for verify purpose
+        
+        
         
         if(orderlist.getSize()>1){
         do{
@@ -210,6 +213,10 @@ public class DeliveryManMenu {
                       
         System.out.println("Please key in the distance of the route:");
         double route = scanner.nextDouble();
+        double remainTime;
+        remainTime = route * 2;
+        TrackOrder tOrder = new TrackOrder(id, remainTime);
+        trackOrderList.add(tOrder);                
         double totalRoute = 0;
         totalRoute = staff.getTotalDistance();       
         totalRoute = route + totalRoute;
@@ -265,6 +272,20 @@ public class DeliveryManMenu {
 //        System.out.println(staff.getTotalDelivery());                      
     }
     
+   public void trackOrder(LinkList<TrackOrder> trackOrderList){
+       int id;
+       System.out.println("Please key in your Customer ID: ");
+       id = scanner.nextInt();
+       System.out.println("==================================");
+       System.out.println("ID          Expect reach time(Min)");
+       for(int i = 0; i <trackOrderList.getNumberofSize(); i++){
+           if(id == trackOrderList.get(i).getCustomerID()){
+               System.out.println(trackOrderList.get(i));
+           }
+       }
+       
+       
+   } 
    
    public Staff DeliveryManLogin(DoubleLinkListADT<Staff> staffList){
 //       clear.clearScreen();

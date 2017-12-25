@@ -28,7 +28,8 @@ public class MainMenu {
     private Customer CustomerLoggedIn = new Customer();
     private DoubleLinkListADT<Staff> staffList = new DoubleLinkListADT<Staff>();
     private LinkList<DeliveryMan> deliveryManList = new LinkList<DeliveryMan>();
-    private LinkedStack<FoodDelivered> foodDeliveredList = new LinkedStack<FoodDelivered>();
+    private LinkList<TrackOrder> trackOrderList = new LinkList<TrackOrder>();
+    
     //private Queue<Orders> orderList = new Queue<Orders>();
     
     ClearScreen clear = new ClearScreen();
@@ -78,6 +79,7 @@ public class MainMenu {
                         System.out.println("====================");
                         System.out.println("1.Login To Customer Area");
                         System.out.println("2.Register a New Account");
+                        System.out.println("3.Track Order");
                         System.out.print("Please Enter your Option : ");
                         int loginChoice = scan.nextInt();
                         if(loginChoice == 1){
@@ -100,7 +102,11 @@ public class MainMenu {
                             int i = customer.getNumberofSize() + 5000;
                             System.out.println("Please REMEMBER that your ID is " + i + "\n\n\n");
                             break;
+                        }if(loginChoice == 3){
+                            dMenu.trackOrder(trackOrderList);
+                            break;
                         }
+                        
                     case 2://Restaurant Area
                         System.out.println("Login to Restaurant Owner Area");
                         //incomplete login function....bypass to RestaurantRegister
@@ -229,7 +235,7 @@ public class MainMenu {
                                               }
                                           }while(Selection1<1 || Selection1>2);
                                           if (Selection1 == 1){
-                                              dMenu.DeliveryOrder(loggedinstaff, orderlist);
+                                              dMenu.DeliveryOrder(loggedinstaff, orderlist, trackOrderList);
 
                                           }else if(Selection == 2){
                                               clear.clearScreen();

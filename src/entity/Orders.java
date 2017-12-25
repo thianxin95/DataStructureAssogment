@@ -60,8 +60,8 @@ public class Orders {
     }
     
       public String toString() {
-    return String.format("%-12d %-12s %-12s %-12s %12s %12s",
-            OrderID, OrderCustomerID, OrderName, OrderProductID, ProductQuantity, PaymentStatus);
+    return String.format("%-12d %-12s %-20s %-12s %-12s %-12s",
+            OrderID, OrderCustomerID, OrderName, OrderProductID, ProductQuantity, RestaurantName);
   }
      
 }
