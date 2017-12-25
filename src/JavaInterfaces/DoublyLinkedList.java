@@ -15,8 +15,8 @@ public interface DoublyLinkedList<T> {
     public boolean isEmpty();
     public void Add(T anEntry);
     public T GetEntry(int position);
-   public boolean deleteNode(T anEntry);
-   public String reverseString();
+    public boolean deleteNode(T anEntry);
+    public String reverseString();
    
          
     

@@ -40,7 +40,7 @@ public class MainMenu {
     private void DefaultData(){
 
      staffList.Add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, "",0,0));
-        staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, "",2,3));
+     staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, "",2,3));
 //        customer.add(new Customer(customer.getNumberofSize()+ 5001,"12345","Test" , "Setapak PV13" , "1234"));
 //        customer.add(new Customer(customer.getNumberofSize()+ 5002,"12345","Test" , "Setapak PV21" , "1234"));
         customer.add(new Customer(5001,"12345","Test" , "Setapak PV13" , "1234"));
@@ -306,7 +306,7 @@ public class MainMenu {
                                 System.out.print("Login ID(0 to cancel):");
                                 String HumanResourceID = scan.nextLine();
                                 if(HumanResourceID !="0"){
-                                    System.out.print("Password");
+                                    System.out.print("Password:");
                                     String HumanResourcePassword = scan.nextLine();
                                     if(HumanResourceID.equals("9999") & HumanResourcePassword.equals("123456")){
                                         ContinueHuman=1;
@@ -348,6 +348,7 @@ public class MainMenu {
 
                                      }
                                     else if(answer5==5){
+                                        HR.DailyTransaction(staffList);
 
 
                                     }else if(answer5 == 6){
