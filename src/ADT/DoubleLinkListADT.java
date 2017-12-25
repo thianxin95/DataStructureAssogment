@@ -136,7 +136,7 @@ public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
         test.Add(1);
         test.Add(2);
         test.Add(3);
-      //  test.deleteNode(2);
+        test.deleteNode(2);
         System.out.println("Test get :" + test.GetEntry(0));
         System.out.println("Test get 2:"  + test.GetEntry(1));
         System.out.println("Test get 3: " + test.GetEntry(2));
