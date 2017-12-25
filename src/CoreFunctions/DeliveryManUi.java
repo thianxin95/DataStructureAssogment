@@ -23,7 +23,7 @@ public class DeliveryManUi {
           clear.clearScreen();
           System.out.println("Staff only!! Unauthorized access prohibited.");
           System.out.println("====Delivery Man Menu====");
-          System.out.println("1.Clock in.");
+          System.out.println("1.Log in.");
           System.out.println("2.Exit.");
           int answer;
           do{

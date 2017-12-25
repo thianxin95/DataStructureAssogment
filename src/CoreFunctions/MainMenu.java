@@ -50,10 +50,10 @@ public class MainMenu {
         orderlist.enqueue(new Orders(2001, 5001, "noodle", "6002", 4, "", "KFC"));
         orderlist.enqueue(new Orders(2002, 5001, "Soup", "6003", 2, "", "KFC"));
         orderlist.enqueue(new Orders(2003, 5002, "McChicken", "6001" , 4, "", "McDonald"));
-        orderlist.enqueue(new Orders(2003, 5002, "Set B", "6001" , 4, "", "McDonald"));
-        orderlist.enqueue(new Orders(2003, 5003, "SET C", "6001" , 4, "", "Texas"));        
-        orderlist.enqueue(new Orders(2003, 5003, "Chicken Set 1", "6001" , 4, "", "Texas"));
-        orderlist.enqueue(new Orders(2003, 5003, "Chicken Set 2", "6001" , 4, "", "Texas"));
+//        orderlist.enqueue(new Orders(2003, 5002, "Set B", "6001" , 4, "", "McDonald"));
+//        orderlist.enqueue(new Orders(2003, 5003, "SET C", "6001" , 4, "", "Texas"));        
+//        orderlist.enqueue(new Orders(2003, 5003, "Chicken Set 1", "6001" , 4, "", "Texas"));
+//        orderlist.enqueue(new Orders(2003, 5003, "Chicken Set 2", "6001" , 4, "", "Texas"));
         
         restaurantList.add(new Restaurant("KFC", "Address" , "Kentucky" , 123456));
     }
