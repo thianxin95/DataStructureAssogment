@@ -38,27 +38,5 @@ public class CustomerAccADT<T> implements CustomerAccInterface{
                 return logincustomer;
             }
     
-    }
-
-
-
- /*   @Override
-    public boolean DeactivateAccount(Customer accdeactivate, CircularList<Customer> customerlist) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       if(customerlist.contains(accdeactivate)){
-          for(int i = 0; i<customerlist.getNumberOfEntries(); i++){
-              if(accdeactivate.getCustomerID() == customerlist.get(i).getCustomerID()){
-                  customerlist.remove(i);
-                  return true;
-              }
-          }
-       }else{
-           return false;
-       }
-       return false;
-    }*/
-
- 
-
-   
+    }  
 }

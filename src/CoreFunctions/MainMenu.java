@@ -299,49 +299,68 @@ public class MainMenu {
                         break;
 
                     case 4:
-                       
-                                int ContinueHuman= 1;
-                                while(ContinueHuman == 1){
-                                MaintainDM HR = new MaintainDM();
-                                System.out.println("Welcome to Human Resources");
+                                int ContinueHuman=0;
+                                scan.nextLine(); // consumes \n
+                                System.out.println("Login to Human Resources");
                                 System.out.println("===========================");
-                                System.out.println("1.Create Staff Information");
-                                System.out.println("2.View Staff Record");
-                                System.out.println("3.Update Staff Record");
-                                System.out.println("4.View Pending Order");
-                                System.out.println("5.View Daily Transaction ");
-                                System.out.println("6. Exit");
-                                System.out.println("Please enter you selection:");
-                                int answer5= scan.nextInt();
-                                if(answer5 ==1){
-                                    HR.createStaffRecord(staffList);
-                               
-                                }
-                                else if(answer5==2){
-                                    Scanner scanner = new Scanner(System.in);
-                                    System.out.print("Please enter the staff id:");
-                                    int staffid = scanner.nextInt();
-                                    HR.DisplayStaffRecord(staffList, staffid);
-                                }
-                                else if(answer5==3)
-                                {
-                                  HR.UpdateStaffInfo(staffList);
-                                }
-                                else if(answer5==4){
-                                   Queue<Orders> pendingOrder = orderlist;
-                                   HR.PendingOrder(pendingOrder);
-                                       
-                                 }
-                                else if(answer5==5){
+                                System.out.print("Login ID(0 to cancel):");
+                                String HumanResourceID = scan.nextLine();
+                                if(HumanResourceID !="0"){
+                                    System.out.print("Password");
+                                    String HumanResourcePassword = scan.nextLine();
+                                    if(HumanResourceID.equals("9999") & HumanResourcePassword.equals("123456")){
+                                        ContinueHuman=1;
+                                        System.out.println("Login Succesfully!");
+                                        System.out.println();
+                                        System.out.println();
+                                    }else{
+                                        System.out.println("Login Unsuccesful!");
+                                    }
+                                    while(ContinueHuman == 1){
+                                    MaintainDM HR = new MaintainDM();
+                                    System.out.println("Welcome to Human Resources");
+                                    System.out.println("===========================");
+                                    System.out.println("1.Create Staff Information");
+                                    System.out.println("2.View Staff Record");
+                                    System.out.println("3.Update Staff Record");
+                                    System.out.println("4.View Pending Order");
+                                    System.out.println("5.View Daily Transaction ");
+                                    System.out.println("6. Exit");
+                                    System.out.println("Please enter you selection:");
+                                    int answer5= scan.nextInt();
+                                    if(answer5 ==1){
+                                        HR.createStaffRecord(staffList);
+
+                                    }
+                                    else if(answer5==2){
+                                        Scanner scanner = new Scanner(System.in);
+                                        System.out.print("Please enter the staff id:");
+                                        int staffid = scanner.nextInt();
+                                        HR.DisplayStaffRecord(staffList, staffid);
+                                    }
+                                    else if(answer5==3)
+                                    {
+                                      HR.UpdateStaffInfo(staffList);
+                                    }
+                                    else if(answer5==4){
+                                       Queue<Orders> pendingOrder = orderlist;
+                                       HR.PendingOrder(pendingOrder);
+
+                                     }
+                                    else if(answer5==5){
+
+
+                                    }else if(answer5 == 6){
+                                        ContinueHuman = 0;
+                                    }
                                     
-                                    
-                                }else if(answer5 == 6){
-                                    ContinueHuman = 0;
-                                }
 
                         
                       
-                }
+                           }
+                        }else{
+                                    System.out.println("Login Aborted!");
+                                }
                                   break;
                 }
 
