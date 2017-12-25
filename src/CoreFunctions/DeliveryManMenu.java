@@ -11,6 +11,7 @@ import ADT.DoubleLinkListADT;
 import ADT.LinkList;
 import ADT.LinkedStack;
 import ADT.Queue;
+import entity.Customer;
 import entity.DeliveryMan;
 import entity.FoodDelivered;
 import entity.Orders;
@@ -159,19 +160,54 @@ public class DeliveryManMenu {
     }
     
     
-    public void DisplayOrder(Staff staff, Queue<Orders> orderlist){
+    public void DisplayOrder(Staff staff, Queue<Orders> orderlist, LinkList<Customer> customer){
             clear.clearScreen();
             System.out.println("Order available!");
-            System.out.println("Order ID            : " + orderlist.getFront().getOrderID());
-            System.out.println("Customer ID         : " + orderlist.getFront().getOrderCustomerID());
-            System.out.println("Name of order       : " + orderlist.getFront().getOrderName());
-            System.out.println("Product ID          : " + orderlist.getFront().getOrderProductID());
-            System.out.println("Quantity of product : " + orderlist.getFront().getProductQuantity());
-            System.out.println("Name of Restaurant  : " + orderlist.getFront().getRestaurantName());
+//            System.out.println("Order ID            : " + orderlist.getFront().getOrderID());
+//            System.out.println("Customer ID         : " + orderlist.getFront().getOrderCustomerID());
+//            System.out.println("Name of order       : " + orderlist.getFront().getOrderName());
+//            System.out.println("Product ID          : " + orderlist.getFront().getOrderProductID());
+//            System.out.println("Quantity of product : " + orderlist.getFront().getProductQuantity());
+//            System.out.println("Name of Restaurant  : " + orderlist.getFront().getRestaurantName());
+
+//            int cusID = orderlist.getFront().getOrderCustomerID();
+//            System.out.println(cusID);
+//              System.out.println(orderlist.getFront().getOrderCustomerID());
+//              System.out.println(orderlist.getEntry(2).getOrderCustomerID());
+              
+              System.out.println("========================================================================================");
+              System.out.println("Order ID   Customer ID    Order Item           Item ID      Quantity     Restaurant Name");
+              if(orderlist.getSize()>1){
+              for(int i = 1; i<orderlist.getSize(); i++){
+                  if(orderlist.getFront().getOrderCustomerID() == orderlist.getEntry(i).getOrderCustomerID()){
+                      System.out.println(orderlist.getEntry(i));
+                  }
+              }
+              }else if(orderlist.getSize() == 1){
+                  System.out.println(orderlist.getFront());
+              }
+              System.out.println("========================================================================================");
+
+              
+              for(int j = 0; j<customer.getNumberofSize(); j++){
+                  if(orderlist.getFront().getOrderCustomerID() == customer.getEntry(j).getCustomerID())
+                      System.out.println("Customer address: " + customer.getEntry(j).getCustomerAddress());                                       
+              }              
     }
     
     public void DeliveryOrder(Staff staff, Queue<Orders> orderlist){
-        orderlist.dequeue();
+        int id = orderlist.getFront().getOrderCustomerID();
+        System.out.println(id);
+        
+        if(orderlist.getSize()>1){
+        do{
+            orderlist.dequeue();
+        }while(id == orderlist.getFront().getOrderCustomerID());
+        }else if(orderlist.getSize() == 1){
+            orderlist.dequeue();
+        }
+        System.out.println(orderlist.getFront());//for verify purpose
+                      
         System.out.println("Please key in the distance of the route:");
         double route = scanner.nextDouble();
         double totalRoute = 0;
@@ -182,10 +218,10 @@ public class DeliveryManMenu {
         totalDelivered++;
         staff.setTotalDelivery(totalDelivered);
         staff.setTotalDistance(totalRoute);
-        System.out.println("Enter 1 if you picked up the order item: ");
+        //System.out.println("Enter 1 if you picked up the order item: ");
             int Selection1;
             do{
-                  System.out.println("");
+                  System.out.println("Enter 1 if you picked up the order item: ");
                   try{
                       Selection1 = scanner.nextInt();
                   }catch(Exception ex){
@@ -200,10 +236,10 @@ public class DeliveryManMenu {
                   }
               }while(Selection1<1 || Selection1>1);
             if(Selection1 == 1){
-                        System.out.println("Enter 1 if you had delivered the order item: ");
+                        //System.out.println("Enter 1 if you had delivered the order item: ");
                            int Selection;
                     do{
-                          System.out.println("");
+                          System.out.println("Enter 1 if you had delivered the order item: ");
                           try{
                               Selection = scanner.nextInt();
                           }catch(Exception ex){

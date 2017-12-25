@@ -38,13 +38,20 @@ public class MainMenu {
     Queue<Orders> orderlist = new Queue<Orders>();
     private void DefaultData(){
 
-     //   staffList.Add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, "",0,0));
-       // staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, "",2,3));
-        customer.add(new Customer(customer.getNumberofSize()+ 5001,"12345","Test" , "KL" , "1234"));
-    //    orderlist.enqueue(new Orders(2000, 5000, "Fried chicken", "6000", 3, "Paid", "KFC"));
-    //    orderlist.enqueue(new Orders(2001, 5001, "McChicken", "6001" , 4, "Paid", "McDonald"));
-  //      orderlist.enqueue(new Orders(2001, 5001, "McChicken2", "6001" , 4, "Paid", "McDonald"));
-   //     orderlist.enqueue(new Orders(2001, 5001, "McChicken3", "6001" , 4, "Paid", "McDonald"));
+     staffList.Add(new Staff(1000, "Lee Thian Xin", "0147774456", "Kuala Lumpur",18, "", 123456, "",0,0));
+        staffList.Add(new Staff(1001, "Dicky", "0177774456", "Kuala Kangsar",18, "", 122222, "",2,3));
+//        customer.add(new Customer(customer.getNumberofSize()+ 5001,"12345","Test" , "Setapak PV13" , "1234"));
+//        customer.add(new Customer(customer.getNumberofSize()+ 5002,"12345","Test" , "Setapak PV21" , "1234"));
+        customer.add(new Customer(5001,"12345","Test" , "Setapak PV13" , "1234"));
+        customer.add(new Customer(5002,"12345","Test" , "Setapak PV21" , "1234"));
+        customer.add(new Customer(5003,"12345","Test" , "Setapak Central" , "1234"));
+        orderlist.enqueue(new Orders(2000, 5001, "Fried chicken", "6001", 3, "", "KFC"));
+        orderlist.enqueue(new Orders(2001, 5001, "noodle", "6002", 4, "", "KFC"));
+        orderlist.enqueue(new Orders(2002, 5001, "Soup", "6003", 2, "", "KFC"));
+        orderlist.enqueue(new Orders(2003, 5002, "McChicken", "6001" , 4, "", "McDonald"));
+        orderlist.enqueue(new Orders(2003, 5002, "Set B", "6001" , 4, "", "McDonald"));
+        orderlist.enqueue(new Orders(2003, 5003, "SET C", "6001" , 4, "", "Texas"));        
+        //orderlist.enqueue(new Orders(2003, 5003, "Chicken Set 1", "6001" , 4, "", "Texas"));
         restaurantList.add(new Restaurant("KFC", "Address" , "Kentucky" , 123456));
     }
     
@@ -199,7 +206,7 @@ public class MainMenu {
                                         String wStatus1= "Break";
                                         if(wStatus == loggedinstaff.getStaffWorkStatus() || wStatus1 == loggedinstaff.getStaffWorkStatus() ){
                                             if(orderlist.getSize()>0){
-                                            dMenu.DisplayOrder(loggedinstaff, orderlist);   
+                                            dMenu.DisplayOrder(loggedinstaff, orderlist, customer);   
                                             System.out.println("================Functions===================");
                                             System.out.println("Select 1 to start the delivery.");
                                             System.out.println("1.Delivery");
