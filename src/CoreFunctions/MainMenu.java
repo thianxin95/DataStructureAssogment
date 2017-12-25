@@ -50,9 +50,11 @@ public class MainMenu {
         orderlist.enqueue(new Orders(2001, 5001, "noodle", "6002", 4, "", "KFC"));
         orderlist.enqueue(new Orders(2002, 5001, "Soup", "6003", 2, "", "KFC"));
         orderlist.enqueue(new Orders(2003, 5002, "McChicken", "6001" , 4, "", "McDonald"));
-        orderlist.enqueue(new Orders(2003, 5002, "Set B", "6001" , 4, "", "McDonald"));
-        orderlist.enqueue(new Orders(2003, 5003, "SET C", "6001" , 4, "", "Texas"));        
-        //orderlist.enqueue(new Orders(2003, 5003, "Chicken Set 1", "6001" , 4, "", "Texas"));
+//        orderlist.enqueue(new Orders(2003, 5002, "Set B", "6001" , 4, "", "McDonald"));
+//        orderlist.enqueue(new Orders(2003, 5003, "SET C", "6001" , 4, "", "Texas"));        
+//        orderlist.enqueue(new Orders(2003, 5003, "Chicken Set 1", "6001" , 4, "", "Texas"));
+//        orderlist.enqueue(new Orders(2003, 5003, "Chicken Set 2", "6001" , 4, "", "Texas"));
+        
         restaurantList.add(new Restaurant("KFC", "Address" , "Kentucky" , 123456));
     }
     
@@ -106,7 +108,7 @@ public class MainMenu {
                             dMenu.trackOrder(trackOrderList);
                             break;
                         }
-                        
+                        break;
                     case 2://Restaurant Area
                         System.out.println("Login to Restaurant Owner Area");
                         //incomplete login function....bypass to RestaurantRegister
@@ -325,7 +327,8 @@ public class MainMenu {
                                     System.out.println("3.Update Staff Record");
                                     System.out.println("4.View Pending Order");
                                     System.out.println("5.View Daily Transaction ");
-                                    System.out.println("6. Exit");
+                                    System.out.println("6. View Staff Working Status");
+                                    System.out.println("7. Exit");
                                     System.out.println("Please enter you selection:");
                                     int answer5= scan.nextInt();
                                     if(answer5 ==1){
@@ -351,7 +354,9 @@ public class MainMenu {
                                         HR.DailyTransaction(staffList);
 
 
-                                    }else if(answer5 == 6){
+                                    }else if(answer5 ==6){
+                                    dMenu.WorkStatus(staffList);
+                                   }else if(answer5 == 7){
                                         ContinueHuman = 0;
                                     }
                                     

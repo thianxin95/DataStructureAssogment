@@ -163,30 +163,20 @@ public class DeliveryManMenu {
     
     public void DisplayOrder(Staff staff, Queue<Orders> orderlist, LinkList<Customer> customer){
             clear.clearScreen();
-            System.out.println("Order available!");
-//            System.out.println("Order ID            : " + orderlist.getFront().getOrderID());
-//            System.out.println("Customer ID         : " + orderlist.getFront().getOrderCustomerID());
-//            System.out.println("Name of order       : " + orderlist.getFront().getOrderName());
-//            System.out.println("Product ID          : " + orderlist.getFront().getOrderProductID());
-//            System.out.println("Quantity of product : " + orderlist.getFront().getProductQuantity());
-//            System.out.println("Name of Restaurant  : " + orderlist.getFront().getRestaurantName());
-
-//            int cusID = orderlist.getFront().getOrderCustomerID();
-//            System.out.println(cusID);
-//              System.out.println(orderlist.getFront().getOrderCustomerID());
-//              System.out.println(orderlist.getEntry(2).getOrderCustomerID());
-              
+            System.out.println("Order available!");              
               System.out.println("========================================================================================");
               System.out.println("Order ID   Customer ID    Order Item           Item ID      Quantity     Restaurant Name");
-              if(orderlist.getSize()>1){
-              for(int i = 1; i<orderlist.getSize(); i++){
+              if(orderlist.getSize()>0){
+              for(int i = 1; i<=orderlist.getSize(); i++){                  
                   if(orderlist.getFront().getOrderCustomerID() == orderlist.getEntry(i).getOrderCustomerID()){
                       System.out.println(orderlist.getEntry(i));
                   }
               }
-              }else if(orderlist.getSize() == 1){
-                  System.out.println(orderlist.getFront());
               }
+              
+//              else if(orderlist.getSize() == 1){
+//                  System.out.println(orderlist.getFront());
+//              }
               System.out.println("========================================================================================");
 
               
@@ -198,15 +188,14 @@ public class DeliveryManMenu {
     
     public void DeliveryOrder(Staff staff, Queue<Orders> orderlist, LinkList<TrackOrder> trackOrderList){
         int id = orderlist.getFront().getOrderCustomerID();
-        System.out.println(id);//for verify purpose
-        
-        
-        
+        System.out.println(id);//for verify purpose 
+
         if(orderlist.getSize()>1){
         do{
             orderlist.dequeue();
         }while(id == orderlist.getFront().getOrderCustomerID());
-        }else if(orderlist.getSize() == 1){
+        }
+        else if(orderlist.getSize() == 1){
             orderlist.dequeue();
         }
         System.out.println(orderlist.getFront());//for verify purpose
@@ -322,6 +311,16 @@ public class DeliveryManMenu {
        }
        
        return user;
+   }
+   
+   public void WorkStatus(DoubleLinkListADT<Staff> staffList){
+       System.out.println("=====================Staff Status=======================");
+       System.out.println("ID           Name                 Phone number          Status  ");
+       for(int i = 0; i< staffList.getSize(); i++){
+       System.out.println(staffList.GetEntry(i).toString1());
+       
+       }
+       
    }
    
     
