@@ -5,10 +5,7 @@
  */
 package JavaInterfaces;
 
-/**
- *
- * @author Student
- */
+
 public interface DoublyLinkedList<T> {
     
     public int getSize();

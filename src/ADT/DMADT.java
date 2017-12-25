@@ -49,7 +49,8 @@ public class DMADT<T> implements MaintainDM<T> {
         for (int i = 0; i < orderList.getSize(); i++){
              Orders orderdequed = pendingOrder.dequeue();
              if(orderdequed !=null){
-                System.out.printf("%-10s %-12s %-15s %-20s %-1s \n" ,orderdequed.getOrderID(), orderdequed.getOrderCustomerID() , orderdequed.getOrderName(), orderdequed.getOrderProductID(), orderdequed.getProductQuantity()  );
+                System.out.printf("%-10s %-12s %-15s %-20s %-1s \n" ,orderdequed.getOrderID(), orderdequed.getOrderCustomerID() , 
+                        orderdequed.getOrderName(), orderdequed.getOrderProductID(), orderdequed.getProductQuantity()  );
                 pendingOrder.enqueue(orderdequed);
              }else{
                  System.out.println("No pending Orders");

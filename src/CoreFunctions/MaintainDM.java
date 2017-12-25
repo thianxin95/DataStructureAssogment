@@ -209,26 +209,6 @@ public class MaintainDM {
   
     
  
-       public static void main(String args[]){
-         MaintainDM DM = new MaintainDM();
-        DoubleLinkListADT<Staff> testlist = new DoubleLinkListADT<Staff>();
-     //   LinkList<Orders> test2list = new LinkList<Orders>();
-        
-
- Staff stafflist = new Staff(1000,"Chim","123","tbr",12,"active",123456,"no",12,20.00);
-  Staff stafflist2 = new Staff(1001,"aw","123","tbr",12,"active",123456,"no",80,20.00);
- Staff stafflist3 = new Staff(1002,"dierereru","123","tbr",12,"active",123456,"no",70,20.00);
-
-    testlist.Add(stafflist);
-    testlist.Add(stafflist2);
-   testlist.Add(stafflist3);
-    DM.createStaffRecord(testlist);
-    DM.UpdateStaffInfo(testlist);
-    DM.DailyTransaction(testlist);
-  
-   
-         
-     }
     
 }
 
