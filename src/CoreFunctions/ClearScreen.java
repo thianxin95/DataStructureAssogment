@@ -10,11 +10,13 @@ package CoreFunctions;
  * @author Daniel
  */
 public class ClearScreen {
-    public ClearScreen(){
-        }
-    public void clearScreen() {
-        for (int i = 0; i < 10; i++) {
-            System.out.println();
-        }
+
+  public ClearScreen() {
+  }
+
+  public void clearScreen() {
+    for (int i = 0; i < 10; i++) {
+      System.out.println();
     }
+  }
 }

@@ -10,11 +10,17 @@ package JavaInterfaces;
  * @author User
  */
 public interface StackInterface<T> {
-    public void push(T newEntry);
-    public T pop();
-    public T peek();
-    public T view();
-    public boolean isEmpty();
-    public void clear();
-    
+
+  public void push(T newEntry);
+
+  public T pop();
+
+  public T peek();
+
+  public T view();
+
+  public boolean isEmpty();
+
+  public void clear();
+
 }

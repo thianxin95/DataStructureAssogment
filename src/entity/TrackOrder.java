@@ -10,28 +10,30 @@ package entity;
  * @author Daniel
  */
 public class TrackOrder {
-    private int customerID;
-    private double predictReachTime;
-    
-    public TrackOrder(){
-        
-    }
 
-    public TrackOrder(int customerID, double predictReachTime) {
-        this.customerID = customerID;
-        this.predictReachTime = predictReachTime;
-    }
+  private int customerID;
+  private double predictReachTime;
 
-    public int getCustomerID() {
-        return customerID;
-    }
+  public TrackOrder() {
 
-    public double getPredictReachTime() {
-        return predictReachTime;
-    }
-    public String toString() {
-    return String.format("%-12d %-12s ", customerID, predictReachTime
-            );
   }
-    
+
+  public TrackOrder(int customerID, double predictReachTime) {
+    this.customerID = customerID;
+    this.predictReachTime = predictReachTime;
+  }
+
+  public int getCustomerID() {
+    return customerID;
+  }
+
+  public double getPredictReachTime() {
+    return predictReachTime;
+  }
+
+  public String toString() {
+    return String.format("%-12d %-12s ", customerID, predictReachTime
+    );
+  }
+
 }

@@ -4,150 +4,127 @@
  * and open the template in the editor.
  */
 package ADT;
+
 import JavaInterfaces.*;
 import entity.*;
 
-
 public class DoubleLinkListADT<T> implements DoublyLinkedList<T> {
 
-      Node first = null;
-      Node last = null;
-     private int size =0;
+  Node first = null;
+  Node last = null;
+  private int size = 0;
 
-    @Override
-    public int getSize() {
-       return size;
-    }
+  @Override
+  public int getSize() {
+    return size;
+  }
 
-    public boolean isEmpty(){
-        return (first == null);
-    };
+  public boolean isEmpty() {
+    return (first == null);
+  }
+
+  ;
     @Override
-      public void Add(T newEntry) {
-      
+  public void Add(T newEntry) {
+
     Node temp = new Node(newEntry);
     if (first == null) {
-        first = temp;
+      first = temp;
     } else {
-        last.right = temp;
-        temp.left = last;
+      last.right = temp;
+      temp.left = last;
     }
     last = temp;
     size++;
 
-    }
+  }
 
-    
-    @Override
-    public boolean deleteNode(T anEntry)
-    {if(first == null){
-            return false;
-        }else if(first.data.equals(anEntry)){
-            
-            first.left = null;
-            first = first.right;
-            size--;
-            return true;
-        }else if(last.data.equals(anEntry)){
-           
-            last = last.left;
-            last.right = null;
-            size--;
-            return true;
-        }else{
-           
-            Node currentNode = first;
-            while(currentNode != null){
-                if(currentNode.data.equals(anEntry)){
-                    currentNode.left.right = currentNode.right;
-                    currentNode.right.left = currentNode.left;
-                    return true;
-                }else{
-                    currentNode = currentNode.right;
-                }
-            }
-            size--;
+  @Override
+  public boolean deleteNode(T anEntry) {
+    if (first == null) {
+      return false;
+    } else if (first.data.equals(anEntry)) {
+
+      first.left = null;
+      first = first.right;
+      size--;
+      return true;
+    } else if (last.data.equals(anEntry)) {
+
+      last = last.left;
+      last.right = null;
+      size--;
+      return true;
+    } else {
+
+      Node currentNode = first;
+      while (currentNode != null) {
+        if (currentNode.data.equals(anEntry)) {
+          currentNode.left.right = currentNode.right;
+          currentNode.right.left = currentNode.left;
+          return true;
+        } else {
+          currentNode = currentNode.right;
         }
-        return false;
+      }
+      size--;
+    }
+    return false;
+  }
+
+  @Override
+  public T GetEntry(int index) {
+    Node<T> current = first;
+    if (index < 0 || index > size) {
+      throw new IndexOutOfBoundsException();
+    } else {
+
+      for (int i = 0; i < index; i++) {
+        current = current.right;
+
+      }
+      return current.data;
+    }
+  }
+
+  public String toString() {
+    return "";
+  }
+
+  @Override
+  public String reverseString() {
+    Node currentNode = last;
+    String result = "";
+
+    for (int hight = getSize() - 1; hight >= 0; hight--) {
+      result = result + currentNode.data + " ";
+      currentNode = currentNode.left;
     }
 
+    return result;
+  }
 
+  private class Node<T> {
 
- 
-    
+    private T data;
+    Node right;
+    Node left;
 
-    @Override
-    public T GetEntry(int index) {
-      Node <T>  current= first;
-        if(index <0 || index > size)
-        {
-            throw new IndexOutOfBoundsException();
-        }
-        else
-        {
-      
-            for (int i = 0; i < index; i++) {
-                current = current.right;
-               
-            }
-            return current.data;
-        }
+    public Node(T data) {
+      this.data = data;
     }
-    
-    public String toString(){
-        return "";
-    }
-  
-    @Override
-   public String reverseString(){
-       Node currentNode = last;
-       String result = "";
-       
-       for(int hight = getSize()-1; hight >=0; hight--){
-           result = result + currentNode.data + " ";
-           currentNode = currentNode.left;
-       }
-       
-       return result;
-   }
-   
-  
+  }
 
+  public static void main(String args[]) {
+    DoubleLinkListADT<Integer> test = new DoubleLinkListADT<Integer>();
+    test.Add(1);
+    test.Add(2);
+    test.Add(3);
+    test.deleteNode(2);
+    System.out.println("Test get :" + test.GetEntry(0));
+    System.out.println("Test get 2:" + test.GetEntry(1));
+    System.out.println("Test get 3: " + test.GetEntry(2));
 
-   
-     private class Node<T> {
-        private T data;
-         Node right;
-         Node left;
-
-        public Node(T data) {
-            this.data = data;
-        }
-    }
-
-   
-   
-
-    
-
-    
-
-    
-    public static void main(String args[]){
-        DoubleLinkListADT<Integer> test = new DoubleLinkListADT<Integer>();
-        test.Add(1);
-        test.Add(2);
-        test.Add(3);
-        test.deleteNode(2);
-        System.out.println("Test get :" + test.GetEntry(0));
-        System.out.println("Test get 2:"  + test.GetEntry(1));
-        System.out.println("Test get 3: " + test.GetEntry(2));
+  }
 
 }
-    
-    
-    
-}
-    
-    
-

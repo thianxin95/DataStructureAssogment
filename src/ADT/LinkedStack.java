@@ -6,83 +6,84 @@
 package ADT;
 
 import JavaInterfaces.*;
+
 /**
  *
  * @author User
  */
 public class LinkedStack<T> implements StackInterface<T> {
-    
-    private Node firstNode;
-    
-    public LinkedStack(){
-        firstNode = null;
+
+  private Node firstNode;
+
+  public LinkedStack() {
+    firstNode = null;
+  }
+
+  @Override
+  public void push(T newEntry) {
+    Node newNode = new Node(newEntry);
+    newNode.next = firstNode;
+    firstNode = newNode;
+  }
+
+  @Override
+  public T pop() {
+    T pop = peek();
+
+    if (firstNode != null) {
+      firstNode = firstNode.next;
     }
 
-    @Override
-    public void push(T newEntry) {
-        Node newNode = new Node(newEntry);
-        newNode.next = firstNode;
-        firstNode = newNode;
+    return pop;
+  }
+
+  @Override
+  public T peek() {
+    T top = null;
+
+    if (!isEmpty()) {
+      top = firstNode.data;
     }
 
-    @Override
-    public T pop() {
-         T pop = peek();
+    return top;
+  }
 
-        if (firstNode != null) {
-            firstNode = firstNode.next;
-        }
+  @Override
+  public T view() {
+    T top = null;
 
-        return pop;
+    if (!isEmpty()) {
+
+      top = firstNode.data;
+      firstNode = firstNode.next;
     }
 
-    @Override
-    public T peek() {
-        T top = null;
+    return top;
+  }
 
-        if (!isEmpty()) {
-            top = firstNode.data;
-        }
+  @Override
+  public boolean isEmpty() {
+    return (firstNode == null);
+  }
 
-        return top;
-    }
-    
-    @Override
-    public T view() {
-        T top = null;
-        
-        if(!isEmpty()){
-            
-            top = firstNode.data;
-            firstNode = firstNode.next;
-        }
-        
-        return top;
-    }
+  @Override
+  public void clear() {
+    firstNode = null;
+  }
 
-    @Override
-    public boolean isEmpty() {
-        return (firstNode == null);
-    }
+  private class Node {
 
-    @Override
-    public void clear() {
-        firstNode = null;
-    }
+    private T data;
+    private Node next;
 
-    private class Node {
+    private Node(T data) {
+      this.data = data;
+      this.next = null;
+    } // end constructor
 
-        private T data;
-        private Node next;
-
-        private Node(T data) {
-            this.data = data;
-            this.next = null;
-        } // end constructor
-
-        private Node(T data, Node link) {
-            data = data;
-            next = link;
-        } // end constructor
-    }   
+    private Node(T data, Node link) {
+      data = data;
+      next = link;
+    } // end constructor
+  }
 }

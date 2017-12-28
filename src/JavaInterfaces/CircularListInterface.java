@@ -10,9 +10,14 @@ package JavaInterfaces;
  * @author leang
  */
 public interface CircularListInterface<T> {
-    void add(T newentry);
-    void removehead();
-    T get(int index);
-    T getEntry(int index);
-    int getNumberOfEntries();
+
+  void add(T newentry);
+
+  void removehead();
+
+  T get(int index);
+
+  T getEntry(int index);
+
+  int getNumberOfEntries();
 }

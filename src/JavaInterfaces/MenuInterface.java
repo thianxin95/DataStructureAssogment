@@ -7,12 +7,16 @@ package JavaInterfaces;
 
 import ADT.*;
 import entity.*;
+
 /**
  *
  * @author Tarc
  */
 public interface MenuInterface {
-    LinkList<Menu> AddMenu(Menu newMenu , LinkList<Menu> oldMenu);
-    LinkList<Menu> RemoveMenu(Menu removeItem , LinkList<Menu> oldMenu);
-    LinkList<Menu> UpdateMenu(Menu removeItem , Menu updatedetails , LinkList<Menu> oldMenu);
+
+  LinkList<Menu> AddMenu(Menu newMenu, LinkList<Menu> oldMenu);
+
+  LinkList<Menu> RemoveMenu(Menu removeItem, LinkList<Menu> oldMenu);
+
+  LinkList<Menu> UpdateMenu(Menu removeItem, Menu updatedetails, LinkList<Menu> oldMenu);
 }

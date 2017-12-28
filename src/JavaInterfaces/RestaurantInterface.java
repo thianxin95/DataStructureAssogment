@@ -7,10 +7,12 @@ package JavaInterfaces;
 
 import ADT.*;
 import entity.*;
+
 /**
  *
  * @author Tarc
  */
 public interface RestaurantInterface {
-    LinkList<Restaurant> RegisterRestaurant(Restaurant newRestaurant,LinkList<Restaurant> restaurantList);
+
+  LinkList<Restaurant> RegisterRestaurant(Restaurant newRestaurant, LinkList<Restaurant> restaurantList);
 }

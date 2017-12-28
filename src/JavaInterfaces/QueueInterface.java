@@ -10,10 +10,15 @@ package JavaInterfaces;
  * @author Daniel
  */
 public interface QueueInterface<T> {
-    public void enqueue(T newEntry);
-    public T dequeue();
-    public T getFront();
-    public boolean isEmpty();
-    public int getSize();
-    
+
+  public void enqueue(T newEntry);
+
+  public T dequeue();
+
+  public T getFront();
+
+  public boolean isEmpty();
+
+  public int getSize();
+
 }

@@ -13,16 +13,14 @@ import ADT.*;
 import entity.*;
 
 public class TestArrayListADT {
-    
-    
-    public static void main(String args[]){
-        CircularList<Customer> customer = new CircularList<Customer>();
+
+  public static void main(String args[]) {
+    CircularList<Customer> customer = new CircularList<Customer>();
      //   Customer customerob = new Customer(5001,"Chin", "PJ" , "0102872306");
-     //   Customer customerob2 = new Customer(5002,"Chin", "PJ" , "0102872306");
-     //   customer.add(customerob);
-     //   customer.add(customerob2);
-        System.out.print(customer.get(0).getCustomerID());
-    }
-    
-    
+    //   Customer customerob2 = new Customer(5002,"Chin", "PJ" , "0102872306");
+    //   customer.add(customerob);
+    //   customer.add(customerob2);
+    System.out.print(customer.get(0).getCustomerID());
+  }
+
 }

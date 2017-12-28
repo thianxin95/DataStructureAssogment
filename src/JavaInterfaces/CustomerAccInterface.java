@@ -12,8 +12,9 @@ import entity.*;
  *
  * @author leang
  */
-
 public interface CustomerAccInterface {
-    LinkList<Customer> RegisterCustomer(Customer newCustomer, LinkList<Customer> customerlist);
-    Customer LoginCustomer(String ID, String Password, LinkList<Customer> customerlist);
+
+  LinkList<Customer> RegisterCustomer(Customer newCustomer, LinkList<Customer> customerlist);
+
+  Customer LoginCustomer(String ID, String Password, LinkList<Customer> customerlist);
 }
